@@ -8,8 +8,11 @@
   "navigation": {
     "groups": [
       {
-        "group": "Getting Started",
-        "pages": []
+        "group": "Welcome",
+        "pages": [
+          "welcome",
+          "getting-started"
+        ]
       }
     ]
   }
