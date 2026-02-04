@@ -11,7 +11,8 @@
         "group": "Welcome",
         "pages": [
           "welcome",
-          "getting-started"
+          "getting-started",
+          "support"
         ]
       }
     ]
