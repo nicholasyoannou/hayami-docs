@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "maple",
-  "name": "Documentation",
+  "name": "Hayami Docs",
   "colors": {
     "primary": "#DC3962"
   },
@@ -12,6 +12,21 @@
         "pages": [
           "welcome",
           "getting-started"
+        ]
+      }
+    ]
+  },
+  "favicon": "/images/hayamiLogo-3.png",
+  "logo": "/images/AdobeExpress-file.png",
+  "footer": {
+    "links": [
+      {
+        "header": "Get Hayami",
+        "items": [
+          {
+            "label": "Get Hayami",
+            "href": "https://hayami.moe"
+          }
         ]
       }
     ]
