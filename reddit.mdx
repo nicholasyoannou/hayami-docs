@@ -1,0 +1,36 @@
+---
+icon: "comment"
+description: "How to setup Reddit through Hayami, and any extras you wish to configure."
+sidebarTitle: "Reddit"
+title: "Use your own Reddit software app with Hayami"
+---
+
+**Reddit through Hayami already works out the box. **That means all the rendering of comments, as well as commenting itself, should be without issues and is done through your browser session for Reddit. However, this can change at any time (since third-party APIs can be subject to change), and at times may break. I do wish for Hayami to have it's own Reddit app, and hopefully in-future this'll come to fruition, but for now this does the job.
+
+Because of this, you may wish to use your own API Keys for Reddit if you have them, enabling a more stable & smoother experience in being able to interact with Reddit in-general. Currently, Hayami only has support for a **software app** (as personally that's the only one I've got and can test) but will potentially expand support to more Reddit app types in the future, depending on how things continue. I've put below on how you properly configure Hayami to support your Reddit software app.
+
+## How to get your Reddit API Keys
+
+<Info>
+  Because of Reddit API changes, for new Reddit users, you may not be able to create new Reddit applications without direct approval from Reddit to create your Reddit application. This guide is intended for users with these apps & keys already.
+</Info>
+
+If you go to https://www.reddit.com/prefs/apps, you should be able to see your existing applications under "developed applications". Under your software app, there should be a unique identifier (client ID). **Copy this client ID**.
+
+![Hayami Reddit Software App How To](/images/hayamiRedditSoftwareAppHowTo.png)
+
+Click 'edit' under this software app and **ensure the redirect URI is set to** https://hayami.moe/pwa/link/reddit
+
+![Image](/images/image.png)
+
+That's all the setup done on Reddit side. 
+
+## How to configure the Hayami extension with your app
+
+On the Hayami extension, open the popup and click the settings icon, and go to 'Discussion platforms'. Ensure on the dropdown you've chosen Reddit. Enter your client ID and hit Save.
+
+Go back to the main popup screen (click Back at the top), and click 'Manage accounts'. Click 'Login' on Reddit, followed by 'Allow' on the prompt to authenticate.
+
+![Screenshot 2026 02 06 160005 Edited](/images/Screenshot2026-02-06160005_edited.png)
+
+Success, your account should be authenticated with your app and should work properly on Hayami using your Reddit software app.
