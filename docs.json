@@ -6,25 +6,37 @@
     "primary": "#DC3962"
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Welcome",
-        "pages": [
-          "welcome",
-          "getting-started",
-          "support"
+        "tab": "Extension",
+        "groups": [
+          {
+            "group": "Welcome",
+            "pages": [
+              "welcome",
+              "getting-started",
+              "support"
+            ]
+          },
+          {
+            "group": "Discussion platforms",
+            "pages": [
+              "reddit"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "image-previews"
+            ]
+          }
         ]
       },
       {
-        "group": "Discussion platforms",
+        "tab": "Changelog",
         "pages": [
-          "reddit"
-        ]
-      },
-      {
-        "group": "Features",
-        "pages": [
-          "image-previews"
+          "whats-new",
+          "upcoming-features"
         ]
       }
     ]
