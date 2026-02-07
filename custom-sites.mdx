@@ -1,0 +1,41 @@
+---
+title: "Image previews"
+description: "What are image previews, and how to properly configure them on Hayami."
+---
+
+Image previews allow you to, on-hover, view the image or images associated with an Imgur or Imgchest link (as of current). **When you've hovered over a link associated with a _single_ image, these don't require an API key (usually) from any provider as they can be viewed & embedded straight off the bat. **However, for albums, these require interacting with the image APIs to get the images associated with an album. After using your API keys, you should be able to see image albums embedded in Hayami.
+
+![Animation](/images/Animation.gif)
+
+## How to get an Imagechest API Key
+
+Imagechest API keys can be generated from https://imgchest.com/profile/api, given you've got an Imagechest account. Pop inside the 'Name' field what you'd like to remember your API key by (so, Hayami, etc), hit 'Create', and you should get your generated API Key.
+
+![Image](/images/image-1.png)
+
+<img
+  src="/images/hayamiImgchestAPikey.jpg"
+  alt="Hayami Imgchest API Token"
+  title="Hayami Imgchest API Token"
+  style={{ width:"100%" }}
+/>
+
+The whole token above is the API Token, which you should copy and place into **Hayami \> Settings \> Image previews \> ImgChest API key**. Ensure you enable image previews if it's not already turned on. Once you've done that, image previews for Imagechest links should now perform properly.
+
+In albums, going to the next image can be done by clicking the Down/Right arrow on your keyboard, both via the popup and on-click previews.
+
+![Animation2](/images/Animation2.gif)
+
+## How to get an Imgur API Key
+
+<Info>
+  This guide is intended for people already with Imgur API keys, since Imgur has ceased the creation of new Imgur API applications. I'll be looking into whether it's possible to integrate Imgur support in directly as a failover because of this in the future.
+</Info>
+
+All that's required is your client ID directly from the Imgur API. If you go to https://imgur.com/account/settings/apps, copy your 'Client ID'.
+
+![Imgurapikeyget](/images/imgurapikeyget-2.png)
+
+Place into **Hayami \> Settings \> Image previews \> Imgur Client ID**. Ensure you enable image previews if it's not already turned on. Once you've done that, image previews for Imgur links should now perform properly.
+
+![Animation3](/images/Animation3.gif)
