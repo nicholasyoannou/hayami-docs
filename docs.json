@@ -20,6 +20,12 @@
         "pages": [
           "reddit"
         ]
+      },
+      {
+        "group": "Features",
+        "pages": [
+          "custom-sites"
+        ]
       }
     ]
   },
