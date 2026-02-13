@@ -1,0 +1,9 @@
+---
+title: "Discarded features"
+---
+
+This page is intended for note-taking of features that couldn't be implemented.
+
+- Crunchyroll archived comments can't be added as a Hayami platform due to Crunchyroll discontinuing the backend API for comments entirely. 
+  - Debugging notes: It throws a **502 Bad Gateway** error on /talkbox/guestbooks (assuming CR has withdrawn support on the backend entirely for comment discussions). The classic Crunchyroll site which used /comments with parameters of talkbox IDs throws a **404 Not Found** error, assuming this was withdrawn some time ago upon migration to the new site.
+  - There are _some_ partial discussions archived through the Internet Archive, but only the top initial comments. Anything past that (on-scroll to get more comments) isn't archived.

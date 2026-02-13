@@ -37,7 +37,8 @@
         "tab": "Changelog",
         "pages": [
           "whats-new",
-          "upcoming-features"
+          "upcoming-features",
+          "discarded-features"
         ]
       }
     ]
