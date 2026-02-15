@@ -5,11 +5,20 @@ sidebarTitle: "Changelog"
 ---
 
 <Update label="Version 0.0.9" description="Unpublished">
-  ## v0.0.9 WIP - New platform & backend additions
+  ## v0.0.9 WIP - New platforms & backend additions
 
-  **Features**: Implemented and indexed archived Aniwave comments (thanks to u/Goofhey for the archival work) in the backend database including image assets properly served. Aniwave has been directly added in Hayami as a supported discussion platform and added rendering support for this.
+  **Features**:
 
-  **TBD**: Change way API sends information on replies to a given top comment, and implement this handling into Hayami. Finish up image serving backend work and clean up database and Hayami to handle this. Do more exhaustive testing around rendering, add a note that Aniwave is for archived comments only.
+  - Two new discussion platforms added: [**The Anime Community**](https://theanimecommunity.com/) and **Aniwave**.
+
+    **The Anime Community**:
+    - Embeds The Anime Community discussion platform & customised colours to support Hayami.
+
+    **Aniwave**:
+    - Implemented & indexed **archived** Aniwave comments (thanks to u/Goofhey for the archival work back in 2024) in the backend database including image assets moved to storage solution. Aniwave has been directly added in Hayami as a supported discussion platform and added rendering support for this.
+    - Discussion platform settings for Aniwave has been added to auto-load in comments up to a certain depth, if desired also. Aniwave comments are sorted by DISQUS "points" (which is total likes minus dislikes).
+
+  **TBD**: Finish up image serving backend work and clean up database and Hayami to handle this. Do more exhaustive testing around rendering (TBD test image support), add a note that Aniwave is for archived comments only. Ensure The Anime Community mapping works properly.
 </Update>
 
 <Update label="Version 0.0.8" description="Unpublished">
@@ -18,6 +27,8 @@ sidebarTitle: "Changelog"
   **Features**: Improves backend to support date & by-document-ID mapping improving search. Adds date to background workers to account for date mapping search.
 
   **TBD**: Confirm date mapping on API, do TODO from v0.0.7. Implement date mapping on _most_ websites on Hayami (excl. Crunchyroll unless after March, 1st 2022 (Funimation catalogue merge [screwed over the dates on-site for older series](https://www.crunchyroll.com/series/GY3VKX1MR/hunter-x-hunter))).
+
+  **QOL TBD**: Check for non-official-supported (manually added sites) external sites that the QOL from 0.0.7 takes into effect.
 </Update>
 
 <Update label="Version 0.0.7" description="Published">
