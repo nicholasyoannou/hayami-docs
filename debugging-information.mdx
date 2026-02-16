@@ -1,0 +1,16 @@
+---
+title: "Debugging information"
+hidden: true
+---
+
+<Info>
+  This page is intended for developers. This isn't intended as part of the normal documentation and more of a rough to-do & mind-boggle of ways to approach problems in Hayami.
+</Info>
+
+**Version 0.0.9 - QOL TBD**
+
+- Request to e.g. [Vinland Saga via Hayami API](https://api.hayami.moe/anime/search?series_name=Vinland+Saga&season_title=Vinland+Saga&platform=aniwave) Aniwave archive returns partial 'matched_title' information.
+  - Data cleaning backend required to populate these fields, as well as MAL/AL if blank.
+    - Could be done by stripping the main anime title without extra information, getting the first comment's created_at_str year, and use that to help map to the correct AL/MAL ID.
+  - There's also additional versions, e.g. Sentai dubs that isn't taken into account on most websites. May need to add a question mark like the other discussion platforms that allows swapping interchangeably between episodes on the same series. Different versions don't have a unique MAL/AL different ID, so may need to indicate the slug in such case (unless the slug is normalised a tad).
+- Testing various anime between 2016-2024 period required to test most coverage of mapping compatibility. Series from Dragon Ball Z, Vinland Saga, Re:Zero, My Hero Academia, Mushoku Tensei, Demon Slayer, Chainsaw Man, and Frieren should be a good bunch to test.
