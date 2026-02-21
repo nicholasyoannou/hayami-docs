@@ -9,13 +9,13 @@ hidden: true
 
 **Version 0.0.9 - QOL TBD**
 
-- ~~Request to e.g. ~~[~~Vinland Saga via Hayami API~~](https://api.hayami.moe/anime/search?series_name=Vinland+Saga&season_title=Vinland+Saga&platform=aniwave)~~ Aniwave archive returns partial 'matched_title' information.~~ Done, now data cleaning required.
+- [~~~~~~Request to e.g. Vinland Saga via Hayami API Aniwave archive returns partial 'matched_title' information.~~~~~~](https://api.hayami.moe/anime/search?series_name=Vinland+Saga&season_title=Vinland+Saga&platform=aniwave) Done, now data cleaning required.
   - Data cleaning backend required to populate these fields, as well as MAL/AL if blank.
     - Could be done by stripping the main anime title without extra information, getting the first comment's created_at_str year, and use that to help map to the correct AL/MAL ID.
   - There's also additional versions, e.g. Sentai dubs that isn't taken into account on most websites. May need to add a question mark like the other discussion platforms that allows swapping interchangeably between episodes on the same series. Different versions don't have a unique MAL/AL different ID, so may need to indicate the slug in such case (unless the slug is normalised a tad).
-- ~~Request to e.g. ~~[~~Saving 80,000 Gold in Another World~~](https://api.hayami.moe/anime/search?series_name=Saving+80%2C000+Gold+in+Another+World+for+my+Retirement&season_title=Saving+80%2C000+Gold+in+Another+World+for+my+Retirement&platform=aniwave)~~, returns 3 animes, one of which includes "Rougo ni Sonaete Isekai de 8-manmai no Kinka wo Tamemasu" (the equivalent Romaji title) with the proper MAL/AL IDs, but doesn't indicate if it's a match like the CR endpoint- fix this.~~ Done
-  - ~~Hayami also renders the anime title ~~_~~on-site~~_~~ for the anime title rather than the title returned from API, change that also.~~ Done
+- [~~~~~~Request to e.g. Saving 80,000 Gold in Another World, returns 3 animes, one of which includes "Rougo ni Sonaete Isekai de 8-manmai no Kinka wo Tamemasu" (the equivalent Romaji title) with the proper MAL/AL IDs, but doesn't indicate if it's a match like the CR endpoint- fix this.~~~~~~](https://api.hayami.moe/anime/search?series_name=Saving+80%2C000+Gold+in+Another+World+for+my+Retirement&season_title=Saving+80%2C000+Gold+in+Another+World+for+my+Retirement&platform=aniwave) Done
+  - _~~~~~~Hayami also renders the anime title on-site for the anime title rather than the title returned from API, change that also.~~~~~~_ Done
 - Data cleaning to remove direct disqus links for avatars, ~~overwrite/add new variable 'folder/filename' location on asset storage~~.
-- S3-signing for images into API if image detected in message content (data cleaning to add this in - need to test).
+- ~~S3-signing for images into API if image detected in message content (data cleaning to add this in - need to test).~~ Done
 - Testing various anime between 2016-2024 period required to test most coverage of mapping compatibility. Series from Dragon Ball Z, Vinland Saga, Re:Zero, My Hero Academia, Mushoku Tensei, Demon Slayer, Chainsaw Man, and Frieren should be a good bunch to test.
 - Test comments rendering across those animes above also, especially around 'load more replies'. Test JJK EP1 to start.

@@ -4,31 +4,12 @@ description: "What's new & general changelogs with Hayami Komento, addressing bu
 sidebarTitle: "Changelog"
 ---
 
-<Update label="Version 0.0.9" description="Unpublished">
-  ## v0.0.9 WIP - New platforms & backend additions
+<Info>
+  Hayami is currently in open-beta so may contain bugs. [Feedback](/feedback) is appreciated :)
+</Info>
 
-  **Features**:
-
-  - Two new discussion platforms added: [**The Anime Community**](https://theanimecommunity.com/) and **Aniwave**.
-
-    **The Anime Community**:
-    - Embeds The Anime Community discussion platform & customised CSS.
-
-    **Aniwave**:
-    - Implemented & indexed **archived** Aniwave comments (thanks to u/Goofhey for the archival work back in 2024) in the backend database including image assets moved to storage solution. Aniwave has been directly added in Hayami as a supported discussion platform and added rendering support for this.
-    - Discussion platform settings for Aniwave has been added to auto-load in comments up to a certain depth, if desired also. Aniwave comments are sorted by DISQUS "points" (which is total likes minus dislikes).
-    - Image serving backend work completed.
-
-      **QOL**:
-      - Added 'reply' icon with text of user they're replying to if replying to a parent comment.
-      - Added maximum left-padding numeric amount so continuous discussions don't end up squished to the right of screen.
-      - Added note that Aniwave is for archived comments only between 2016-2024.
-
-  **TBD**: Clean up image serving database, intertwine into Hayami. Do more exhaustive testing around rendering (TBD test image support). Ensure The Anime Community mapping to AL/MAL and episode numbers works properly. Fix that some content/usernames are being displayed blank. [_DebInfo_](/debugging-information)
-</Update>
-
-<Update label="Version 0.0.8" description="Unpublished">
-  ## v0.0.8 WIP - General backend & mapping improvements
+<Update label="Version 0.0.82" description="Unpublished">
+  ## v0.0.82 WIP - General backend & mapping improvements
 
   **Features**: Improves backend to support date & by-document-ID mapping improving search. Adds date to background workers to account for date mapping search.
 
@@ -39,15 +20,41 @@ sidebarTitle: "Changelog"
   **QOL TBD**: Check for non-official-supported (manually added sites) external sites that the QOL from 0.0.7 takes into effect. Work on some general patches and fixes from Upcoming features also.
 </Update>
 
-<Update label="Version 0.0.7" description="Published">
+<Update label="Version 0.0.81" description="Published">
+  ## v0.0.81 WIP - New platforms & backend additions
+
+  This build adds **two new discussion platforms** as well as introduces some minor QOL improvements.
+
+  **Features**:
+
+  - Two new discussion platforms added: [**The Anime Community**](https://theanimecommunity.com/) and **Aniwave**.
+
+    **The Anime Community**:
+    - Embeds The Anime Community discussion platform & customised CSS.
+    - Dynamically re-sizes iframe accordingly to height of the embed so the comments section doesn't incidentally get cutoff screen.
+
+    **Aniwave**:
+    - Implemented & indexed **archived** Aniwave comments (thanks to u/Goofhey for the [archival work](https://archive.org/details/aniwave-comments.tar) back in 2024) in the backend database including image assets moved to storage solution with direct backend support. Aniwave has been directly added in Hayami as a supported discussion platform and added rendering support for this.
+    - Discussion platform settings for Aniwave has been added to auto-load in comments up to a certain depth, if desired also. Aniwave comments are sorted by DISQUS "points" (which is total likes minus dislikes).
+
+      **QOL**:
+      - Added 'reply' icon with user they're replying to if replying to a parent comment, which also has a setting to enable/disable if desired.
+      - Added maximum left-padding numeric amount so continuous discussions don't end up squished to the right of screen.
+      - Added support for comment image displaying.
+      - Added note that Aniwave is for archived comments only between 2016-2024, which is also added on no comments found.
+      - Fixed name not displaying for Aniwave - some names on Disqus are so unbelievably wacky, usernames are used as a fallback.
+
+  **TBD**: Do more exhaustive testing around Aniwave rendering. Ensure The Anime Community mapping to AL/MAL and episode numbers works properly. Add a manual overwride popup on TAC (similar to MAL-Sync), and Aniwave (uses normalised slugs via Hayami API). Add performance enhancements to avatars loading in on Aniwave. [_DebInfo_](/debugging-information)
+</Update>
+
+<Update label="Version 0.0.7" description="Published [8th Feb 2026]">
   ## v0.0.7 - Initial open beta release (OBT)
 
-  <Info>
-    This is an open beta release to double-check and iron out bugs in Hayami to ensure Hayami is the best it can be at a later stage. Hayami will be in a non-bug-free state, so I'd appreciate feedback.
-  </Info>
-  **Features**: Includes both unauthenticated & software-app authenticated Reddit versions-rendering of comments, fully-verified commenting functionality on both and introducing an ellipsis menu for editing and deleting comments. Fully-functioning image previews across the board, introducing a guide in the documentation on how to retrieve these keys. Settings on Hayami has been sectioned into categories to account for expanding functionality.
+  **Platforms**: Introduces DISQUS, Reddit, MyAnimeList, AniList and YouTube.
 
-  **QOL**: Reddit API will no longer be called _often_ in many scenarios in the event a user has placed multiple comments, and lessens calls to update a subreddit data to weekly.
+  **Features**: Includes both unauthenticated & software-app authenticated Reddit versions-rendering of comments, and commenting functionality on both, introducing an ellipsis menu for editing and deleting comments. Fully-functioning image previews across the board, introducing a guide in the documentation on how to retrieve these keys.
+
+  **QOL**: Reddit API will no longer be called _often_ in many scenarios in the event a user has placed multiple comments, and lessens calls to update a subreddit data to weekly. Settings on Hayami has been sectioned into categories to account for expanding functionality.
 
   **To-do**: Work needs to be done around checking whether profile pictures are fetched properly in niche scenarios (u/deleted, both on authenticated and unauthenticated fronts) and why upon skeleton loading, the profile pictures themselves loading in create a padding-like effect on-load-in.
 </Update>
