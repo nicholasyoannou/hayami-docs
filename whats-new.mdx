@@ -13,11 +13,9 @@ sidebarTitle: "Changelog"
 
   **Features**: Improves backend to support date & by-document-ID mapping improving search. Adds date to background workers to account for date mapping search.
 
-  **QOL**: MAL logo updated to the actual logo instead of the placeholder intended for testing.
-
   **TBD**: Confirm date mapping on API, do TODO from v0.0.7. Implement date mapping on _most_ websites on Hayami (excl. Crunchyroll unless after March, 1st 2022 (Funimation catalogue merge [screwed over the dates on-site for older series](https://www.crunchyroll.com/series/GY3VKX1MR/hunter-x-hunter))).
 
-  **QOL TBD**: Check for non-official-supported (manually added sites) external sites that the QOL from 0.0.7 takes into effect. Work on some general patches and fixes from Upcoming features also.
+  **QOL TBD**: Check for non-official-supported (manually added sites) external sites that the QOL from 0.0.7 takes into effect. Work on some general patches and fixes from Upcoming features also. Fix bug in Aniwave where clicking 'load more comments' when you've de-expanded a top-level thread not related to the comment re-expands that thread.
 </Update>
 
 <Update label="Version 0.0.81" description="Published">
@@ -43,6 +41,8 @@ sidebarTitle: "Changelog"
       - Added support for comment image displaying.
       - Added note that Aniwave is for archived comments only between 2016-2024, which is also added on no comments found.
       - Fixed name not displaying for Aniwave - some names on Disqus are so unbelievably wacky, usernames are used as a fallback.
+
+  **QOL**: MAL logo updated to the actual logo instead of the placeholder intended for testing.
 
   **TBD**: Do more exhaustive testing around Aniwave rendering. Ensure The Anime Community mapping to AL/MAL and episode numbers works properly. Add a manual overwride popup on TAC (similar to MAL-Sync), and Aniwave (uses normalised slugs via Hayami API). Add performance enhancements to avatars loading in on Aniwave. [_DebInfo_](/debugging-information)
 </Update>
