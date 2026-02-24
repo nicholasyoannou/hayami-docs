@@ -42,6 +42,17 @@
           "discarded-features"
         ]
       }
+    ],
+    "anchors":
+    [
+      {
+        "anchor": "Get Hayami",
+        "href": "https://hayami.moe"
+      },
+      {
+        "anchor": "Support Hayami",
+        "href": "https://hayami.moe/plus"
+      }
     ]
   },
   "favicon": "/images/hayamiLogo-3.png",
