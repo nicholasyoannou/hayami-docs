@@ -8,18 +8,32 @@ sidebarTitle: "Changelog"
   Hayami is currently in open-beta so may contain bugs. [Feedback](/feedback) is appreciated :)
 </Info>
 
-<Update label="Version 0.0.82" description="Unpublished">
-  ## v0.0.82 WIP - General backend & mapping improvements
+<Update label="Version 0.0.8.2" tags={QOL, REL} description="Unpublished">
+  ## v0.0.8.2 WIP - General backend & mapping improvements
 
   **Features**: Improves backend to support date & by-document-ID mapping improving search. Adds date to background workers to account for date mapping search.
 
+  **QOL**: 
+
+  - **Aniwave**: Fixed unintended bug where in Aniwave where clicking 'load more comments' when you've de-expanded a top-level thread not related to the comment re-expands that thread.
+
+    **MAL**: 
+    - Fixed spoiler rendering on MAL not displaying properly (and line break spoiler handling), 'Latest posts' text removed.
+    - Fixed signatures having multiple images meant to be on one line instead going on multiple lines. Signature text now also wrapped instead of forcing a single line, preventing overflow beyond the comments container.
+    - Quote handling within other's comments now supported.
+
+    **AniList**:
+    - Fixed line breaks, increased text size, and ensured post body is included first as it's own comment.
+    - Changed formatting for love heart placement on the right hand side, 'Latest comments' removed.
+    - Added image embedding support.
+
   **TBD**: Confirm date mapping on API, do TODO from v0.0.7. Implement date mapping on _most_ websites on Hayami (excl. Crunchyroll unless after March, 1st 2022 (Funimation catalogue merge [screwed over the dates on-site for older series](https://www.crunchyroll.com/series/GY3VKX1MR/hunter-x-hunter))).
 
-  **QOL TBD**: Check for non-official-supported (manually added sites) external sites that the QOL from 0.0.7 takes into effect. Work on some general patches and fixes from Upcoming features also. Fix bug in Aniwave where clicking 'load more comments' when you've de-expanded a top-level thread not related to the comment re-expands that thread.
+  **QOL TBD**: Check for non-official-supported (manually added sites) external sites that the QOL from 0.0.7 takes into effect. Work on some general patches and fixes from Upcoming features also.
 </Update>
 
-<Update label="Version 0.0.81" description="Published">
-  ## v0.0.81 - New platforms & backend additions
+<Update label="Version 0.0.8.1" tags={QOL, REL} description="Published">
+  ## v0.0.8.1 - New platforms & backend additions
 
   This build adds **two new discussion platforms** as well as introduces some minor QOL improvements.
 
@@ -47,7 +61,7 @@ sidebarTitle: "Changelog"
   **TBD**: Do more exhaustive testing around Aniwave rendering. Ensure The Anime Community mapping to AL/MAL and episode numbers works properly. Add a manual overwride popup on TAC (similar to MAL-Sync), and Aniwave (uses normalised slugs via Hayami API). Add performance enhancements to avatars loading in on Aniwave. [_DebInfo_](/debugging-information)
 </Update>
 
-<Update label="Version 0.0.7" description="Published [8th Feb 2026]">
+<Update label="Version 0.0.7" tags={QOL, REL} description="Published [8th Feb 2026]">
   ## v0.0.7 - Initial open beta release (OBT)
 
   **Platforms**: Introduces DISQUS, Reddit, MyAnimeList, AniList and YouTube.
