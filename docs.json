@@ -6,45 +6,7 @@
     "primary": "#DC3962"
   },
   "navigation": {
-    "tabs": [
-      {
-        "tab": "Extension",
-        "groups": [
-          {
-            "group": "Welcome",
-            "pages": [
-              "welcome",
-              "getting-started",
-              "feedback",
-              "support"
-            ]
-          },
-          {
-            "group": "Discussion platforms",
-            "pages": [
-              "reddit"
-            ]
-          },
-          {
-            "group": "Features",
-            "pages": [
-              "image-previews"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Changelog",
-        "pages": [
-          "whats-new",
-          "debugging-information",
-          "upcoming-features",
-          "discarded-features"
-        ]
-      }
-    ],
-    "anchors":
-    [
+    "anchors": [
       {
         "anchor": "Get Hayami",
         "href": "https://hayami.moe"
