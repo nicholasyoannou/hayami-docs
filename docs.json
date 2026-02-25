@@ -6,43 +6,43 @@
     "primary": "#DC3962"
   },
   "navigation": {
-    "tabs": [
-      {
-        "tab": "Extension",
-        "groups": [
-          {
-            "group": "Welcome",
-            "pages": [
-              "welcome",
-              "getting-started",
-              "feedback",
-              "support"
-            ]
-          },
-          {
-            "group": "Discussion platforms",
-            "pages": [
-              "reddit"
-            ]
-          },
-          {
-            "group": "Features",
-            "pages": [
-              "image-previews"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Changelog",
-        "pages": [
-          "whats-new",
-          "debugging-information",
-          "upcoming-features",
-          "discarded-features"
-        ]
-      }
-    ],
+  "tabs": [
+    {
+      "tab": "Extension",
+      "groups": [
+        {
+          "group": "Welcome",
+          "pages": [
+            "welcome",
+            "getting-started",
+            "feedback",
+            "support"
+          ]
+        },
+        {
+          "group": "Discussion platforms",
+          "pages": [
+            "reddit"
+          ]
+        },
+        {
+          "group": "Features",
+          "pages": [
+            "image-previews"
+          ]
+        }
+      ]
+    },
+    {
+      "tab": "Changelog",
+      "pages": [
+        "whats-new",
+        "debugging-information",
+        "upcoming-features",
+        "discarded-features"
+      ]
+    }
+  ],
   "global": {
     "anchors": [
       {
@@ -56,22 +56,19 @@
     ]
   },
   "languages": [
-  { "label": "English", "code": "en" }
-],
-"navbar": {
-  "links": [
-    {
-      "label": "Get Hayami",
-      "href": "https://hayami.moe/"
-    },
-    {
-      "label": "Support Hayami",
-      "href": "https://hayami.moe/plus"
-    }
+    { "label": "English", "language": "en" }
   ]
-}
 },
+"headerLinks": [
+  {
+    "label": "Get Hayami",
+    "href": "https://hayami.moe/"
+  },
+  {
+    "label": "Support Hayami",
+    "href": "https://hayami.moe/plus"
+  }
+],
   "favicon": "/images/hayamiLogo-3.png",
   "logo": "/images/AdobeExpress-file.png"
-  
-} 
+}
