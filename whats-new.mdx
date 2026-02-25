@@ -27,7 +27,8 @@ sidebarTitle: "Changelog"
     - Changed formatting for love heart placement on the right hand side, 'Latest comments' removed.
     - Added image embedding support (& grid-view).
   - **Mapping**: Fixed bug where "Kimi no Koto ga Daidaidaidaidaisuki na 100-nin no Kanojo" Season 1 mapped to Season 2 discussions, and ensures date-classification mapping on Crunchyroll is ignored if the date is before March 1st, 2022 (Funimation catalogue merge [screwed over the dates on-site for older series](https://www.crunchyroll.com/series/GY3VKX1MR/hunter-x-hunter)).
-  - **Backend**: Added caching rules for Aniwave asset serving endpoints.
+  - **Rendering**: Fixed state handling where using the back button in-browser _could_ improperly render the comments section; tl;dr back button now doesn't break rendering of Hayami.
+  - **Backend**: Added caching for asset serving endpoints.
 
   **TBD**: Confirm date mapping on API, do TODO from v0.0.7. Implement date mapping on _most_ websites on Hayami (excl. Crunchyroll unless after March, 1st 2022).
 
