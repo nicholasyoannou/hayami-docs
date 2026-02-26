@@ -21,6 +21,7 @@ sidebarTitle: "Changelog"
     - Added settings option to enable/disable flairs.
     - Adjusted spacing between time and 'edited', if edited, and adjusted colour.
     - Comment 'share' on-click stylings updated.
+    - Fixed profile pictures no longer create a padding-like effect on-load-in so the layout doesn’t shift when profile pictures appear. 
   - **Aniwave**:
     - Fixed unintended bug where in Aniwave where clicking 'load more comments' when you've de-expanded a top-level thread not related to the comment re-expands that thread.
     - Changed episode number displayed from Hayami API instead of page.
@@ -83,6 +84,4 @@ sidebarTitle: "Changelog"
   **Features**: Includes both unauthenticated & software-app authenticated Reddit versions-rendering of comments, and commenting functionality on both, introducing an ellipsis menu for editing and deleting comments. Fully-functioning image previews across the board, introducing a guide in the documentation on how to retrieve these keys.
 
   **QOL**: Reddit API will no longer be called _often_ in many scenarios in the event a user has placed multiple comments, and lessens calls to update a subreddit data to weekly. Settings on Hayami has been sectioned into categories to account for expanding functionality.
-
-  **To-do**: Work needs to be done around checking whether profile pictures are fetched properly in niche scenarios (u/deleted, both on authenticated and unauthenticated fronts) and why upon skeleton loading, the profile pictures themselves loading in create a padding-like effect on-load-in.
 </Update>
