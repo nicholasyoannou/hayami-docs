@@ -13,7 +13,7 @@ sidebarTitle: "Changelog"
 
   **Features**: Improves backend to support date & by-document-ID mapping improving search. Adds date to background workers to account for date mapping search.
 
-  **QOL**:
+  **QOL & Bug fixes**:
 
   - **Aniwave**: Fixed unintended bug where in Aniwave where clicking 'load more comments' when you've de-expanded a top-level thread not related to the comment re-expands that thread.
 
@@ -26,7 +26,10 @@ sidebarTitle: "Changelog"
     - Fixed line breaks, increased text size, and ensured post body is included first as it's own comment.
     - Changed formatting for love heart placement on the right hand side, 'Latest comments' removed.
     - Added image embedding support (& grid-view).
-  - **Mapping**: Fixed bug where "Kimi no Koto ga Daidaidaidaidaisuki na 100-nin no Kanojo" Season 1 mapped to Season 2 discussions, and ensures date-classification mapping on Crunchyroll is ignored if the date is before March 1st, 2022 (Funimation catalogue merge [screwed over the dates on-site for older series](https://www.crunchyroll.com/series/GY3VKX1MR/hunter-x-hunter)).
+  - **Mapping**: 
+    - Fixed bug where some anime e.g. "Kimi no Koto ga Daidaidaidaidaisuki na 100-nin no Kanojo" Season 1 mapped to Season 2 discussions, and Season 2 E13 (continuous CR mapping) is detected as E1.
+    - Fixes manual overwride episode selector for Reddit - now uses Hayami API, and adds new 'Wrong anime?' overwride if the selected anime is incorrect.
+    - Ensures date-classification mapping on Crunchyroll is ignored if the date is before March 1st, 2022 (Funimation catalogue merge [screwed over the dates on-site for older series](https://www.crunchyroll.com/series/GY3VKX1MR/hunter-x-hunter)).
   - **Rendering**: Fixed state handling where using the back button in-browser _could_ improperly render the comments section; tl;dr back button now doesn't break rendering of Hayami.
   - **Backend**: Added caching for asset serving endpoints.
 
