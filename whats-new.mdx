@@ -55,7 +55,7 @@ sidebarTitle: "Changelog"
     - Fixed bug where some anime e.g. "Kimi no Koto ga Daidaidaidaidaisuki na 100-nin no Kanojo" Season 1 mapped to Season 2 discussions, and Season 2 E13 (continuous CR mapping) is detected as E1.
     - Fixes manual overwride episode selector for Reddit - now uses Hayami API, and adds new 'Wrong anime?' overwride if the selected anime is incorrect.
     - Ensures date-classification mapping on Crunchyroll is ignored if the date is before March 1st, 2022 (Funimation catalogue merge [screwed over the dates on-site for older series](https://www.crunchyroll.com/series/GY3VKX1MR/hunter-x-hunter)).
-  - **Rendering**: Fixed state handling where using the back button in-browser _could_ improperly render the comments section; tl;dr back button now doesn't break rendering of Hayami.
+  - **Rendering**: Fixed state handling where using the back button in-browser _could_ improperly render the comments section; tl;dr back button now doesn't break rendering of Hayami. This also optimises Hayami for SPA-based applications: Hayami won't re-render the entire embed unless necessary.
   - **Backend**: Added caching for asset serving endpoints.
 
   **TBD**: Confirm date mapping on API, do TODO from v0.0.7. Implement date mapping on _most_ websites on Hayami (excl. Crunchyroll unless after March, 1st 2022).
