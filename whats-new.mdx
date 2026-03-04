@@ -19,7 +19,8 @@ sidebarTitle: "Changelog"
   - Adds new **screenshot** capability to screenshot moments on your current episode. Note: This will require an allowed keybind (as per [chrome.commands spec](https://developer.chrome.com/docs/extensions/reference/api/commands)).
   - **Mapping**: Fix mapping on manually-added sites for direct-episode keys on API.
   - **YouTube**: Fix profile pictures no longer becoming squished.
-  - **Image previews**: Added default Imgur client ID.
+  - **Reddit**: Fixed and optimised cases when authenticated via OAuth software app would incidentally _double_ request Reddit (unauthenticated & authenticated) on manually-added sites.
+  - **Image previews**: Added support for Imgur image previews out-the-box (added default Imgur client ID).
   - **Site**: Changed 'Add Hayami' to 'Hayami PWA' on Hayami site if extension installed.
 
   **TBD**: Finish up QOL/TBD/[DebInfo](/debugging-information) from other feature updates that are required to continue on implementation in Hayami.
