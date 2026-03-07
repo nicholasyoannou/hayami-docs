@@ -19,22 +19,28 @@ mode: "default"
 
   - Adds new **screenshot** capability to screenshot moments on your current episode. Note: This will require an allowed keybind (as per [chrome.commands spec](https://developer.chrome.com/docs/extensions/reference/api/commands)).
   - **Mapping**:
+    - Fixed keyboard shortcut now opening up the manual mapper UI.
+
+
     - Fixed mapping on manually-added sites for direct-episode keys on API.
     - Fixed anime mapping being saved across episodes being overriden & overhauled and changed behaviour for overrides to be per-site.
-    - Fixed anime streaming site Crunchyroll not respecting manual override behaviour due to slice & clamp handling logic overtaking priority.
     - Fixed Disqus on manual-mapped websites not using Hayami API.
+  - **Site-specific:**
+    - **Netflix**: Rendering fixed 'Episode Discussion' text size being tiny.
+    - **Crunchyroll**: Fixed not respecting manual override behaviour due to slice & clamp handling logic overtaking priority.
   - **YouTube**: Fix profile pictures no longer becoming squished.
   - **Reddit**: Fixed and optimised cases when authenticated via OAuth software app would incidentally _double_ request Reddit (unauthenticated & authenticated) on manually-added sites.
-  - **Netflix**: Fixed 'Episode Discussion' text size and backing-bar coming up tiny compared to rest of DOM.
   - **Disqus**: Fixed title wrongfully being the page-grabbed episode title instead of the actual Disqus title; added fallback to process slug on failures.
+  - **Aniwave**: Added 'Wrong anime?' manual mapping support.
+  - **The Anime Community**: Added banner that shows what anime & episode it gets detected as, with the ability to manual override this via searching AniList directly, choosing the correct episode.
   - **Image previews**:
-    - Re-styled loading placeholder to be transparent while loading image in.
+    - Re-styled loading placeholder to be transparent while loading image in on manually-added sites.
     - Fixed image previews not having a loading state on manual-added websites.
     - Added support for Imgur image previews out-the-box (added default Imgur client ID) & added support for Imgur domain imgur.io.
     - Added support for PostImages (postimg.cc) gallery & single photo embedding.
     - Added advanced options: alternative front-ends, and optimised delivery options of images.
   - **Rendering**:
-    - Removed 'Comment scale' due to problematic scaling issues depending on the platform. Replaced with a text-size increase setting.
+    - Removed 'Comment scale' due to problematic scaling issues depending on the discussion platform. Replaced with a text-size increase setting.
     - Fixed 'Episode Discussion' text size and backing-bar coming up tiny compared to rest of DOM on popup mode.
     - Removed icon toggle from manual mapping menu.
   - **Site**: Changed 'Add Hayami' to 'Hayami PWA' on Hayami site if extension installed.
