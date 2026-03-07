@@ -17,16 +17,17 @@ sidebarTitle: "Changelog"
   **Features**: TBD.
 
   - Adds new **screenshot** capability to screenshot moments on your current episode. Note: This will require an allowed keybind (as per [chrome.commands spec](https://developer.chrome.com/docs/extensions/reference/api/commands)).
-  - **Mapping**: 
+  - **Mapping**:
     - Fixed mapping on manually-added sites for direct-episode keys on API.
-    - Fixed anime mapping being saved across episodes being overriden.
+    - Fixed anime mapping being saved across episodes being overriden & changed behaviour for overrides to be per-site.
   - **YouTube**: Fix profile pictures no longer becoming squished.
   - **Reddit**: Fixed and optimised cases when authenticated via OAuth software app would incidentally _double_ request Reddit (unauthenticated & authenticated) on manually-added sites.
+  - **Netflix**: Fixed 'Episode Discussion' text size and backing-bar coming up tiny compared to rest of DOM.
   - **Disqus**: Fixed title wrongfully being the page-grabbed episode title instead of the actual Disqus title; added fallback to process slug on failures.
   - **Image previews**:
     - Re-styled loading placeholder to be transparent while loading image in.
     - Fixed image previews not having a loading state on manual-added websites.
-    - Added support for Imgur image previews out-the-box (added default Imgur client ID).
+    - Added support for Imgur image previews out-the-box (added default Imgur client ID) & added support for Imgur domain imgur.io.
     - Added support for PostImages gallery & single photo embedding.
     - Added advanced options: alternative front-ends, and optimised delivery options of images.
   - **Site**: Changed 'Add Hayami' to 'Hayami PWA' on Hayami site if extension installed.
