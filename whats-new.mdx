@@ -41,6 +41,7 @@ mode: "default"
   - **MAL**:
     - Improved support for image delivery via optimised delivery.
     - Improved rendering of MAL BBCode thanks to [Cptmathix/MyAnimeList-BBCODE2HTML](https://github.com/Cptmathix/MyAnimeList-BBCODE2HTML/) as a guide for implementation, improving signature and comment rendering.
+    - Changed Jikan to direct-MAL to grab available posts on forum instead of Jikan primarily due to Jikan having limited information, not working for longer series (e.g. Black Clover). Due to MAL's limited API in this regard, Jikan is used as a failover in-case of MAL site updates.
   - **Image previews**:
     - Re-styled loading placeholder to be transparent while loading image in on manually-added sites.
     - Fixed image previews not having a loading state on manual-added websites.
