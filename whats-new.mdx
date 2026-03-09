@@ -12,10 +12,7 @@ mode: "default"
 <Update label="Version 0.0.8.3" description="Unpublished">
   ## v0.0.8.3 WIP - General & mapping improvements
 
-  <Info>
-    This build will primarily focus on bug fixes in mapping areas and finishing implementation in certain areas.
-  </Info>
-  **Features**: Improves manual-site mapping & overrides, optimising some discussion platforms in-title & network request handling, and improves rendering of Hayami. Manual overrides should be respected episode-to-episode on a "set-once-and-forget" per-series basis, allowing you to clear manual mappings also. Image previews works more seamlessly on manually-added sites, bringing Imgur support out-the-box and adds postimages support. As well as a few more changes and improvements.
+  **Features**: Improves manual-site mapping & overrides, optimising some discussion platforms in-title & network request handling, and improves rendering of Hayami & of various discussion platforms. Manual overrides should be respected episode-to-episode on a "set-once-and-forget" per-series basis, allowing you to clear manual mappings also. Image previews works more seamlessly on manually-added sites, bringing Imgur support out-the-box and adds postimages support. As well as a few more changes and improvements.
 
   - Adds new **screenshot** capability to screenshot moments on your current episode. Note: This will require an allowed keybind (as per [chrome.commands spec](https://developer.chrome.com/docs/extensions/reference/api/commands)).
   - **Mapping**:
@@ -29,7 +26,7 @@ mode: "default"
     - **Netflix**: Rendering fixed 'Episode Discussion' text size being tiny.
     - **Crunchyroll**: Fixed not respecting manual override behaviour due to slice & clamp handling logic overtaking priority.
   - **YouTube**: Fix profile pictures no longer becoming squished.
-  - **Disqus, AniList, TAC & Aniwave:** Added 'Wrong anime?' manual override popup.
+  - **Disqus, AniList, MyAnimeList, TAC & Aniwave:** Added 'Wrong anime?' manual override popup.
   - **Reddit**:
     - Fixed and optimised cases when authenticated via OAuth software app would incidentally _double_ request Reddit (unauthenticated & authenticated) on manually-added sites.
     - Fixed 'Wrong anime?' showing discussion post title instead of Hayami API anime name.
@@ -38,7 +35,7 @@ mode: "default"
     - Removed within-24-hours ignore of Hayami API due to Hayami API improvements for Disqus.
   - **The Anime Community**: Added banner that shows what anime & episode it gets detected as, with the ability to manual override this via searching AniList directly, choosing the correct episode.
   - **AniList**:
-    - Add rendering support for quotes.
+    - Add rendering support for quotes, and most AniList markdown support (thanks to [AniList Flavoured Markdown Standard](https://files.kiniro.uk/anilist-flavored-markdown-v1.md)).
     - Added fetching support for replies of comments.
     - Adjusted padding between each comment, and de-expand/expansion of each layer of comments.
   - **MAL**:
