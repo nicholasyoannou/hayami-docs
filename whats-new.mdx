@@ -26,6 +26,7 @@ mode: "default"
     - Removed 'Comment scale' due to problematic scaling issues depending on the discussion platform. Replaced with a text-size increase setting.
     - Fixed 'Episode Discussion' text size and backing-bar coming up tiny compared to rest of DOM on popup mode.
     - Removed icon toggle from manual mapping menu.
+    - Replace toast for not being signed in with proper sign-in button that takes you to signin as a popup instead of blank element. On successful signin, reloads, and allows you to read your comments as you do.
   - **Site**: Changed 'Add Hayami' to 'Hayami PWA' on Hayami site if extension installed.
   - **Site-specific:**
     - **Netflix**: Rendering fixed 'Episode Discussion' text size being tiny.
@@ -36,7 +37,7 @@ mode: "default"
     - Fixed and optimised cases when authenticated via OAuth software app would incidentally _double_ request Reddit (unauthenticated & authenticated) on manually-added sites.
     - Fixed 'Wrong anime?' showing discussion post title instead of Hayami API anime name.
     - Adds error handling for those who _don't_ use Reddit (aren't signed in) if error occurs while fetching, prompting to sign-in via guided signin experience, reloading the discussion thread seamlessly.
-    - Fixed session sign-in "more replies"/further pages showing upvote count as 0.
+    - Overhauled comment fetching with fix of comment session sign-in "more replies"/further pages showing upvote count as 0 and flairs not being visible.
   - **Disqus**:
     - Fixed title wrongfully being the page-grabbed episode title instead of the actual Disqus title; added fallback to process slug on failures.
     - Removed within-24-hours ignore of Hayami API due to Hayami API improvements for Disqus.
