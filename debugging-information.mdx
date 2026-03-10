@@ -16,6 +16,13 @@ hidden: true
 - Fixup Hayami backend (remove spreadsheet-grabbing) & data cleaning for Disqus required for backend clash with spreadsheet & Disqus API titles creating multiple entries (for the same anime).
 - Add MP4 support for image previews (by-default muted; looped).
 - Make screenshot functionality upload directly to Imgur/Imagechest/Postimages/other supported image platforms instead of/on-top-of save-to-PC. The comments editor (for now, just Reddit) should natively support embedding image links from your image library platforms via hyperlinks (to albums, or individual images). Make saving images locally not cause a popup to say an image is downloading (disruptive viewing experience, and can get in way of other screenshots).
+
+  Supported platforms (for now) will be:
+  - Imagechest
+  - Imgur
+  - Postimages
+  - Catbox
+  - imgbb
 - Add Aniwave is-dub/not-is-dub flag for wrong anime mapping.
 - Optimise Disqus querying polls.js too often on-failover (Hayami API no-match).
 - New user experience for users who _don't_ use Reddit ((403 Forbidden on-fetch), are not signed in, and don't authenticate via software app) causes fetching problems. Prompt user to sign-in via guided signin experience, closing after finish. Will be different to the normal e.g. "authenticate MAL" component due to the nature of guided flow.
