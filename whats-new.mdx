@@ -22,6 +22,11 @@ mode: "default"
     - Fixed Disqus on manual-mapped websites not using Hayami API.
     - Added "Reset mapping" for manual mapping under each manual mapping UI (for a given anime & discussion platform), and "Reset all manual mappings to defaults" to general settings.
   - Removed "No comments mode" - forces inline if no comments are found (no forced popup to locate the anime).
+  - **Rendering**:
+    - Removed 'Comment scale' due to problematic scaling issues depending on the discussion platform. Replaced with a text-size increase setting.
+    - Fixed 'Episode Discussion' text size and backing-bar coming up tiny compared to rest of DOM on popup mode.
+    - Removed icon toggle from manual mapping menu.
+  - **Site**: Changed 'Add Hayami' to 'Hayami PWA' on Hayami site if extension installed.
   - **Site-specific:**
     - **Netflix**: Rendering fixed 'Episode Discussion' text size being tiny.
     - **Crunchyroll**: Fixed not respecting manual override behaviour due to slice & clamp handling logic overtaking priority.
@@ -33,6 +38,8 @@ mode: "default"
   - **Disqus**:
     - Fixed title wrongfully being the page-grabbed episode title instead of the actual Disqus title; added fallback to process slug on failures.
     - Removed within-24-hours ignore of Hayami API due to Hayami API improvements for Disqus.
+    - Optimise Disqus querying polls too often on-failover (Hayami API no-match) when fetching discussions.
+  - **Aniwave**: Add Aniwave is-dub/not-is-dub toggle for manual anime mapping.
   - **The Anime Community**: Added banner that shows what anime & episode it gets detected as, with the ability to manual override this via searching AniList directly, choosing the correct episode.
   - **AniList**:
     - Add rendering support for quotes, and most AniList markdown support (thanks to [AniList Flavoured Markdown Standard](https://files.kiniro.uk/anilist-flavored-markdown-v1.md)).
@@ -47,14 +54,10 @@ mode: "default"
     - Fixed image previews not having a loading state on manual-added websites.
     - Added support for Imgur image previews out-the-box (added default Imgur client ID) & added support for Imgur domain imgur.io.
     - Added support for PostImages (postimg.cc) gallery & single photo embedding.
-    - Added advanced options: alternative front-ends, and optimised delivery options of images (CDN). Two new CDNs added: flyimg & Swisscows.
+    - Add MP4 support for image previews (muted, looped).
+    - Added advanced options: alternative front-ends, and optimised delivery options of images (CDN). Two new CDNs added, and video CDN.
   - Removed close button from YouTube modal for YouTube embeds (was hidden behind the player itself; clicking outside the box closing it).
   - Adjusted settings CSS for input fields not filling entire width.
-  - **Rendering**:
-    - Removed 'Comment scale' due to problematic scaling issues depending on the discussion platform. Replaced with a text-size increase setting.
-    - Fixed 'Episode Discussion' text size and backing-bar coming up tiny compared to rest of DOM on popup mode.
-    - Removed icon toggle from manual mapping menu.
-  - **Site**: Changed 'Add Hayami' to 'Hayami PWA' on Hayami site if extension installed.
 
   **TBD**: Finish up QOL/TBD/[DebInfo](/debugging-information) from other feature updates that are required to continue on implementation in Hayami.
 </Update>
