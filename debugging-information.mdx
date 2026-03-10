@@ -13,4 +13,8 @@ hidden: true
   - Data cleaning backend required to populate these fields, as well as MAL/AL if blank.
     - Could be done by stripping the main anime title without extra information, getting the first comment's created_at_str year, and use that to help map to the correct AL/MAL ID.
   - There's also additional versions, e.g. Sentai dubs that isn't taken into account on most websites. May need to add a question mark like the other discussion platforms that allows swapping interchangeably between episodes on the same series. Different versions don't have a unique MAL/AL different ID, so may need to indicate the slug in such case (unless the slug is normalised a tad).
+- Fixup Hayami backend (remove spreadsheet-grabbing) & data cleaning for Disqus required for backend clash with spreadsheet & Disqus API titles creating multiple entries (for the same anime).
+- Add MP4 support for image previews (by-default muted; looped).
+- Make screenshot functionality upload directly to Imgur/Imagechest/Postimages/other supported image platforms instead of/on-top-of save-to-PC. The comments editor (for now, just Reddit) should natively support embedding image links from your image library platforms via hyperlinks (to albums, or individual images). Make saving images locally not cause a popup to say an image is downloading (disruptive viewing experience, and can get in way of other screenshots).
+- Add Aniwave is-dub/not-is-dub flag for wrong anime mapping.
 - Testing various anime between 2016-2024 period required to test most coverage of mapping compatibility. Series from Dragon Ball Z, Vinland Saga, Re:Zero, My Hero Academia, Mushoku Tensei, Demon Slayer, Chainsaw Man, and Frieren should be a good bunch to test.
