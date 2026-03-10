@@ -35,6 +35,8 @@ mode: "default"
   - **Reddit**:
     - Fixed and optimised cases when authenticated via OAuth software app would incidentally _double_ request Reddit (unauthenticated & authenticated) on manually-added sites.
     - Fixed 'Wrong anime?' showing discussion post title instead of Hayami API anime name.
+    - Adds error handling for those who _don't_ use Reddit (aren't signed in) if error occurs while fetching, prompting to sign-in via guided signin experience, reloading the discussion thread seamlessly.
+    - Fixed session sign-in "more replies"/further pages showing upvote count as 0.
   - **Disqus**:
     - Fixed title wrongfully being the page-grabbed episode title instead of the actual Disqus title; added fallback to process slug on failures.
     - Removed within-24-hours ignore of Hayami API due to Hayami API improvements for Disqus.
