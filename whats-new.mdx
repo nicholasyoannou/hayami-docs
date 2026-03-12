@@ -14,8 +14,11 @@ mode: "default"
 
   **Features**: Improves manual-site mapping & overrides, optimising some discussion platforms in-title & network request handling, and improves rendering of Hayami & of various discussion platforms. Manual overrides should be respected episode-to-episode on a "set-once-and-forget" per-series basis, allowing you to clear manual mappings also. Image previews works more seamlessly on manually-added sites, bringing Imgur support out-the-box and adds postimages support. As well as a few more changes and improvements.
 
-  - Adds new (experimental) **screenshot** capability to screenshot moments on your current episode. Note: This will require an allowed keybind (as per [chrome.commands spec](https://developer.chrome.com/docs/extensions/reference/api/commands) - e.g. Alt + [Key] / Ctrl + Shift + [Key]).
-    - Introduces element picker (supporting iframes) uploading screenshots to Imagechest.
+  <Warning>
+    Experimental features are WIP (Work in Progress) expected to progress over time, and can contain several bugs, and partially working features. 
+  </Warning>
+  - Adds new **<u>experimental</u> screenshot** capability to screenshot moments on your current episode. Note: This will require an allowed keybind (as per [chrome.commands spec](https://developer.chrome.com/docs/extensions/reference/api/commands) - e.g. Alt + [Key] / Ctrl + Shift + [Key]).
+    - Introduces element picker (supporting iframes) uploading screenshots to Imagechest, with experimental support for Imgur and Catbox.
   - **Mapping**:
     - Fixed keyboard shortcut now opening up the manual mapper UI.
     - Fixed mapping on manually-added sites for direct-episode keys on API.
@@ -51,7 +54,7 @@ mode: "default"
     - Adjusted padding between each comment, and de-expand/expansion of each layer of comments.
   - **MAL**:
     - Improved support for image delivery via optimised delivery.
-    - Improved rendering of MAL BBCode thanks to [Cptmathix/MyAnimeList-BBCODE2HTML](https://github.com/Cptmathix/MyAnimeList-BBCODE2HTML/) as a guide for implementation, improving signature and comment rendering.
+    - Improved rendering of MAL BBCode (thanks to [Cptmathix/MyAnimeList-BBCODE2HTML](https://github.com/Cptmathix/MyAnimeList-BBCODE2HTML/) as a guide for implementation), improving signature and comment rendering.
     - Changed Jikan to direct-MAL to grab available posts on forum instead of Jikan primarily due to Jikan having limited information, not working for longer series (e.g. Black Clover). Due to MAL's limited API in this regard, Jikan is used as a failover in-case of MAL site updates.
   - **Image previews**:
     - Re-styled loading placeholder to be transparent while loading image in on manually-added sites.
@@ -102,8 +105,6 @@ mode: "default"
   - **Backend**: Added caching for asset serving endpoints.
 
   **TBD**: Confirm date mapping on API, do TODO from v0.0.7. Implement date mapping on _most_ websites on Hayami (excl. Crunchyroll unless after March, 1st 2022).
-
-  **QOL TBD**: Check for non-official-supported (manually added sites) external sites that the QOL from 0.0.7 takes into effect. Work on some general patches and fixes from Upcoming features also.
 </Update>
 
 <Update label="Version 0.0.8.1" description="Published [21 February 2026]">
@@ -131,8 +132,6 @@ mode: "default"
       - Fixed name not displaying for Aniwave - some names on Disqus are so unbelievably wacky, usernames are used as a fallback.
 
   **QOL**: MAL logo updated to the actual logo instead of the placeholder intended for testing.
-
-  **TBD**: Do more exhaustive testing around Aniwave rendering. Ensure The Anime Community mapping to AL/MAL and episode numbers works properly. Add a manual overwride popup on TAC (similar to MAL-Sync), and Aniwave (uses normalised slugs via Hayami API). Add performance enhancements to avatars loading in on Aniwave. [_DebInfo_](/debugging-information)
 </Update>
 
 <Update label="Version 0.0.7" description="Published [8th Feb 2026]">
@@ -142,5 +141,5 @@ mode: "default"
 
   **Features**: Includes both unauthenticated & software-app authenticated Reddit versions-rendering of comments, and commenting functionality on both, introducing an ellipsis menu for editing and deleting comments. Fully-functioning image previews across the board, introducing a guide in the documentation on how to retrieve these keys.
 
-  **QOL**: Reddit API will no longer be called _often_ in many scenarios in the event a user has placed multiple comments, and lessens calls to update a subreddit data to weekly. Settings on Hayami has been sectioned into categories to account for expanding functionality.
+  **QOL**: Reddit API will no longer be called _often_ in the event a user has placed multiple comments in a Hayami session/cache, and lessens calls to update a subreddit data to weekly. Settings on Hayami has been sectioned into categories to account for expanding functionality.
 </Update>
