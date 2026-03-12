@@ -15,9 +15,9 @@ mode: "default"
   **Features**: Improves manual-site mapping & overrides, optimising some discussion platforms in-title & network request handling, and improves rendering of Hayami & of various discussion platforms. Manual overrides should be respected episode-to-episode on a "set-once-and-forget" per-series basis, allowing you to clear manual mappings also. Image previews works more seamlessly on manually-added sites, bringing Imgur support out-the-box and adds postimages support. As well as a few more changes and improvements.
 
   <Warning>
-    Experimental features are WIP (Work in Progress) expected to progress over time, and can contain several bugs, and partially working features. 
+    Experimental features are WIP (Work in Progress) expected to progress over time, and can contain several bugs, and partially working features.
   </Warning>
-  - Adds new **<u>experimental</u> screenshot** capability to screenshot moments on your current episode. Note: This will require an allowed keybind (as per [chrome.commands spec](https://developer.chrome.com/docs/extensions/reference/api/commands) - e.g. Alt + [Key] / Ctrl + Shift + [Key]).
+  - Adds new **<u>experimental screenshot</u>** capability to screenshot moments on your current episode. Note: This will require an allowed keybind (as per [chrome.commands spec](https://developer.chrome.com/docs/extensions/reference/api/commands) - e.g. Alt + [Key] / Ctrl + Shift + [Key]).
     - Introduces element picker (supporting iframes) uploading screenshots to Imagechest, with experimental support for Imgur and Catbox.
   - **Mapping**:
     - Fixed keyboard shortcut now opening up the manual mapper UI.
@@ -42,6 +42,9 @@ mode: "default"
     - Fixed 'Wrong anime?' showing discussion post title instead of Hayami API anime name.
     - Adds error handling for those who _don't_ use Reddit (aren't signed in) if error occurs while fetching, prompting to sign-in via guided signin experience, reloading the discussion thread seamlessly.
     - Overhauled comment fetching with fix of comment session sign-in "more replies"/further pages showing upvote count as 0 and flairs not being visible.
+    - Expands upon the current Reddit commenting style so anything beyond 8 layers (depth) will show a "View more x comments" button with an expansion icon. On-click, a popup will show the view back to as-if layer 0, this specific discussion thread. This allows for more comments to be rendered so it doesn't go off-screen/bypass the container.
+      - Optionally, this behaviour can be changed to open directly on Reddit instead, and the maximum depth layer is also configurable under 'Advanced' on Hayami settings for Reddit.
+    - Reddit Client ID moved to 'Advanced' on Hayami settings for Reddit.
   - **Disqus**:
     - Fixed title wrongfully being the page-grabbed episode title instead of the actual Disqus title; added fallback to process slug on failures.
     - Removed within-24-hours ignore of Hayami API due to Hayami API improvements for Disqus.
