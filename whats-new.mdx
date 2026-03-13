@@ -9,8 +9,14 @@ mode: "default"
   Hayami is currently in open-beta so may contain bugs. [Feedback](/feedback) is appreciated :)
 </Tip>
 
-<Update label="Version 0.0.8.3" description="Unpublished">
-  ## v0.0.8.3 WIP - General & mapping improvements
+<Update label="Version 0.0.8.4" description="Unpublished">
+  ## v0.0.8.4 WIP - Screenshots, KomentoScript & improvements
+
+  **Features**: TBD
+</Update>
+
+<Update label="Version 0.0.8.3" description="Published [13 March 2026]">
+  ## v0.0.8.3 - General & mapping improvements
 
   **Features**: Improves manual-site mapping & overrides, optimising some discussion platforms in-title & network request handling, and improves rendering of Hayami & of various discussion platforms. Manual overrides should be respected episode-to-episode on a "set-once-and-forget" per-series basis, allowing you to clear manual mappings also. Image previews works more seamlessly on manually-added sites, bringing Imgur support out-the-box and adds postimages support. As well as a few more changes and improvements.
 
@@ -45,6 +51,7 @@ mode: "default"
     - Expands upon the current Reddit commenting style so anything beyond 8 layers (depth) will show a "View more x comments" button with an expansion icon. On-click, a popup will show the view back to as-if layer 0, this specific discussion thread. This allows for more comments to be rendered so it doesn't go off-screen/bypass the container.
       - Optionally, this behaviour can be changed to open directly on Reddit instead, and the maximum depth layer is also configurable under 'Advanced' on Hayami settings for Reddit.
     - Reddit Client ID moved to 'Advanced' on Hayami settings for Reddit.
+    - Fixed share button link to be properly take you to specific Reddit comment.
   - **Disqus**:
     - Fixed title wrongfully being the page-grabbed episode title instead of the actual Disqus title; added fallback to process slug on failures.
     - Removed within-24-hours ignore of Hayami API due to Hayami API improvements for Disqus.
