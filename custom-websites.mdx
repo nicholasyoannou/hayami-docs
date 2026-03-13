@@ -1,0 +1,98 @@
+---
+title: "Custom websites"
+icon: "globe-pointer"
+description: "How to configure custom websites (that is websites that aren't already provided out-the-box) with Hayami."
+---
+
+Hayami has support for some [official websites](/getting-started) out-of-the-box, but due to the plethora of rapidly-growing online forums, communities, and anime streaming websites globally, Hayami may not support _everything_ at once. But, with custom websites, any site can support Hayami, setup by you. If you want a GIF instead of a wiki-style guide, an example is below for your convenience.
+
+<Tip>
+  Note that the GIF below is one such example, and there's many modes you can mount Hayami onto sites. See the full documentation for more details.
+</Tip>
+
+<Frame>
+  ![Custom Mapping Hayami](/images/customMappingHayami.gif)
+</Frame>
+
+## How to configure custom websites with Hayami
+
+Right click on the website you want to map to Hayami, and click "Map this site to Hayami". If Hayami doesn't have permission to access the site, you may get a popup requesting this permission. If you do, click 'Allow'.
+
+<Frame>
+  <img
+    src="/images/image-4.png"
+    alt="Image"
+    title="Image"
+    className="mx-auto"
+    style={{ width:"34%" }}
+  />
+</Frame>
+
+You should be faced with the 'Map this site to Hayami' prompt, allowing you to configure many features. You'll need to choose _how_ you want Hayami to mount onto the site.
+
+### Choosing your mapping mode
+
+<Frame>
+  ![Image(1)](/images/image\(1\).jpg)
+</Frame>
+
+**Below element**: This puts the Hayami comments section **_below_** such element. You might want to put it below an existing comments section, below a title on the page, or just literally at the end of the page (HTML "body"). Choice is yours.
+
+**Insert inline**: This puts Hayami **_inside_** such element. There are varying use cases for this depending on site layouts.
+
+**Replace element**: This _replaces_ the chosen element with Hayami's comment section. You might want to use this if there's an element on-page you don't interact with, but would be perfect to mount Hayami.
+
+**Popup only**: This shows a floating Hayami icon on-site, and on-click, shows a popup of the Hayami comments section.
+
+Once you've made your selection, select it, and continue on with the guide.
+
+### How to choose anime title and episode
+
+Choosing the anime title and episode selector can vary by site, but Hayami should make it fairly straightforward.
+
+**Anime title selector**: Click 'Pick' and choose the name of the anime on the site.
+
+<Frame>
+  ![Image](/images/image-6.png)
+</Frame>
+
+**Episode selector**: Choose the episode number on the page. Refrain choosing elements added by other extensions (e.g. MAL-Sync).
+
+<Frame>
+  ![Image](/images/image-7.png)
+</Frame>
+
+For popup only, no extra configuration required, your all done from here.
+
+### Setting mount selector, and side padding
+
+For all the other modes, one last step: you need to configure the rest.
+
+<Frame>
+  ![Image](/images/image-5.png)
+</Frame>
+
+**Mount selector**: Where comments should appear or icon should sit. You can put "body" to append Hayami to the end of the page, if desired.
+
+**Display target selector**: This can be ignored.
+
+**Side padding**: How much y-padding is added to each side of the Hayami comments section. I'd recommend 240 side padding, but you can adjust how you wish.
+
+After clicking "Save & Embed" (might also need a page refresh), the comments section should be successfully embedded.
+
+### How to import & export custom website mappings
+
+You can export custom site mappings by clicking on Hayami, clicking on:\
+Settings \> Custom websites \> (i) Info icon on website you want to export \> Export
+
+You can share this custom mapping file for others to import (on Custom websites settings page), if desired. Once you've imported a new custom website mapping, you may notice the Hayami extension with a (!) badge. 
+
+<Frame>
+  ![Image](/images/image-8.png)
+</Frame>
+
+This indicates you need to allow the extension permission to access the site as a host. Open the Hayami popup, you should see a prompt to allow those permissions.
+
+<Frame>
+  ![Screenshot 2026 03 13 161701](/images/Screenshot2026-03-13161701.png)
+</Frame>

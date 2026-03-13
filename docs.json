@@ -32,7 +32,9 @@
               {
                 "group": "Features",
                 "pages": [
-                  "image-previews"
+                  "image-previews",
+                  "custom-websites",
+                  "komento-script"
                 ]
               }
             ]
