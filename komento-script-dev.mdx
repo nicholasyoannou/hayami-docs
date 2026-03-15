@@ -1,0 +1,211 @@
+---
+title: "KomentoScript (For script-makers)"
+icon: "comment-code"
+description: "KomentoScript combines custom websites with automated third-party URL sync, allowing you to put Hayami's comments embedder wherever your wish."
+sidebarTitle: "KomentoScript (Dev)"
+---
+
+<Note>
+  The current version of KomentoScript is **v0.1**.
+</Note>
+
+<Warning>
+  KomentoScript is in early-phase undergoing testing & can be subject to change. Documentation will be more limited during initial development & testing periods.
+</Warning>
+
+KomentoScript combines the logic behind custom websites, as well as allow additional more complex logic, pertaining to additional details such as dates, fallbacks, amongst other things. The syntax is inspired by similar syntax used in MAL-Sync's ChibiScript, except more catered more towards rendering Hayami on sites itself and use of Hayami's different rendering modes.
+
+Before getting started, <Icon icon="code-fork" /> it's recommended to fork [Hayami's KomentoScript Pages Builder](https://github.com/HayamiKomento/komentoscript-pages) if you wish to host an instance supporting multiple sites. To get started with KomentoScript after forking, read the "Quick start guide" to understand KomentoScript formats. You can also inspect & download [the full schema](https://github.com/HayamiKomento/komentoscript-pages/blob/master/scripts/validation/schema/komentoscript-pack.schema.json) instead.
+
+---
+
+## Quick start guide - example KomentoScript
+
+KomentoScript organises each site into a pack. A pack is one JSON object with metadata and a list of targets. An example valid KomentoScript is below.
+
+```json
+{
+  "komentoVersion": "0.1",
+  "id": "hayami-example",
+  "targets": [
+    {
+      "targetId": "example.watch",
+      "match": {
+        "origins": ["https://example.com"],
+        "pathGlobs": ["/watch/*"]
+      },
+      "extract": {
+        "animeTitle": {
+          "selector": "h1.title",
+          "attr": "text",
+          "required": true
+        },
+        "episodeNumber": {
+          "pipeline": [
+            ["querySelector", ".episode"],
+            ["text"],
+            ["regex", "(\\d+)"],
+            ["number"]
+          ],
+          "required": true
+        }
+      },
+      "placement": {
+        "display": "below",
+        "mountSelector": "main"
+      }
+    }
+  ]
+}
+```
+
+This pack adds a single target for `https://example.com/watch/*`, extracts the anime title and episode number, and mounts the UI below the main content.
+
+### Required fields
+
+- Top-level: `komentoVersion`, `id`, `targets[]`.
+- Each target: `targetId`, `match.origins[]`, and `extract.animeTitle` + `extract.episodeNumber`.
+
+If these are missing or invalid, the pack is rejected.
+
+### Matching pages
+
+```json
+"match": {
+  "origins": ["https://example.com"],
+  "pathGlobs": ["/watch/*"],
+  "excludePathGlobs": ["/watch/trailer/*"]
+}
+```
+
+- `origins` must exactly equal `location.origin` (e.g. `https://example.com`).
+- `pathGlobs` and `excludePathGlobs` use `*` as a wildcard on the path.
+
+### Extracting data
+
+Supported variables:
+
+- `animeTitle` (required)
+- `episodeNumber` (required)
+- `episodeTitle` (TBD, not supported as-of-yet)
+- `episodeReleaseDate`
+- `anilistId`
+- `malId`
+
+You can use either simple selectors or pipelines to grab this data.
+
+**Selector** mode:
+
+```json
+"animeTitle": {
+  "selector": "h1.title",
+  "xPath": "", // optional
+  "attr": "text",
+  "required": true
+}
+```
+
+This works as follows:
+
+- `selector` is a standard **CSS selector string**, passed to document.querySelector.
+- `xPath` is the full xPath on-page using when the selector doesn't find the text.
+- `attr` is a standard **attribute**, passed to element.getAttribute.
+
+**Pipeline** mode:
+
+```json
+"episodeNumber": {
+  "pipeline": [
+    ["querySelector", ".episode"],
+    ["text"],
+    ["regex", "(\\d+)"],
+    ["number"]
+  ],
+  "required": true
+}
+```
+
+Supported pipeline steps: `querySelector`, `text`, `trim`, `regex`, `number` .
+
+Pipeline mode uses a workflow-like approach. For the example above, this'd undergo the following:
+
+1. Find an element on the page that matches .episode
+2. Read that element’s text content
+3. Apply regex (\\d+) to that text and extract the first number capture
+4. Convert the extracted value to a numeric string (sanitizes to digits/decimal, parses number, then stores as string)
+
+### Placement
+
+```json
+"placement": {
+  "display": "below",
+  "mountSelector": "main",
+  "anchorSelector": "", // optional, dependant on mode
+  "mountXPath": "", // optional
+  "anchorXPath": "", // optional
+  "sidePadding": 240, // optional
+}
+```
+
+- `display`: `"below"`, `"insert"`, `"replace"`, `"popup"`, or `"icon"`.
+- `mountSelector` / `anchorSelector` choose where the UI is attached.
+- `sidePadding` choose how much y-padding comments section gets.
+
+If `placement` is omitted, runtime falls back to popup mode.
+
+You can also define multiple placements, like so:
+
+```json
+"placement": {
+  "below": {
+    "default": true,
+    "anchorSelector": "main",
+    "mountSelector": "main"
+  },
+  "popup": {}
+}
+```
+
+Doing this will, in the above example, set below as default, and allow KomentoScript users to choose how they'd like it mounted on-site, configured by your KomentoScript.
+
+- For popup mode, anchorSelector is mostly irrelevant.
+- If anchorSelector is missing, runtime falls back to mountSelector, then body.
+- There is also anchorXPath if CSS selectors are unreliable.
+
+---
+
+## Having multiple packs
+
+There's situations where you'd want to chain multiple targets within a single pack. Doing so would look like below.
+
+```json
+{
+  "komentoVersion": "0.1",
+  "id": "multi-site-pack",
+  "targets": [
+    {
+      "targetId": "example.watch",
+      "match": { "origins": ["https://example.com"], "pathGlobs": ["/watch/*"] },
+      "extract": { /* ... */ },
+      "placement": { "display": "below", "mountSelector": "main" }
+    },
+    {
+      "targetId": "othersite.view",
+      "match": { "origins": ["https://othersite.com"], "pathGlobs": ["/view/*"] },
+      "extract": { /* ... */ },
+      "placement": { "display": "insert", "mountSelector": "#player" }
+    }
+  ]
+}
+```
+
+---
+
+## Getting started with KomentoScript Pages Builder
+
+To get started, <Icon icon="code-fork" />  [fork the repository](https://deploy.workers.cloudflare.com/?url=https://github.com/HayamiKomento/komentoscript-pages) from GitHub. You can also one-click the Cloudflare Pages, or Netlify deployment buttons, which'll do this & auto-deploy for you. For GitHub pages, fork the repository, and enable GitHub Pages through the repository settings, and re-run the deployment workflow through Actions.
+
+Under sites/, this contains JSON files for each site. There are sample files for Crunchyroll and HIDIVE (these are sample files unintended for production-use) that demonstrate the use of KomentoScript. Feel free to rename these files, and use the schema plus this documentation to aid scripting. To test functionality through the Hayami extension, you can import files directly from:\
+Hayami settings \> KomentoScript Sync \> Import file.
+
+Hayami's KomentoScript Pages Builder automatically chains all sites you've configured to a `/all` endpoint when you deploy KomentoScripts Page Builder. You can also individually go to the JSON of each site by going to `/id` (where `id` is your pack ID).

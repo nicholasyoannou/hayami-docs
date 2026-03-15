@@ -36,6 +36,10 @@
                   "custom-websites",
                   "komento-script"
                 ]
+              },
+              {
+                "group": "Development",
+                "pages": ["komento-script-dev"]
               }
             ]
           },
