@@ -17,13 +17,17 @@ mode: "default"
   - **Custom websites**:
     - Added new import/export feature to share Hayami embeddings/site configurations.
     - Added path-level matching, and removed safeguards for /watch requirement.
-  - **KomentoScript**:
-    - A new way of syncing from a third-party URL to automatically sync custom websites from a source. More information to be documented.
-  - **Rendering**:
-    - Fixed all discussion platforms on popup mode not rendering other than Reddit.
-  - **Image previews**: Pressing 'm' while hovering over a video now unmutes the media.
+  - **KomentoScript**: A new way of syncing from a third-party URL to automatically sync custom websites from a source.
+  - **Rendering**: Fixed all discussion platforms on popup mode not rendering other than Reddit.
+  - **Mapping**: 
+    - Fixed manual override sometimes choosing an unintended cour rather than the choice chosen.
+    - Now waits longer period for anime & episode information to come up on page (SPA-based/on-load-in websites improvement).
+  - **Image previews**: Pressing 'm' (mute toggle) while hovering over a video now unmutes the media.
   - Added alert in Hayami popup if hosts haven't been given permission for custom websites or KomentoScript.
+  - Added a fix for SPA-based apps not properly rendering Hayami in certain situations.
   - Removed Hayami Plus mentioned in popup for extension.
+
+  **TBD**: Check that the image previews feature for video ('m') doesn't double-play audio if hovering-over multiple times. Write KomentoScript for a couple sites, testing functionality.
 </Update>
 
 <Update label="Version 0.0.8.3" description="Published [13 March 2026]">
