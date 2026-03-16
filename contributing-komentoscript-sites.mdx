@@ -1,0 +1,22 @@
+---
+title: "Adding sites to KomentoScript instances"
+description: "Guide explaining good practices on how to obtain variables for KomentoScript JSON."
+---
+
+To add new sites to the KomentoScript Pages Builder, add a new JSON under /sites using the [KomentoScript specification](/komento-script-dev) to aid with adding new sites. This will require you to obtain XPath, selectors, amongst different attributes. This guide will give tips on obtaining these in-browser.
+
+## Getting started with adding new sites
+
+For most sites, you _should_ load a site up fully onto an episode page of an anime, with the video ready to be played. To ensure this process isn't heavily disrupted, an adblocker would be recommended (uBlock Origin/uBlock Origin Lite should suffice). Then you can proceed in any of the following ways:
+
+- <u>Option 1</u>: You can use developer tools (F12) to inspect such-page, **find elements on the page visually**, then use the element selector in devtools to choose an element on the page. In Chromium-based browsers, this selector in devtools looks like this:
+
+  <Frame>
+    ![Image](/images/image-11.png)
+  </Frame>
+  \
+  It'll highlight that element in devtools. Right click on that element, "Copy" \> "selector" for selector, and "Copy" \> "XPath". Some elements may be hidden from the UI as well (e.g. an anime name) so it may be helpful to search through devtools as well instead of relying on the element selector heavily.
+- <u>Option 2</u>: Right click (or CTRL+S) \> 'Save as' and save your current page. You now should have HTML which you can inspect via devtools (open the HTML up in a browser locally), an IDE (e.g. VSCode), or possibly a local LLM/AI agent to surf-through to grab what your looking for/help pre-fill the JSON using the KomentoScript specification as aid. You could also possibly use [SelectorsHub](https://chromewebstore.google.com/detail/selectorshub/ndgimibanhlabgdgjcpbbndiehljcpfh) to inspect the HTML as well.
+- <u>Option 3</u>: In the event devtools proves difficult (e.g. debugger block/sporadic redirects), or saving the page proves problematic, you can download browsers like LibreWolf, and although messages like 'debugger paused' may block the screen, element selections via devtools _should_ work properly without problematic redirects.\
+  \
+  If this doesn't suffice & uninterrupted devtools is required, an older ([v101.0a1](https://www.firefox.com/en-US/firefox/101.0a1/releasenotes/)) patched version of Firefox ([thanks to Blatzar](https://github.com/Blatzar/scraping-tutorial/blob/master/patch_firefox_old.md)) deals with these issues, and shouldn't yield those messages. Warning - older browser versions may have vulnerabilities and should be run with caution. A mirror purely for development purposes only is saved by Hayami for [Chrome](https://asset-serve.hayami.moe/HAYAMI_DEV/firefox-101.0a1.en-US.win64.zip) and [Linux](https://asset-serve.hayami.moe/HAYAMI_DEV/firefox-101.0a1.en-US.linux-x86_64.tar.bz2). Alternatively, follow Blatzar's README instructions for modifying & compilation of source instead.

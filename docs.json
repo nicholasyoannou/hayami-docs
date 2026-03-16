@@ -38,8 +38,11 @@
                 ]
               },
               {
-                "group": "Development",
-                "pages": ["komento-script-dev"]
+                "group": "KomentoScript",
+                "pages": [
+                  "komento-script-dev",
+                  "contributing-komentoscript-sites"
+                ]
               }
             ]
           },
