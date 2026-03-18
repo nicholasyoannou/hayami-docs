@@ -232,7 +232,7 @@ After fully closing Ollama, for Windows, open up PowerShell and run the followin
 setx OLLAMA_ORIGINS "chrome-extension://nhkggpiaeaeeeimohfpchnjobbamfcbg/"
 ```
 
-Open up Ollama again, and choose whatever model you prefer. In this example, I'll be using "llama3.2:3b-instruct-q4\_0" which uses CPU resources (instead of GPU), is more-lightweight, and gets the job done for analyzing HTML. Pop a message "hi" to test that works.
+Open up Ollama again, and choose whatever model you prefer. I recommend using "qwen2.5:0.5b" which is 398MB storage-wise but gets the job done for analyzing HTML. Send "hi" to test that works.
 
 <Frame>
   ![Image](/images/image-34.png)
@@ -270,7 +270,7 @@ For Ollama:
   Requires Chrome version 127\+, approx 3GB storage, 4 GB of VRAM, & needs to be manually enabled.
 </Info>
 
-Gemini Nano is a compact & lightweight offline generative AI model designed to run on-your-device without relying on cloud services, similar to using Ollama (as mentioned above). Since there's a limit on input size due to it's compact-nature, it uses compact DOM context instead of the raw HTML to identify what elements on the page _could_ be an anime title/episode number, and then uses element selectors to find these elements on the page. Because of this, there may be some inaccuracies on some sites, but this _should _work out-the-box.
+Gemini Nano is a compact & lightweight offline generative AI model designed to run on-your-device without relying on cloud services, similar to using Ollama (as mentioned above). Since there's a limit on input size due to it's compact-nature, it uses compact DOM context instead of the raw HTML to identify what elements on the page _could_ be an anime title/episode number, and then uses element selectors to find these elements on the page. Because of this, there may be some inaccuracies on some sites, but this \_should \_work out-the-box.
 
 <Note>
   To enable Gemini Nano:
