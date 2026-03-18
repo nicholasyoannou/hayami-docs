@@ -35,6 +35,7 @@
                   "image-previews",
                   {
                     "group": "Custom websites",
+                    "icon": "globe",
                     "pages": [
                       "custom-websites",
                       "site-mapper-ai-assistant"
