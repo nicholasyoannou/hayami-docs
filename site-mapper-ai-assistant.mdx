@@ -4,7 +4,7 @@ icon: "sparkle"
 description: "How to setup the site mapper AI assistant in Hayami."
 ---
 
-The site mapper AI assistant allows automatic retrieval of where anime names/episode numbers are on the page, letting you focus on where you want Hayami mounted instead. Out the box, Hayami supports **Google AI Studio**, **Mistral AI**, and **OpenRouter**, pre-configured with models that do the job & prompt to extract what's needed. Hayami also supports **any OpenAI-compatible API**, allowing you to freely self-host your own models (e.g. through Ollama) for a more privacy-respecting experience. Hayami attaches the page's HTML to your chosen AI provider to undergo this extraction.
+The site mapper AI assistant allows automatic retrieval of where anime names/episode numbers are on the page, letting you focus on where you want Hayami mounted instead. Out the box, Hayami supports **Google AI Studio**, **Mistral AI**, **OpenRouter**, and **Gemini Nano (Chrome-only)** pre-configured with models that do the job & prompt to extract what's needed. Hayami also supports **any OpenAI-compatible API**, allowing you to freely self-host your own models (e.g. through Ollama) for a more privacy-respecting experience. Hayami attaches the page's HTML to your chosen AI provider to undergo this extraction.
 
 <Frame>
   ![Aihelper Autofillmapping](/images/aihelper_autofillmapping-1.gif)
@@ -150,7 +150,7 @@ Once done, click 'Create new key'. Then copy your key to be ready to be used in 
   />
 </Frame>
 
-**Adding the key to Hayami**: Under Hayami \> Settings \> Custom websites, scroll down to the bottom, and choose 'Mistral AI', and enter your API key copied from Mistral AI, and hit Save.
+**Adding the key to Hayami**: Under Hayami \> Settings \> Custom websites, scroll down to the bottom, and choose 'Mistral AI' under 'AI provider', & enter your API key copied from Mistral AI, and hit Save.
 
 <Frame>
   <img
@@ -161,3 +161,128 @@ Once done, click 'Create new key'. Then copy your key to be ready to be used in 
     style={{ width:"56%" }}
   />
 </Frame>
+
+### OpenRouter
+
+To get your API key, go to [https://openrouter.ai/settings/keys](https://openrouter.ai/settings/keys). Acknowledge the terms and privacy before continuing if creating a new account.
+
+<Frame>
+  <img
+    src="/images/image-27.png"
+    alt="Image"
+    title="Image"
+    className="mx-auto"
+    style={{ width:"55%" }}
+  />
+</Frame>
+
+Create your API key by clicking 'Create'.
+
+<Frame>
+  ![Image](/images/image-29.png)
+</Frame>
+
+Give it a name and customise the expiry if you wish to use this feature temporarily, then hit 'Create'.
+
+<Frame>
+  <img
+    src="/images/image-30.png"
+    alt="Image"
+    title="Image"
+    className="mx-auto"
+    style={{ width:"47%" }}
+  />
+</Frame>
+
+Copy your API key.
+
+<Frame>
+  <img
+    src="/images/image-32.png"
+    alt="Image"
+    title="Image"
+    className="mx-auto"
+    style={{ width:"61%" }}
+  />
+</Frame>
+
+**Adding the key to Hayami**: Under Hayami \> Settings \> Custom websites, scroll down to the bottom, and choose 'OpenRouter' under 'AI provider', and enter your API key copied from OpenRouter, and hit Save.
+
+### OpenAI-compatible API (e.g. Ollama)
+
+In this example, Ollama will be used to demonstrate this capability to demonstrate OpenAI-compatible APIs. After installation, ensure Ollama is not open/fully closed before continuing. On Windows, you can do so by checking the taskbar icons bar via the bottom-right:
+
+<Frame>
+  <img
+    src="/images/image-33.png"
+    alt="Image"
+    title="Image"
+    className="mx-auto"
+    style={{ width:"37%" }}
+  />
+</Frame>
+
+After fully closing Ollama, for Windows, open up PowerShell and run the following command. This'll change the environment variables on your system for Ollama to allow the Origin header to be from the Hayami Chrome extension as well as from Ollama directly. For any other operating systems, [this guide](https://api.onlyoffice.com/docs/plugin-and-macros/ai/configuring-ollama-with-cors/) ([archive](https://web.archive.org/web/20260318165226/https://api.onlyoffice.com/docs/plugin-and-macros/ai/configuring-ollama-with-cors/)) by OnlyOffice should be used to aid with setting the correct variables.
+
+<Tip>
+  Don't run random commands found on the web; have a general understanding of their purpose before proceeding.
+</Tip>
+
+```powershell
+setx OLLAMA_ORIGINS "chrome-extension://nhkggpiaeaeeeimohfpchnjobbamfcbg/"
+```
+
+Open up Ollama again, and choose whatever model you prefer. In this example, I'll be using "llama3.2:3b-instruct-q4\_0" which uses CPU resources (instead of GPU), is more-lightweight, and gets the job done for analyzing HTML. Pop a message "hi" to test that works.
+
+<Frame>
+  ![Image](/images/image-34.png)
+</Frame>
+
+<Frame>
+  ![Image](/images/image-35.png)
+</Frame>
+
+<Frame>
+  ![Image](/images/image-36.png)
+</Frame>
+
+**Adding these details to Hayami**: Once finished, on Hayami \> Settings \> Custom websites, scroll down to the bottom, and choose 'OpenAI-compatible' under 'AI provider'.
+
+For Ollama:
+
+- "OpenAI-compatible base URL" should be "[http://127.0.0.1:11434/v1](http://127.0.0.1:11434/v1)".
+- "OpenAI-compatible API key" should be left blank.
+- "OpenAI-compatible model" should be your chosen model.
+
+<Frame>
+  <img
+    src="/images/image-37.png"
+    alt="Image"
+    title="Image"
+    className="mx-auto"
+    style={{ width:"51%" }}
+  />
+</Frame>
+
+### Gemini Nano (Chrome-only)
+
+<Info>
+  Requires Chrome version 127\+, approx 3GB storage, 4 GB of VRAM, & needs to be manually enabled.
+</Info>
+
+Gemini Nano is a compact & lightweight offline generative AI model designed to run on-your-device without relying on cloud services, similar to using Ollama (as mentioned above). Since there's a limit on input size due to it's compact-nature, it uses compact DOM context instead of the raw HTML to identify what elements on the page _could_ be an anime title/episode number, and then uses element selectors to find these elements on the page. Because of this, there may be some inaccuracies on some sites, but this _should _work out-the-box.
+
+<Note>
+  To enable Gemini Nano:
+
+  1. Go to `chrome://flags/`
+  2. Search for `prompt-api-for-gemini-nano`
+  3. Set "Prompt API for Gemini Nano" to Enabled.
+  4. (Optional, device-dependent) Search for `optimization-guide-on-device-model` and set it to Enabled BypassPrefRequirement.
+  5. Restart your browser.
+  6. Go to `chrome://components/` and find "Optimization Guide On Device Model", then click "Check for Update".
+
+  You should now have Gemini Nano enabled after following those steps.
+</Note>
+
+After following the above steps to enable Gemini Nano, it should work out-the-box after the model has been downloaded. To enable Gemini Nano on Hayami: Settings \> Custom websites, scroll down to the bottom, and choose 'Gemini Nano' under 'AI provider'.
