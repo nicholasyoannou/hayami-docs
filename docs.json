@@ -33,7 +33,13 @@
                 "group": "Features",
                 "pages": [
                   "image-previews",
-                  "custom-websites",
+                  {
+                    "group": "Custom websites",
+                    "pages": [
+                      "custom-websites",
+                      "site-mapper-ai-assistant"
+                    ]
+                  },
                   "komento-script"
                 ]
               },

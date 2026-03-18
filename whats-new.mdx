@@ -17,9 +17,14 @@ mode: "default"
   - **Custom websites**:
     - Added new import/export feature to share Hayami embeddings/site configurations.
     - Added path-level matching, and removed safeguards for /watch requirement.
+    - Added new "AI assistant" mode, bringing support for Google AI Studio, Mistral, OpenRouter, and any OpenAI-compatible API, that processes the HTML of your current page to get the CSS selectors & XPath for you of the anime name and episode number.
+      <Note>
+        All of the third-party considered models have free plans, and the feature is disabled by-default, enabled by you only. Primary reason for this feature is for further reach for sites that can sometimes be more difficult to find certain elements to enable mapping i.e. anime names due to hidden elements on-page visibly. 
+        Privacy-respecting considerations have been made from the get-go, allowing any OpenAI-compatible API (e.g. Ollama), allowing the ability to self-host models to do this job.
+      </Note>
   - **KomentoScript**: A new way of syncing from a third-party URL to automatically sync custom websites from a source.
   - **Rendering**: Fixed all discussion platforms on popup mode not rendering other than Reddit.
-  - **Mapping**: 
+  - **Mapping**:
     - Fixed manual override sometimes choosing an unintended cour rather than the choice chosen.
     - Now waits longer period for anime & episode information to come up on page (SPA-based/on-load-in websites improvement).
   - **Image previews**: Pressing 'm' (mute toggle) while hovering over a video now unmutes the media.
@@ -38,7 +43,8 @@ mode: "default"
   <Warning>
     Experimental features are WIP (Work in Progress) expected to progress over time, and can contain several bugs, and partially working features.
   </Warning>
-  - Adds new **<u>experimental screenshot</u>** capability to screenshot moments on your current episode. Note: This will require an allowed keybind (as per [chrome.commands spec](https://developer.chrome.com/docs/extensions/reference/api/commands) - e.g. Alt + [Key] / Ctrl + Shift + [Key]).
+
+  - Adds new **<u>experimental screenshot</u>** capability to screenshot moments on your current episode. Note: This will require an allowed keybind (as per [chrome.commands spec](https://developer.chrome.com/docs/extensions/reference/api/commands) - e.g. Alt \+ \[Key\] / Ctrl \+ Shift \+ \[Key\]).
     - Introduces element picker (supporting iframes) uploading screenshots to Imagechest, with experimental support for Imgur and Catbox.
   - **Mapping**:
     - Fixed keyboard shortcut now opening up the manual mapper UI.
@@ -125,7 +131,7 @@ mode: "default"
   - **Mapping**:
     - Fixed bug where some anime e.g. "Kimi no Koto ga Daidaidaidaidaisuki na 100-nin no Kanojo" Season 1 mapped to Season 2 discussions, and Season 2 E13 (continuous CR mapping) is detected as E1.
     - Fixes manual overwride episode selector for Reddit - now uses Hayami API, and adds new 'Wrong anime?' overwride if the selected anime is incorrect.
-    - Ensures date-classification mapping on Crunchyroll is ignored if the date is before March 1st, 2022 (Funimation catalogue merge/licensing endeavors screwed over the dates on-site for older series [[1](https://www.crunchyroll.com/series/GY3VKX1MR/hunter-x-hunter)] [[2](https://www.crunchyroll.com/series/GRE59JGX6/assassination-classroom)]).
+    - Ensures date-classification mapping on Crunchyroll is ignored if the date is before March 1st, 2022 (Funimation catalogue merge/licensing endeavors screwed over the dates on-site for older series \[[1](https://www.crunchyroll.com/series/GY3VKX1MR/hunter-x-hunter)\] \[[2](https://www.crunchyroll.com/series/GRE59JGX6/assassination-classroom)\]).
   - **Rendering**: Fixed state handling where using the back button in-browser _could_ improperly render the comments section; tl;dr back button now doesn't break rendering of Hayami. This also optimises Hayami for SPA-based applications: Hayami won't re-render the entire embed unless necessary.
   - **Backend**: Added caching for asset serving endpoints.
 
@@ -139,17 +145,11 @@ mode: "default"
 
   **Features**:
 
-  - Two new discussion platforms added: [**The Anime Community**](https://theanimecommunity.com/) and **Aniwave**.
-
-    **The Anime Community**:
+  - Two new discussion platforms added: [**The Anime Community**](https://theanimecommunity.com/) and **Aniwave**. **The Anime Community**:
     - Embeds The Anime Community discussion platform & customised CSS.
-    - Dynamically re-sizes iframe accordingly to height of the embed so the comments section doesn't incidentally get cutoff screen.
-
-    **Aniwave**:
+    - Dynamically re-sizes iframe accordingly to height of the embed so the comments section doesn't incidentally get cutoff screen. **Aniwave**:
     - Implemented & indexed **archived** Aniwave comments (thanks to u/Goofhey for the [archival work](https://archive.org/details/aniwave-comments.tar) back in 2024) in the backend database including image assets moved to storage solution with direct backend support. Aniwave has been directly added in Hayami as a supported discussion platform and added rendering support for this.
-    - Discussion platform settings for Aniwave has been added to auto-load in comments up to a certain depth, if desired also. Aniwave comments are sorted by DISQUS "points" (which is total likes minus dislikes).
-
-      **QOL**:
+    - Discussion platform settings for Aniwave has been added to auto-load in comments up to a certain depth, if desired also. Aniwave comments are sorted by DISQUS "points" (which is total likes minus dislikes). **QOL**:
       - Added 'reply' icon with user they're replying to if replying to a parent comment, which also has a setting to enable/disable if desired.
       - Added maximum left-padding numeric amount so continuous discussions don't end up squished to the right of screen.
       - Added support for comment image displaying.

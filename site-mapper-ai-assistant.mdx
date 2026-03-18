@@ -1,0 +1,163 @@
+---
+title: "Site mapper (AI assistant)"
+icon: "sparkle"
+description: "How to setup the site mapper AI assistant in Hayami."
+---
+
+The site mapper AI assistant allows automatic retrieval of where anime names/episode numbers are on the page, letting you focus on where you want Hayami mounted instead. Out the box, Hayami supports **Google AI Studio**, **Mistral AI**, and **OpenRouter**, pre-configured with models that do the job & prompt to extract what's needed. Hayami also supports **any OpenAI-compatible API**, allowing you to freely self-host your own models (e.g. through Ollama) for a more privacy-respecting experience. Hayami attaches the page's HTML to your chosen AI provider to undergo this extraction.
+
+<Frame>
+  ![Aihelper Autofillmapping](/images/aihelper_autofillmapping-1.gif)
+</Frame>
+
+Note: Third-party AI providers have their own terms & privacy policies on processing your data, which needs to be regarded before use of this feature.
+
+## Getting started
+
+You'll need an API key from your chosen provider to use this feature with third-party providers. A guide is below per-provider that Hayami supports to get these details.
+
+### Google AI studio
+
+To get your API key, go to [https://aistudio.google.com/](https://aistudio.google.com/), and click "Get API key". You may have to do some initial onboarding, but Hayami only requires free-tier features, and does not require the paid-tier. This does not require entering billing information.
+
+If new to the platform, you may get presented with the screen below (the below screenshot is as-of-writing indicative of 18/03/2026 and may differ in-future). Once the terms and relevant details have been acknowledged, proceed to the next steps.
+
+<Frame>
+  ![Image](/images/image-13.png)
+</Frame>
+
+Click "Get API key". Wait for this page to load up.
+
+<Frame>
+  <img
+    src="/images/Screenshot2026-03-18114014.png"
+    alt="Screenshot 2026 03 18 114014"
+    title="Screenshot 2026 03 18 114014"
+    className="mx-auto"
+    style={{ width:"42%" }}
+  />
+</Frame>
+
+If you're new to Google AI Studio, you should get an automatically-generated key for you, ready to be used. This key can be used straightaway. Click the Copy icon to copy this key.
+
+If you'd rather we create a key for Hayami, or this key isn't showing, proceed to the steps below. If this key is adequate, scroll down past these steps below.
+
+<Frame>
+  ![Image](/images/image-14.png)
+</Frame>
+
+**Proceed to create a key (specifically for Hayami)**: Click 'Create API key'.
+
+<Frame>
+  ![Image](/images/image-12.png)
+</Frame>
+
+Name your key, then click create key.
+
+<Frame>
+  <img
+    src="/images/image-15.png"
+    alt="Image"
+    title="Image"
+    className="mx-auto"
+    style={{ width:"76%" }}
+  />
+</Frame>
+
+Key is ready to be used. Copy this key.
+
+<Frame>
+  ![Image](/images/image-16.png)
+</Frame>
+
+**Adding the key to Hayami**: Under Hayami \> Settings \> Custom websites, scroll down to the bottom, and choose 'Google AI Studio', and enter your API key copied from Google AI Studio, and hit Save.
+
+<Frame>
+  <img
+    src="/images/image-17.png"
+    alt="Image"
+    title="Image"
+    className="mx-auto"
+    style={{ width:"57%" }}
+  />
+</Frame>
+
+### Mistral AI
+
+<Note>
+  This will require verification of a phone number to use this service.
+</Note>
+
+To get your API key, go to [https://console.mistral.ai/home](https://console.mistral.ai/home). Name your organization what you'd like it to be, and acknowledge the terms and related privacy information before continuing.
+
+<Frame>
+  <img
+    src="/images/image-18.png"
+    alt="Image"
+    title="Image"
+    className="mx-auto"
+    style={{ width:"54%" }}
+  />
+</Frame>
+
+Click 'API keys', 'Choose a plan'.
+
+<Frame>
+  ![Image](/images/image-19.png)
+</Frame>
+
+Choose 'Experiment for free', acknowledge the related terms, click 'Subscribe', and verify your phone number.
+
+<Frame>
+  ![Image](/images/image-20.png)
+</Frame>
+
+<Frame>
+  ![Image](/images/image-21.png)
+</Frame>
+
+<Frame>
+  ![Image](/images/image-22.png)
+</Frame>
+
+After all is setup, create your API key back on the [API key page](https://admin.mistral.ai/organization/api-keys).
+
+<Frame>
+  ![Image](/images/image-23.png)
+</Frame>
+
+Name and set the expiry date (if you plan on using this temporarily, let's say; you can click no expiry if you wish).
+
+<Frame>
+  <img
+    src="/images/image-24.png"
+    alt="Image"
+    title="Image"
+    className="mx-auto"
+    style={{ width:"49%" }}
+  />
+</Frame>
+
+Once done, click 'Create new key'. Then copy your key to be ready to be used in Hayami.
+
+<Frame>
+  <img
+    src="/images/image-25.png"
+    alt="Image"
+    title="Image"
+    className="mx-auto"
+    style={{ width:"57%" }}
+  />
+</Frame>
+
+**Adding the key to Hayami**: Under Hayami \> Settings \> Custom websites, scroll down to the bottom, and choose 'Mistral AI', and enter your API key copied from Mistral AI, and hit Save.
+
+<Frame>
+  <img
+    src="/images/image-26.png"
+    alt="Image"
+    title="Image"
+    className="mx-auto"
+    style={{ width:"56%" }}
+  />
+</Frame>
