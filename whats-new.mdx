@@ -17,9 +17,11 @@ mode: "default"
   - **Custom websites**:
     - Added new import/export feature to share Hayami embeddings/site configurations.
     - Added path-level matching, and removed safeguards for /watch requirement.
+    - Added episode selector support for 'active' list elements.
+    - Fixed episode selector incorrectly mapping when an episode name is also provided (parseEpisodeFromTitle accepts leading numeric episode labels like 10 followed by whitespace/title text, not _only _Episode 10 / Ep 10 forms).
     - Added new "AI assistant" mode, bringing support for Google AI Studio, Mistral, OpenRouter, Gemini Nano and any OpenAI-compatible API, that processes the HTML of your current page to get the CSS selectors & XPath for you of the anime name and episode number.
       <Note>
-        All of the third-party considered models have free plans, and the feature is disabled by-default, enabled by only you. Primary reason for this feature is for further reach for sites that can sometimes be more difficult to find certain elements to enable mapping i.e. anime names due to hidden elements on-page visibly. Privacy-respecting considerations have been made from the get-go, allowing any OpenAI-compatible API (e.g. Ollama), and Gemini Nano, allowing the ability to self-host models to do this job.
+        All of the third-party considered models have free plans, and the feature is disabled by-default, enabled by only you. Reason for this feature is for further reach for sites that can sometimes be more difficult to find certain elements to enable mapping i.e. anime names due to hidden elements on-page visibly. Privacy-respecting considerations have been made from the get-go, allowing any OpenAI-compatible API (e.g. Ollama), and Gemini Nano, allowing the ability to self-host models to do this job. This feature as a whole, however, is not a surefire way to _accurately_ get elements on-page, and can be highly inaccurate at times.
       </Note>
   - **KomentoScript**: A new way of syncing from a third-party URL to automatically sync custom websites from a source.
   - **Rendering**: Fixed all discussion platforms on popup mode not rendering other than Reddit.
