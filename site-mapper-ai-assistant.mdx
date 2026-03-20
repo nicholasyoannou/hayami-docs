@@ -2,7 +2,12 @@
 title: "Site mapper (AI assistant)"
 icon: "sparkle"
 description: "How to setup the site mapper AI assistant in Hayami."
+hidden: true
 ---
+
+<Note>
+  This page is **archived** for historical purposes. This feature was intended for **v0.0.8.4**, and was ultimately [scrapped](/discarded-features) due to inconsistent performance, in-favour of optimising the manual mapper itself.
+</Note>
 
 The site mapper AI assistant allows automatic retrieval of where anime names/episode numbers are on the page, letting you focus on where you want Hayami mounted instead. Out the box, Hayami supports **Google AI Studio**, **Mistral AI**, **OpenRouter**, and **Gemini Nano (Chrome-only)** pre-configured with models that do the job & prompt to extract what's needed. Hayami also supports **any OpenAI-compatible API**, allowing you to freely self-host your own models (e.g. through Ollama) for a more privacy-respecting experience. Hayami attaches the page's HTML to your chosen AI provider to undergo this extraction.
 
@@ -280,7 +285,7 @@ For Ollama:
   Requires Chrome version 127\+, approx 3GB storage, 4 GB of VRAM, & needs to be manually enabled.
 </Info>
 
-Gemini Nano is a compact & lightweight offline generative AI model designed to run on-your-device without relying on cloud services, similar to using Ollama (as mentioned above). Since there's a limit on input size due to it's compact-nature, it uses compact DOM context instead of the raw HTML to identify what elements on the page _could_ be an anime title/episode number, and then uses element selectors to find these elements on the page. Because of this, there may be some inaccuracies on some sites, but this \_should \_work out-the-box.
+Gemini Nano is a compact & lightweight offline generative AI model designed to run on-your-device without relying on cloud services, similar to using Ollama (as mentioned above). Since there's a limit on input size due to it's compact-nature, it uses compact DOM context instead of the raw HTML to identify what elements on the page _could_ be an anime title/episode number, and then uses element selectors to find these elements on the page. Because of this, there may be some inaccuracies on some sites, but this _should_ work out-the-box.
 
 <Note>
   To enable Gemini Nano:
