@@ -20,14 +20,15 @@ mode: "default"
     - Added episode selector support for 'active' list elements, including variations, allowing support for bilibili.tv episode detection.
     - Fixed episode selector incorrectly mapping when an episode name is also provided (parseEpisodeFromTitle accepts leading numeric episode labels like 10 followed by whitespace/title text, not _only_ Episode 10 / Ep 10 forms).
   - **KomentoScript**: A new way of syncing from a third-party URL to automatically sync custom websites from a source.
-  - **Rendering**: 
+  - **Rendering**:
     - **New mode**: icon/text trigger. This mode allows interchangeable switching between the site's comments and Hayami's comments, intertwining with the site's styles to make it appear natural. "Interchangeable" means it can swap out the site's comments with Hayami's (and vice-versa), or, allow popup mode on-click (instead of a floating icon). This "interchangeable" feature can be triggered via an icon-click or text-click. Icon-click is intended for full-screen video player websites (i.e. Netflix), and text-click is intended for sites with sites that have an embedded video player with other elements surrounding it.
     - Fixed all discussion platforms on popup mode not rendering other than Reddit & added new rendering mode intended for custom websites.
-    - Scope inline extension styles to container, fixing Hayami no longer messing with global site styles.
+    - Scope most inline extension styles to container, fixing Hayami no longer messing with global site styles.
   - **Mapping**:
     - Fixed manual override sometimes choosing an unintended cour rather than the choice chosen.
     - Now waits longer period for anime & episode information to come up on page (SPA-based/on-load-in websites improvement).
-  - **Image previews**: Pressing 'm' (mute toggle) while hovering over a video now unmutes the media.
+  - **Image previews**: Pressing 'm' (mute toggle) while hovering over a video now unmutes the media. Enforces no outline for on-hover image previews intended for sites that enforce border outline styles.
+  - **Disqus**: Fixed mapping to be able to handle episodes split across duplicate entries  on Hayami's API.
   - Added alert in Hayami popup if hosts haven't been given permission for custom websites or KomentoScript.
   - Added a fix for SPA-based apps not properly rendering Hayami in certain situations.
   - Added new "Search anime discussions" feature on-Hayami site (supports Reddit curently), allowing to render the Hayami embedder on Hayami's site instead of an embed on websites. Useful for people that watch anime in other settings rather than on-the-web always for easy & quick discussion searching.
