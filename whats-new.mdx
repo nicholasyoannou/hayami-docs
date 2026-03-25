@@ -10,7 +10,7 @@ mode: "default"
 </Tip>
 
 <Update label="Version 0.0.8.4" description="Unpublished">
-  ## v0.0.8.4 WIP - Screenshots, KomentoScript & improvements
+  ## v0.0.8.4 WIP - QOL, KomentoScript & improvements
 
   **Features**: TBD
 
@@ -19,7 +19,7 @@ mode: "default"
     - Added path-level matching, and removed safeguards for /watch requirement.
     - Added episode selector support for 'active' list elements, including variations, allowing support for bilibili.tv episode detection.
     - Fixed episode selector incorrectly mapping when an episode name is also provided (parseEpisodeFromTitle accepts leading numeric episode labels like 10 followed by whitespace/title text, not _only_ Episode 10 / Ep 10 forms).
-  - **KomentoScript**: A new way of syncing from a third-party URL to automatically sync custom websites from a source.
+  - **KomentoScript**: A new way of syncing from a third-party URL to automatically sync custom websites from a source. [Read more info \>](/komento-script)
   - **Rendering**:
     - **New mode**: icon/text trigger. This mode allows interchangeable switching between the site's comments and Hayami's comments, intertwining with the site's styles to make it appear natural. "Interchangeable" means it can swap out the site's comments with Hayami's (and vice-versa), or, allow popup mode on-click (instead of a floating icon). This "interchangeable" feature can be triggered via an icon-click or text-click. Icon-click is intended for full-screen video player websites (i.e. Netflix), and text-click is intended for sites with sites that have an embedded video player with other elements surrounding it.
     - Fixed all discussion platforms on popup mode not rendering other than Reddit & added new rendering mode intended for custom websites.
@@ -32,6 +32,7 @@ mode: "default"
   - **Disqus**: Fixed mapping to be able to handle episodes split across duplicate entries  on Hayami's API.
   - Added alert in Hayami popup if hosts haven't been given permission for custom websites or KomentoScript.
   - Added a fix for SPA-based apps not properly rendering Hayami in certain situations.
+  - Added close button, expandable settings menu for quick actions (just quick-add custom websites import file for now), re-styled settings menu, info/help information, and footer on popup for easier discovery of documentation.
   - Added new "Search anime discussions" feature on-Hayami site, allowing to render the Hayami embedder on Hayami's site instead of an embed on websites. Useful for people that watch anime in other settings rather than on-the-web always for easy & quick discussion searching.
   - Removed Hayami Plus mentioned in popup for extension, website, and documentation, replaced with [donate](/support). There's absolutely no need for this extension to _even have_ a paid-tier in any capacity. The ability to across the web read & write comments on anime episodes should be open to everyone.
   - Removed screenshot feature. Reasoning behind removal can be seen on [discarded features](/discarded-features).

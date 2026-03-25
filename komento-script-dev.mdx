@@ -15,11 +15,13 @@ sidebarTitle: "KomentoScript (Dev)"
 
 KomentoScript combines the logic behind custom websites, as well as allow additional more complex logic, pertaining to additional details such as dates, fallbacks, amongst other things. The syntax is inspired by similar syntax used in MAL-Sync's ChibiScript, except more catered more towards rendering Hayami on sites itself and use of Hayami's different rendering modes.
 
-Before getting started, <Icon icon="code-fork" /> it's recommended to fork [Hayami's KomentoScript Pages Builder](https://github.com/HayamiKomento/komentoscript-pages) if you wish to host an instance supporting multiple sites. To get started with KomentoScript after forking, read the "Quick start guide" to understand KomentoScript formats. You can also inspect & download [the full schema](https://github.com/HayamiKomento/komentoscript-pages/blob/master/scripts/validation/schema/komentoscript-pack.schema.json) instead.
+Before getting started, <Icon icon="code-fork" /> fork [Hayami's KomentoScript Pages Builder](https://github.com/HayamiKomento/komentoscript-pages) if you want to host your own multi-site endpoint. When ready, read the “Quick start guide” to understand KomentoScript's details, or find the schema attached. Hayami also accepts manually importing KomentoScript files instead of via a URL to test functionality.
+
+Primary schema: [komentoscript-pack.schema.json](https://github.com/HayamiKomento/komentoscript-pages/blob/master/scripts/validation/schema/komentoscript-pack.schema.json) ([raw](https://raw.githubusercontent.com/HayamiKomento/komentoscript-pages/master/scripts/validation/schema/komentoscript-pack.schema.json)).
 
 ---
 
-## Quick start guide - example KomentoScript
+## Quick Start
 
 KomentoScript organises each site into a pack. A pack is one JSON object with metadata and a list of targets. An example valid KomentoScript is below.
 
@@ -64,9 +66,51 @@ This pack adds a single target for `https://example.com/watch/*`, extracts the a
 ### Required fields
 
 - Top-level: `komentoVersion`, `id`, `targets[]`.
-- Each target: `targetId`, `match.origins[]`, and `extract.animeTitle` + `extract.episodeNumber`.
+- Each target: `targetId`, `match.origins[]`, and `extract.animeTitle` \+ `extract.episodeNumber`.
 
 If these are missing or invalid, the pack is rejected.
+
+---
+
+## Schema-first field reference
+
+Top-level:
+
+- `komentoVersion: string`
+- `id: string`
+- `name?: string`
+- `updatedAt?: string`
+- `appliesTo?: string[]`
+- `tags?: string[]`
+- `profiles?: Record<string, { enabledTargets: string[] }>`
+- `targets: Target[]`
+
+Target:
+
+- `targetId: string`
+- `priority?: number`
+- `extends?: string`
+- `mergeMode?: "replace" | "deep"`
+- `match: Match`
+- `extract: Extract`
+- `placement?: PlacementSingle | PlacementMap`
+- `mapping?: object`
+
+Match:
+
+- `origins: string[]` (required, non-empty)
+- `pathGlobs?: string[]`
+- `excludePathGlobs?: string[]`
+
+Extract fields:
+
+- `animeTitle` (required)
+- `episodeNumber` (required)
+- `episodeReleaseDate`
+- `anilistId`
+- `malId`
+
+Each extract field can use selector mode or pipeline mode.
 
 ### Matching pages
 
@@ -83,11 +127,10 @@ If these are missing or invalid, the pack is rejected.
 
 ### Extracting data
 
-Supported variables:
+Supported extract variables:
 
 - `animeTitle` (required)
 - `episodeNumber` (required)
-- `episodeTitle` (TBD, not supported as-of-yet)
 - `episodeReleaseDate`
 - `anilistId`
 - `malId`
@@ -108,8 +151,8 @@ You can use either simple selectors or pipelines to grab this data.
 This works as follows:
 
 - `selector` is a standard **CSS selector string**, passed to document.querySelector.
-- `xPath` is the full xPath on-page using when the selector doesn't find the text.
-- `attr` is a standard **attribute**, passed to element.getAttribute.
+- `xPath` is used if selector is unavailable.
+- `attr` supports `text`, `html`, or any attribute name.
 
 **Pipeline** mode:
 
@@ -131,7 +174,7 @@ Pipeline mode uses a workflow-like approach. For the example above, this'd under
 
 1. Find an element on the page that matches .episode
 2. Read that element’s text content
-3. Apply regex (\\d+) to that text and extract the first number capture
+3. Apply regex (\\d\+) to that text and extract the first number capture
 4. Convert the extracted value to a numeric string (sanitizes to digits/decimal, parses number, then stores as string)
 
 ### Placement
@@ -140,16 +183,25 @@ Pipeline mode uses a workflow-like approach. For the example above, this'd under
 "placement": {
   "display": "below",
   "mountSelector": "main",
-  "anchorSelector": "", // optional, dependant on mode
+  "anchorSelector": "", // optional, depends on mode
   "mountXPath": "", // optional
   "anchorXPath": "", // optional
   "sidePadding": 240, // optional
+  "iconDisplayKind": "text", // optional: "text" | "icon"
+  "iconDisplayAction": "popup", // optional: "popup" | "replace"
+  "iconDisplayText": "Hayami" // optional
 }
 ```
 
 - `display`: `"below"`, `"insert"`, `"replace"`, `"popup"`, or `"icon"`.
 - `mountSelector` / `anchorSelector` choose where the UI is attached.
-- `sidePadding` choose how much y-padding comments section gets.
+- `sidePadding` controls horizontal padding applied to the mounted container.
+
+If using `icon` mode (which is icon/text trigger):
+
+- `iconDisplayKind` controls whether icon mode uses text-based or icon-based trigger styles.
+- `iconDisplayAction` controls whether icon click opens popup or performs replace behavior.
+- `iconDisplayText` controls label text when text-based icon mode is used.
 
 If `placement` is omitted, runtime falls back to popup mode.
 
@@ -174,9 +226,130 @@ Doing this will, in the above example, set below as default, and allow KomentoSc
 
 ---
 
-## Having multiple packs
+## Profiles
 
-There's situations where you'd want to chain multiple targets within a single pack. Doing so would look like below.
+Profiles let one pack expose multiple target sets and choose which targets are active.
+
+Use cases:
+
+- Keep a stable default while shipping an experimental target in the same pack.
+- Switch between target groups for site variants without publishing separate packs.
+
+Schema shape:
+
+```json
+"profiles": {
+  "default": { "enabledTargets": ["example.watch.stable"] },
+  "experimental": { "enabledTargets": ["example.watch.stable", "example.watch.new-layout"] }
+}
+```
+
+Behavior:
+
+- If an active profile id is selected, its `enabledTargets` list is used.
+- Otherwise, runtime falls back to `profiles.default`.
+- If no valid profile is present (or `enabledTargets` is empty), profile filtering is skipped.
+- User per-source target toggles are applied in addition to profile filtering.
+
+---
+
+## More examples
+
+Standalone JSON example files:
+
+- [Minimal pack](https://github.com/HayamiKomento/komentoscript-pages/tree/master/examples/komentoscript-examples/minimal.pack.json)
+- [Icon (text) popup](https://github.com/HayamiKomento/komentoscript-pages/tree/master/examples/komentoscript-examples/icon-text-popup.pack.json)
+- [Icon (icon) replace](https://github.com/HayamiKomento/komentoscript-pages/tree/master/examples/komentoscript-examples/icon-icon-replace.pack.json)
+- [Placement map](https://github.com/HayamiKomento/komentoscript-pages/tree/master/examples/komentoscript-examples/placement-map.pack.json)
+- [Profiles pack](https://github.com/HayamiKomento/komentoscript-pages/tree/master/examples/docs/komentoscript-examples/profiles.pack.json)
+
+### Icon mode with text trigger
+
+```json
+{
+  "komentoVersion": "0.1",
+  "id": "example-icon-text",
+  "targets": [
+    {
+      "targetId": "example.icon.text",
+      "match": {
+        "origins": ["https://example.com"],
+        "pathGlobs": ["/watch/*"]
+      },
+      "extract": {
+        "animeTitle": { "selector": "h1.title", "attr": "text" },
+        "episodeNumber": { "selector": ".episode", "attr": "text" }
+      },
+      "placement": {
+        "display": "icon",
+        "mountSelector": "#player-controls",
+        "iconDisplayKind": "text",
+        "iconDisplayAction": "popup",
+        "iconDisplayText": "Open Hayami"
+      }
+    }
+  ]
+}
+```
+
+### Icon mode with icon trigger \+ replace action
+
+```json
+{
+  "komentoVersion": "0.1",
+  "id": "example-icon-replace",
+  "targets": [
+    {
+      "targetId": "example.icon.replace",
+      "match": {
+        "origins": ["https://example.com"],
+        "pathGlobs": ["/episode/*"]
+      },
+      "extract": {
+        "animeTitle": { "selector": "h1", "attr": "text" },
+        "episodeNumber": {
+          "pipeline": [["querySelector", ".ep"], ["text"], ["regex", "(\\d+)"], ["number"]]
+        }
+      },
+      "placement": {
+        "display": "icon",
+        "anchorSelector": "#comments-slot",
+        "mountSelector": "#comments-slot",
+        "iconDisplayKind": "icon",
+        "iconDisplayAction": "replace"
+      }
+    }
+  ]
+}
+```
+
+### Placement map for user-selectable display modes
+
+```json
+{
+  "placement": {
+    "below": {
+      "default": true,
+      "mountSelector": "main",
+      "anchorSelector": "main",
+      "sidePadding": 24
+    },
+    "icon": {
+      "mountSelector": "#player-controls",
+      "iconDisplayKind": "text",
+      "iconDisplayAction": "popup",
+      "iconDisplayText": "Discuss"
+    },
+    "popup": {}
+  }
+}
+```
+
+---
+
+## Multi-target packs
+
+You can include multiple targets in a single pack.
 
 ```json
 {

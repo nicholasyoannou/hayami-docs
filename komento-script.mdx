@@ -1,8 +1,7 @@
 ---
 title: "KomentoScript"
 icon: "comment-code"
-description: "KomentoScript combines custom websites with automated third-party URL sync, allowing you to put Hayami's comments embedder wherever your wish."
-sidebarTitle: "KomentoScript"
+description: "KomentoScript combines custom websites with automated third-party URL sync, allowing you to put Hayami’s comments embedder wherever your wish."
 ---
 
 <Note>
@@ -13,6 +12,8 @@ sidebarTitle: "KomentoScript"
   KomentoScript is in early-phase undergoing testing & can be subject to change. Documentation will be more limited during initial development & testing periods.
 </Warning>
 
-KomentoScript is a JSON format that tells Hayami which pages to support, how to extract anime/episode info, and where to mount the discussion UI. For more details on creating your own KomentoScripts, please see [KomentoScript (for script-makers)](/komento-script-dev).
+KomentoScript is a JSON format that tells Hayami which pages to support, how to extract anime/episode info, and where to mount Hayami itself. For more details on creating your own KomentoScripts, please see [**KomentoScript (for script-makers)**](/komento-script-dev).
 
-KomentoScript is provided by Hayami for official mappings to some sites. To add unofficial mappings, you can do so at your own accord by going to [Guide for client TBC].
+KomentoScript is provided by Hayami for official mappings to some sites. KomentoScript sources sync automatically on a weekly basis. Under Settings \> KomentoScript Sync, you can manually sync by clicking 'Sync now'. You can also add your own sources that adhere to the KomentoScript specification.
+
+If you want to add your own sources, you can do so at your own accord by going to Settings \> KomentoScript Sync \> "New source" and adding the URL of your KomentoScript location. Hayami also accepts manually importing KomentoScript files instead of via a URL to allow community sharing similar to custom websites.
