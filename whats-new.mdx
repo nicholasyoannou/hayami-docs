@@ -15,11 +15,14 @@ mode: "default"
   **Features**: TBD
 
   - **Custom websites**:
-    - Added new import/export feature to share Hayami embeddings/site configurations.
+    - Added new import/export feature purposed for sharing of Hayami embeddings/site configurations.
     - Added path-level matching, and removed safeguards for /watch requirement.
-    - Added episode selector support for 'active' list elements, including variations, allowing support for bilibili.tv episode detection.
+    - Added episode selector support for 'active' list elements, including variations, allowing support for bilibili.tv episode detection. Added support for '1-Sub', '1-Dub' websites.
     - Fixed episode selector incorrectly mapping when an episode name is also provided (parseEpisodeFromTitle accepts leading numeric episode labels like 10 followed by whitespace/title text, not _only_ Episode 10 / Ep 10 forms).
-  - **KomentoScript**: A new way of syncing from a third-party URL to automatically sync custom websites from a source. [Read more info \>](/komento-script)
+    - Rehauled element selector UI appended to page instead of hover and fixed triggering hyperlinks on choosing element if element is hyperlinked. 
+    - Fixed element selector not selecting iframes.
+    - Fixed site extraction preview from showing entire DOM element for episode selections; only shows extracted episode number.
+  - **KomentoScript**: A new way of syncing from a third-party URL to automatically sync custom websites from a source. [Read more info](/komento-script)
   - **Rendering**:
     - **New mode**: icon/text trigger. This mode allows interchangeable switching between the site's comments and Hayami's comments, intertwining with the site's styles to make it appear natural. "Interchangeable" means it can swap out the site's comments with Hayami's (and vice-versa), or, allow popup mode on-click (instead of a floating icon). This "interchangeable" feature can be triggered via an icon-click or text-click. Icon-click is intended for full-screen video player websites (i.e. Netflix), and text-click is intended for sites with sites that have an embedded video player with other elements surrounding it.
     - Fixed all discussion platforms on popup mode not rendering other than Reddit & added new rendering mode intended for custom websites.
@@ -29,7 +32,7 @@ mode: "default"
     - Fixed manual override sometimes choosing an unintended cour rather than the choice chosen.
     - Now waits longer period for anime & episode information to come up on page (SPA-based/on-load-in websites improvement).
   - **Image previews**: Pressing 'm' (mute toggle) while hovering over a video now unmutes the media. Enforces no outline for on-hover image previews intended for sites that enforce border outline styles.
-  - **Disqus**: Fixed mapping to be able to handle episodes split across duplicate entries  on Hayami's API.
+  - **Disqus**: Fixed mapping to be able to handle episodes split across duplicate entries  on Hayami's API. Fixed title coming up as 'Discussion' instead of actual title.
   - Added alert in Hayami popup if hosts haven't been given permission for custom websites or KomentoScript.
   - Added a fix for SPA-based apps not properly rendering Hayami in certain situations.
   - Added close button, expandable settings menu for quick actions (just quick-add custom websites import file for now), re-styled settings menu, info/help information, and footer on popup for easier discovery of documentation.
