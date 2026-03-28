@@ -6,7 +6,7 @@ sidebarTitle: "KomentoScript (Dev)"
 ---
 
 <Note>
-  The current version of KomentoScript is **v0.1**.
+  The current version of KomentoScript is **v1**.
 </Note>
 
 <Warning>
@@ -378,7 +378,25 @@ You can include multiple targets in a single pack.
 
 To get started, <Icon icon="code-fork" />  [fork the repository](https://deploy.workers.cloudflare.com/?url=https://github.com/HayamiKomento/komentoscript-pages) from GitHub. You can also one-click the Cloudflare Pages, or Netlify deployment buttons, which'll do this & auto-deploy for you. For GitHub pages, fork the repository, and enable GitHub Pages through the repository settings, and re-run the deployment workflow through Actions.
 
-Under sites/, this contains JSON files for each site. There are sample files for Crunchyroll and HIDIVE (these are sample files unintended for production-use) that demonstrate the use of KomentoScript. Feel free to rename these files, and use the schema plus this documentation to aid scripting. To test functionality through the Hayami extension, you can import files directly from:\
-Hayami settings \> KomentoScript Sync \> Import file.
+Under sites/, this contains JSON files for each site. There are sample files for Crunchyroll and HIDIVE (these are sample files unintended for production-use) that demonstrate the use of KomentoScript. Feel free to rename these files, and use the schema plus this documentation to aid scripting. To test functionality through the Hayami extension, you can import files directly via:\
+Hayami settings \> KomentoScript \> Import file
+
+You can also _validate_ that your files fit the schema by `npm run build` . If there are any errors, such as trying to put custom website configurations into KomentoScript without considering the syntax:
+
+```ssh-config
+PS C:\Users\User\Documents\komentoscript-pages> npm run build
+
+> komentoscript-pages@1.0.0 build
+> node ./scripts/build.mjs
+
+Validation failed:
+- sites\animeWebsite.json: root must have required property 'komentoVersion'
+- sites\animeWebsite.json: root must have required property 'id'
+- sites\animeWebsite.json: root must have required property 'targets'
+- sites\animeWebsite.json: root unsupported field 'format'.
+- sites\animeWebsite.json: root unsupported field 'version'.
+- sites\animeWebsite.json: root unsupported field 'exportedAt'.    
+- sites\animeWebsite.json: root unsupported field 'mapping'.       
+```
 
 Hayami's KomentoScript Pages Builder automatically chains all sites you've configured to a `/all` endpoint when you deploy KomentoScripts Page Builder. You can also individually go to the JSON of each site by going to `/id` (where `id` is your pack ID).

@@ -5,15 +5,25 @@ description: "KomentoScript combines custom websites with automated third-party 
 ---
 
 <Note>
-  The current version of KomentoScript is **v0.1**.
+  For more details on creating your own KomentoScripts, please see [**KomentoScript (for script-makers)**](https://docs.hayami.moe/komento-script-dev).
 </Note>
 
 <Warning>
   KomentoScript is in early-phase undergoing testing & can be subject to change. Documentation will be more limited during initial development & testing periods.
 </Warning>
 
-KomentoScript is a JSON format that tells Hayami which pages to support, how to extract anime/episode info, and where to mount Hayami itself. For more details on creating your own KomentoScripts, please see [**KomentoScript (for script-makers)**](/komento-script-dev).
+KomentoScript is a more advanced format built on-top of what powers custom websites that tells Hayami what website, what pages on those sites to support, how to extract anime/episode info, and where to mount Hayami itself. KomentoScript allows you to sync from community instances (sources), allowing you to choose sites _you personally_ want, pre-configured by the community out-the-box. KomentoScript instances can be hosted by anyone.
 
-KomentoScript is provided by Hayami for official mappings to some sites. KomentoScript sources sync automatically on a weekly basis. Under Settings \> KomentoScript Sync, you can manually sync by clicking 'Sync now'. You can also add your own sources that adhere to the KomentoScript specification.
+## How to add KomentoScript instances
 
-If you want to add your own sources, you can do so at your own accord by going to Settings \> KomentoScript Sync \> "New source" and adding the URL of your KomentoScript location. Hayami also accepts manually importing KomentoScript files instead of via a URL to allow community sharing similar to custom websites.
+<Note>
+  KomentoScript instances are community-managed, and not affliated with Hayami directly.
+</Note>
+
+KomentoScript sources sync automatically on a weekly basis. If you want to add your own sources, you can do so at your own accord by going to Settings \> KomentoScript \> "New source" and adding the URL of your KomentoScript location. To see all the sites the KomentoScript source has to offer, add `/all` to the end to see all those sites on the Hayami extension (see the community instance URL below as an example). Hayami also accepts manually importing KomentoScript files instead of via a URL to allow community sharing similar to custom websites.
+
+Some community managed instances:
+
+- [potato90000](https://potato90000.github.io/komentoscript/) ([https://potato90000.github.io/komentoscript/all](https://potato90000.github.io/komentoscript/all))
+
+Under Settings \> KomentoScript, you can manually sync by clicking 'Sync now' if there was a recent update you want fetched.

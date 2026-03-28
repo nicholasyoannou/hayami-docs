@@ -6,18 +6,99 @@ icon: "rocket-launch"
 
 Hayami can be downloaded and installed straight from the [Chrome Web Store](https://chromewebstore.google.com/detail/hayami-anime-comments-dis/nhkggpiaeaeeeimohfpchnjobbamfcbg) and [Firefox Addons](https://addons.mozilla.org/en-GB/firefox/addon/hayami/). After installation, a new tab will be made guiding you through the setup.
 
-Through the setup, you may be asked to connect some accounts. Reddit (r/anime discussion threads) is set to as-default which covers a wide-range of anime, but you can freely switch your default discussion platform when Hayami loads up if you choose to.
+## Setting up Hayami
+
+### Connecting accounts
+
+Through the setup, you may be asked to connect some accounts. Hayami interfaces with these platforms from your browser directly to show you episode discussions. All discussion platforms have their own terms and privacy policies respectfully, which should be regarded before use.
+
+Reddit (r/anime discussion threads) is set to as-default which covers a wide range of discussions since 2011, but you can freely change your default discussion platform at any time through Hayami's settings, or even switch discussion platforms while on-page when Hayami loads up if you choose to. Connect the accounts you plan to use, and set the one you'd plan to use most as your default.
 
 <Frame>
   ![Image](/images/image-43.png)
 </Frame>
 
-The extension will then ask for you to set up [Image previews](/image-previews), which, once setup, allows an on-hover image-viewing experience of albums from Imgur and Imagechest used on Reddit. Image previews already works with individual photos, when an album hasn't been hyperlinked. All you need to provide is an Imagechest API Key, as Imgur already works out the box. You can also set it up _later_ through the extension popup, so feel free to skip this step.
+The extension will then ask for you to set up [Image previews](/image-previews), which, once setup, allows an on-hover image-viewing experience of <Tooltip tip="A link to an album instead of one image">albums</Tooltip> from Imgur and Imagechest used on Reddit. Image previews works out-the-box with individual photos as well as both albums & single images from Imgur, without any setup by you. Though, if you want album support for Imagechest, all you need to provide is an Imagechest API Key. You can also set it up _later_ through the extension popup, so feel free to skip this step if you wish.
 
 <Frame>
   ![Image](/images/image-44.png)
 </Frame>
 
-That's it, you're all setup and the extension from that point should work out-the-box on Hayami's supported sites, which currently are **Crunchyroll** and **Netflix**. This doesn't mean you can't setup Hayami elsewhere. With [custom websites](/custom-websites), any site can support Hayami, setup by you. It's extremely simple to use the custom website functionality since it has an element picker, allowing you to pick the anime name, episode number and where you want it mounted with ease.
+### Some things you _definitely_ need to know
 
-Custom websites can be imported & exported freely, so individuals or communities that do like to fiddle with the best layout for comments can experiment, and share those about for others to import as they please. For enthusiasts that want to develop community instances that groups many custom websites is done through [KomentoScript](/komento-script), which builds on custom websites syntax further as well.
+**Hayami can get mappings wrong**. Server-side Hayami collates anime discussions, and when you've gone onto an episode episode, this is used to find the correct anime and discussion episode. The bad news is sometimes this mapping will fail. Hayami's mapping isn't _perfect_, and may sometimes get your series or episode number incorrectly. There's many reasons for this, but one example is S2E1 may be Episode 25 somewhere else.
+
+**The good news is you can manually set-once, and forget per-series this mapping yourself**. On all discussion platforms, you should see a "?' or "Wrong anime?" text in the upper-portion of the discussion platform. An illustration of both is shown down below.
+
+<Frame>
+  <Columns cols={2}>
+    <Column>
+      ![Image](/images/image-45.png)
+    </Column>
+    <Column>
+      ![Screenshot 2026 03 28 175605](/images/Screenshot2026-03-28175605.png)
+    </Column>
+  </Columns>
+</Frame>
+
+On-click, you can manually map this anime to the correct series and episode. For instance, in the Reddit example above, Jujutsu Kaisen The Culling Game Episode 1 is getting mapped as Episode 2. The instructions below guide you through this instance.
+
+<Steps>
+  <Step title="Click 'Wrong anime?' if the anime shown is incorrect.">
+    Check if the anime name shown is correct. Jujutsu Kaisen Season 1 isn't my current season, so I'm clicking 'Wrong anime?'.
+
+    <Frame>
+      <img
+        src="/images/image-47.png"
+        alt="Image"
+        title="Image"
+        className="mr-auto"
+        style={{ width:"76%" }}
+      />
+    </Frame>
+  </Step>
+  <Step title="Search, and choose the series your currently watching.">
+    <Frame>
+      <img
+        src="/images/image-48.png"
+        alt="Image"
+        title="Image"
+        className="mr-auto"
+        style={{ width:"76%" }}
+      />
+    </Frame>
+  </Step>
+  <Step title="Choose the episode number your watching right now.">
+    <Frame>
+      <img
+        src="/images/image-49.png"
+        alt="Image"
+        title="Image"
+        className="mr-auto"
+        style={{ width:"76%" }}
+      />
+    </Frame>
+  </Step>
+  <Step title="Mucked up or new season? Open the popup again, and click 'Reset mapping' to start over.">
+    <Frame>
+      <img
+        src="/images/image-53.png"
+        alt="Image"
+        title="Image"
+        style={{ width:"77%" }}
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+After that, for the rest of the series/season, it should map properly. Over time, this interface design _may_ change so don't fret if the designs differ.
+
+### All done from there.
+
+That's it, you're all setup and the extension from that point should work out-the-box on Hayami's supported sites, which currently are **Crunchyroll** and **Netflix**.
+
+This doesn't mean you can't setup Hayami elsewhere. With [custom websites](/custom-websites), any site can support Hayami, setup by you. It's extremely simple to use the custom website functionality since it has an element picker, allowing you to pick the anime name, episode number and where you want it mounted with ease.
+
+Custom websites can be imported & exported freely, so individuals or communities that do like to fiddle with the best layout for comments can experiment, and share those about for others to import as they please. 
+
+You can also sync from [KomentoScript](/komento-script) instances that groups many custom websites, or you can import KomentoScript files directly into Hayami. For enthusiasts that want to develop community instances for KomentoScript [can do also](/komento-script-dev). 

@@ -17,11 +17,12 @@ mode: "default"
   - **Custom websites**:
     - Added new import/export feature purposed for sharing of Hayami embeddings/site configurations.
     - Added path-level matching, and removed safeguards for /watch requirement.
-    - Added episode selector support for 'active' list elements, including variations, allowing support for bilibili.tv episode detection. Added support for '1-Sub', '1-Dub' websites.
+    - Added episode selector support for 'active' list elements, including variations. Added support for '1-Sub', '1-Dub' websites.
     - Fixed episode selector incorrectly mapping when an episode name is also provided (parseEpisodeFromTitle accepts leading numeric episode labels like 10 followed by whitespace/title text, not _only_ Episode 10 / Ep 10 forms).
-    - Rehauled element selector UI appended to page instead of hover and fixed triggering hyperlinks on choosing element if element is hyperlinked. 
-    - Fixed element selector not selecting iframes.
+    - Rehauled element selector hover UI now showing up hover-style instead of randomly added to page and fixed triggering hyperlinks on choosing element if element is hyperlinked.
+    - Fixed element selector not selecting iframes, and Hayami interfering with on-site elements with similar attributes to Hayami for some discussion platforms.
     - Fixed site extraction preview from showing entire DOM element for episode selections; only shows extracted episode number.
+    - Improved Disqus handler for Disqus sections already on-site so the embedder respects those (depending on mode) when embedding.
   - **KomentoScript**: A new way of syncing from a third-party URL to automatically sync custom websites from a source. [Read more info](/komento-script)
   - **Rendering**:
     - **New mode**: icon/text trigger. This mode allows interchangeable switching between the site's comments and Hayami's comments, intertwining with the site's styles to make it appear natural. "Interchangeable" means it can swap out the site's comments with Hayami's (and vice-versa), or, allow popup mode on-click (instead of a floating icon). This "interchangeable" feature can be triggered via an icon-click or text-click. Icon-click is intended for full-screen video player websites (i.e. Netflix), and text-click is intended for sites with sites that have an embedded video player with other elements surrounding it.
