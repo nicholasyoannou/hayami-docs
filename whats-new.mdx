@@ -15,10 +15,13 @@ mode: "default"
   **Features**: TBD
 
   - Added scrollbar on Hayami PWA (website version).
-  - Refine mapper failover & fix Disqus titles on certain special characters.
+  - Refine mapper failover & fix Disqus titles on certain special characters (e.g.【OSHI NO KO】).
+  - Adjusted discussion platform logo expander: Added more y-padding per-logo discussion platform expander.
+  - Fixed AniList fetching to be background-script, fixing discussion platforms AniList and The Anime Community (CORS Preflight issue). TAC iframe rendering also fixed. AniList now handles 'message' rendering as toast message from GraphQL (due to [API issues](https://discord.com/channels/210521487378087947/457951807046549525/1487849424276291745) falsely triggering AniList logged-out (403).
+  - Fixed MyAnimeList skeleton loading disappearing (causing Hayami to appear blank) while fetching comment data, and Aniwave minimize icon styles appearing left and not styled.
 </Update>
 
-<Update label="Version 0.0.8.4" description="Published [30 March 2026]">
+<Update label="Version 0.0.8.4" description="Published [29 March 2026]">
   ## v0.0.8.4 - QOL, KomentoScript & improvements
 
   **Features**: Finalised custom websites support, rehauling certain aspects. Rewrote style injection and partial CSS, settings layout, and added KomentoScript support.  Added new rendering mode to add a more natural rendering style that feels site-native. Along with a few more fixes, improvements and features.
