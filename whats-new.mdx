@@ -10,15 +10,28 @@ mode: "default"
 </Tip>
 
 <Update label="Version 0.0.8.5" description="Unpublished">
-  ## v0.0.8.5 - TBD
+  ## v0.0.8.5 - QOL, New render modes, & improvements
 
   **Features**: TBD
 
+  - **QOL**:
+    - Refine mapper failover & fix Disqus titles on certain special characters (e.g.【OSHI NO KO】).
+    - Fixed AniList fetching to be background-script, fixing discussion platforms AniList and The Anime Community (CORS Preflight issue). AniList now handles 'message' rendering as toast message from GraphQL (due to [API issues](https://discord.com/channels/210521487378087947/457951807046549525/1487849424276291745) falsely triggering AniList logged-out (403)).
+    - Fixed MyAnimeList skeleton loading disappearing (causing Hayami to appear blank) while fetching comment data, and Aniwave minimize icon styles appearing left and not styled.
+    - Fixed popup mode if on-click while loading closing, causing you to click to open the extension again.
+    - Changed comment and upvoting are greyed if signed out of Reddit.
+    - Fixed moderator badges not showing up if replies loaded in by loading-trigger.
+  - **New rendering modes**:
+    - **Reddit**:
+      - The new default rendering mode, **traditional** (nested). Traditional mode has a Reddit tree-like view, allowing you to customise:
+        - the breathing room between each layer
+        - whether to truncate thread lines at last reply at each layer
+      - The old rendering mode, Threaded, will continue to work and will be a selectable option if desired.
+    - **No render mode, otherwise known as "Link-only mode"**: Doesn't render Reddit, Disqus, MAL, AniList or YouTube comments container directly in Hayami, but has an on-click button to take you directly to the discussion. Helps for mobile form-factors in the case it's better to view things in-app (e.g. Reddit), or on the site itself (MAL/AL).
   - Added scrollbar on Hayami PWA (website version).
-  - Refine mapper failover & fix Disqus titles on certain special characters (e.g.【OSHI NO KO】).
   - Adjusted discussion platform logo expander: Added more y-padding per-logo discussion platform expander.
-  - Fixed AniList fetching to be background-script, fixing discussion platforms AniList and The Anime Community (CORS Preflight issue). TAC iframe rendering also fixed. AniList now handles 'message' rendering as toast message from GraphQL (due to [API issues](https://discord.com/channels/210521487378087947/457951807046549525/1487849424276291745) falsely triggering AniList logged-out (403).
-  - Fixed MyAnimeList skeleton loading disappearing (causing Hayami to appear blank) while fetching comment data, and Aniwave minimize icon styles appearing left and not styled.
+  - The Anime Community rendering rehauled to embed accordingly.
+  - Added Discord hyperlink to footer of extension, which aims to streamline discussion relating to new features, and issues.
 </Update>
 
 <Update label="Version 0.0.8.4" description="Published [29 March 2026]">

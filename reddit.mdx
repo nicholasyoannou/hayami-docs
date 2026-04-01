@@ -1,36 +1,102 @@
 ---
+title: "Configuring Reddit"
 icon: "comment"
-description: "How to setup Reddit through Hayami, and any extras you wish to configure."
-sidebarTitle: "Reddit"
-title: "Use your own Reddit software app with Hayami"
+description: "How to setup and configure Reddit"
 ---
 
-**Reddit through Hayami already works out the box.** That means all the rendering of comments, as well as commenting itself, should be without issues and is done through your browser session for Reddit. However, this can change at any time (since third-party APIs can be subject to change), and at times may break. I do wish for Hayami to have it's own Reddit app, and hopefully in-future this'll come to fruition, but for now this does the job.
+**Reddit on Hayami already works out-the-box**, assuming your logged-in through your browser. If you're not logged into Reddit already, as already mentioned in the [getting started](/getting-started) guide, can cause rate limits according to your i.e. IP address. This sometimes may trigger Reddit to not return the discussion altogether, Hayami prompting you to login to continue. So, if you haven't already, do so by going to Hayami \> Manage or add accounts \> Login on Reddit.
 
-Because of this, you may wish to use your own API Keys for Reddit if you have them, enabling a more stable & smoother experience in being able to interact with Reddit in-general. Currently, Hayami only has support for a **software app** (as personally that's the only one I've got and can test) but will potentially expand support to more Reddit app types in the future, depending on how things continue. I've put below on how you properly configure Hayami to support your Reddit software app.
+If you have a Reddit software-app, you can [customise Hayami to work with it](/reddit-software-app). If you don't have one, ignore this. If you do, authenticating through your app will use your [app's rate limits](https://support.reddithelp.com/hc/en-us/articles/16160319875092-Reddit-Data-API-Wiki).
 
-## How to get your Reddit API Keys
+## Customising Reddit
 
-<Info>
-  Because of Reddit API changes, for new Reddit users, you may not be able to create new Reddit applications without direct approval from Reddit to create your Reddit application. This guide is intended for users with these apps & keys already.
-</Info>
+All of Reddit's settings can be configured through Hayami \> Settings \> Discussion platforms \> Reddit.
 
-If you go to https://www.reddit.com/prefs/apps, you should be able to see your existing applications under "developed applications". Under your software app, there should be a unique identifier (client ID). **Copy this client ID**.
+Reddit has a few themes on Hayami out-the-box:
 
-![Hayami Reddit Software App How To](/images/hayamiRedditSoftwareAppHowTo.png)
+- **traditional (nested)**: default theme for Reddit, tree view, inspired by both Reddit and the new YouTube commenting tree-view. You can also customise the layout traversal spacing.
+- **threaded**: built similarly to traditional but with a few tweaks
+- **link-only mode**: a button that hyperlinks to Reddit, which may be best for mobile-factor devices
 
-Click 'edit' under this software app and **ensure the redirect URI is set to** https://hayami.moe/pwa/link/reddit
+Examples of the same comments section is shown below on each theme to suit different preferences.
 
-![Image](/images/image.png)
+<Tabs>
+  <Tab title="Link-only mode" icon="comment-slash">
+    <Frame>
+      ![Image](/images/image-50.png)
+    </Frame>
+  </Tab>
+  <Tab title="traditional (nested)" icon="comment">
+    <Frame>
+      ![Screencapture Crunchyroll Watch G8WU7NX0K Shall We Go Then 2026 04 01 20 17 47](/images/screencapture-crunchyroll-watch-G8WU7NX0K-shall-we-go-then-2026-04-01-20_17_47-1.png)
+    </Frame>
+  </Tab>
+  <Tab title="threaded" icon="comment">
+    <Frame>
+      ![Screencapture Crunchyroll Watch G8WU7NX0K Shall We Go Then 2026 04 01 20 21 55](/images/screencapture-crunchyroll-watch-G8WU7NX0K-shall-we-go-then-2026-04-01-20_21_55.png)
+    </Frame>
+  </Tab>
+</Tabs>
 
-That's all the setup done on Reddit side.
+Reddit has many settings on-top of custom themes:
 
-## How to configure the Hayami extension with your app
-
-On the Hayami extension, open the popup and click the settings icon, and go to 'Discussion platforms'. Ensure on the dropdown you've chosen Reddit, and scroll to 'Advanced', and hit 'Expand'. Under your 'client ID', enter this, and hit Save.
-
-Go back to the main popup screen (click Back at the top), and click 'Manage accounts'. Click 'Login' on Reddit, followed by 'Allow' on the prompt to authenticate.
-
-![Screenshot 2026 02 06 160005 Edited](/images/Screenshot2026-02-06160005_edited.png)
-
-Success, your account should be authenticated with your app and should work properly on Hayami using your Reddit software app.
+- Reddit editor: **Rich editor or Plain markdown box**. "Rich editor" is a TipTap editor skinned like the Reddit on-site editor, supporting most features out-the-box. "Plain markdown box" is just an input field where your [raw markdown](https://support.reddithelp.com/hc/en-us/articles/360043033952-Formatting-Guide) input will get submitted to Reddit directly.
+- Link-only mode: As explained above, effectively renders a hyperlink instead of the discussion, found at Hayami \> Settings \> General \> Link-only mode.
+- Default Reddit sort: Change the default sort from Reddit sorting types (Best, Top, New, Old, etc).
+- Show user flairs:
+  <Columns cols={2}>
+    <Column>
+      <Frame>
+        ![Image](/images/image-54.png)
+      </Frame>
+    </Column>
+    <Column>
+      <Frame>
+        <img
+          src="/images/image-55.png"
+          alt="Image"
+          title="Image"
+          style={{ width:"46%" }}
+        />
+      </Frame>
+    </Column>
+  </Columns>
+- Flair position (Inline with username/below username):
+  <Columns cols={2}>
+    <Column>
+      <Frame>
+        ![Image 54](/images/image-54.png)
+      </Frame>
+    </Column>
+    <Column>
+      <Frame>
+        ![Image](/images/image-56.png)
+      </Frame>
+    </Column>
+  </Columns>
+- Deep replies open in (Open in Hayami popup/open in Reddit): You can choose _how_ replies get shown when the depth becomes too deep (too shoved to the right), triggering this action.
+- Comment layout (Threaded/Traditional): As explained & shown above.
+- Traditional layout spacing: If using traditional, you can customise the spacing (in other words, breathing room) between each layer for accessibility purposes.
+- Truncate thread lines at last reply toggle: This is having a line that goes down, no matter if that's the last comment on the layer, or stops if it's the last comment on the layer. Recommended settings: if using threaded, turn 'truncate thread lines....' off, and if using traditional, turn it on.
+  <Columns cols={2}>
+    <Column>
+      <Frame>
+        <img
+          src="/images/image-57.png"
+          alt="Image"
+          title="Image"
+          style={{ width:"68%" }}
+        />
+      </Frame>
+    </Column>
+    <Column>
+      <Frame>
+        <img
+          src="/images/image-58.png"
+          alt="Image"
+          title="Image"
+          style={{ width:"66%" }}
+        />
+      </Frame>
+    </Column>
+  </Columns>
