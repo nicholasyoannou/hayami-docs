@@ -21,6 +21,10 @@ mode: "default"
     - Fixed popup mode if on-click while loading closing, causing you to click to open the extension again.
     - Changed comment and upvoting are greyed if signed out of Reddit.
     - Fixed moderator badges not showing up if replies loaded in by loading-trigger.
+    - Added Disqus to the accounts menu, allowing quick signin similar to Reddit.
+    - Added 'Stuck?' button to Disqus if the embed loader is stuck, reloading the Disqus embed (usually caused by new users to Disqus, but can be sporadic).
+    - Fixed Hayami site search discussions sometimes rendering using the no-config default (which'd be popup, since there isn't any other details), rather than mount-on-site.
+    - Fixed sporadic-occurring bug of editor not opening if you click reply on a depth-2 or more comment, but if you clicked reply on depth 1 or below, it'd open every single editor on that chain.
   - **New rendering modes**:
     - **Reddit**:
       - The new default rendering mode, **traditional** (nested). Traditional mode has a Reddit tree-like view, allowing you to customise:
@@ -28,7 +32,11 @@ mode: "default"
         - whether to truncate thread lines at last reply at each layer
       - The old rendering mode, Threaded, will continue to work and will be a selectable option if desired.
     - **No render mode, otherwise known as "Link-only mode"**: Doesn't render Reddit, Disqus, MAL, AniList or YouTube comments container directly in Hayami, but has an on-click button to take you directly to the discussion. Helps for mobile form-factors in the case it's better to view things in-app (e.g. Reddit), or on the site itself (MAL/AL).
-  - Added scrollbar on Hayami PWA (website version).
+  - Added scrollbar on Hayami PWA (website version) and popup.html.
+  - **Custom websites**:
+    - Added new feature: sync from third-party URL. This works similar to how KomentoScript syncs from a third-party URL, except you can sync lists of custom websites. This makes it easier for individuals amongst communities to compilate & sync sources from multiple destinations, providing the tools to put these together.
+    - Custom site merger site added that merges custom site JSON together for syncing. Added to custom websites documentation to make it _even easier_ for anyone to deploy mappings.
+  - Rehauled onboarding styling, swapping out background, changing old info icons to new ones, rehauled connect your accounts screen, and rewrote explanations to better act as a getting started guide in preparation for use of docs and extension.
   - Adjusted discussion platform logo expander: Added more y-padding per-logo discussion platform expander.
   - The Anime Community rendering rehauled to embed accordingly.
   - Added Discord hyperlink to footer of extension, which aims to streamline discussion relating to new features, and issues.
