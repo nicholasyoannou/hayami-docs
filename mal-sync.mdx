@@ -1,0 +1,39 @@
+---
+title: "MAL-Sync"
+icon: "earth-americas"
+description: "Enabling MAL-Sync support with Hayami."
+---
+
+Hayami has [MAL-Sync](https://malsync.moe) support to be able to better map the anime you watch without requiring you to do it _twice_ (for example, if watching an anime mapped through MAL-Sync for your MAL/AL). Enabling this support enables you to _just_ do it on MAL-Sync, with Hayami using MAL-Sync to aid Hayami's mappings. This feature is disabled by-default, requiring some setup.
+
+## Steps to enable MAL-Sync
+
+<Steps>
+  <Step title="On MAL-Sync, enable 'Discord Rich Presence' through the extension's settings">
+    Enabling Discord Rich Presence allows Hayami to communicate with MAL-Sync. Ensure 'show button to view the anime/manga on MAL or another provider' is enabled.
+
+    Do not worry: this will _not_ show MAL-Sync on your Discord Rich Presence unless you've installed an application to manage this on your computer. Hayami uses this feature to interface with MAL-Sync directly. [MAL-Sync Docs \>](https://github.com/MALSync/MALSync/wiki/Discord-Rich-Presence)
+
+    <Frame>
+      <img
+        src="/images/image-75.png"
+        alt="Image"
+        title="Image"
+        className="mx-auto"
+        style={{ width:"72%" }}
+      />
+    </Frame>
+  </Step>
+  <Step title="On Hayami's settings, enable 'MAL-Sync integration'">
+    Under Settings \> General, enable MAL-Sync integration. If you can't and it's greyed out,  MAL-Sync isn't detected as an installed browser extension. This feature will take effect whenever you use MAL-Sync to track your anime.
+
+    <Frame>
+      <img
+        src="/images/image-76.png"
+        alt="Image"
+        className="mx-auto"
+        style={{ width:"55%" }}
+      />
+    </Frame>
+  </Step>
+</Steps>

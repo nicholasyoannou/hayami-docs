@@ -9,10 +9,54 @@ mode: "default"
   Hayami is currently in open-beta so may contain bugs. [Feedback](/feedback) is appreciated :)
 </Tip>
 
-<Update label="Version 0.0.8.6" description="Unpublished">
-  ## v0.0.8.6 - TBD
+<Update label="Version 0.0.8.6" description="Published [8 April 2026]">
+  ## v0.0.8.6 - QOL, UI, Map site with Hayami improvements
 
-  **Features**: TBD
+  **Features**: Primarily QOL updates, focusing on redesigning Hayami's UI \+ larger PWA, fixing how some features are stylised throughout the extension. Added further customisation features with background colour support, regex support, MAL-Sync support (to aid with mapping), and various other QOL fixes.
+
+  - **QOL**:
+    - Fixed account linking for Firefox for all discussion platforms (MV2/MV3).
+    - Migrated YouTube from Chrome extension Client ID type to web app type (like MAL) so it works cross-browser _without_ the requirement for the identity permission. Removed identity permission also.
+    - Fixed Custom website path globs only allowing two-level (e.g. /watch/\* instead of /\*) and freed how wildcard can be used.
+    - Changed icons on the custom websites popup screen to better-reflect the action of the icon.
+    - Fix anime name shown after clicking 'Wrong anime' actually _not_ being the anime Hayami initially maps it to.
+    - Editing the raw values from the custom site screen is now possible.
+    - Moved question mark placement next to actual element title in Hayami popup.
+    - Changed date parsing to use chrono-node, with fully implemented Hayami API release date handling on KomentoScript.
+    - Fixed spoiler rendering on TipTap editor for Reddit not showing up in UI.
+    - Fixed adding new sites through Map site with Hayami not _requiring_ a page-refresh; tries to mount after confirmation, fixes toast styling also.
+    - Added Custom overrides (anime series/episode number for discussions) to settings menu, listing custom overrides you've made, allowing deletions and clearing these overrides.
+    - Fixed critical bug where Hayami fetches slow/unresponsively for some discussion platforms if relying on background requests if the popup itself isn't open (which is _almost_ the majority of the time) effecting skeleton loading fetching, and initial comment loading. This is partly due to MV3 having a cold-start cost if the service worker idles, adding a delay. Uses a keepalive to prevent idles. Added some fixes for background messaging on Firefox as well.
+    - Custom site sync sources and KomentoScript sync sources are now saved in sync extension storage for cross-platform e.g. viewing sites on your phone you've synced from your PC. The ten most recently added custom overrides (episode/anime manual overrides) has also been added to sync. Due to sync size limits, unfortunately custom site mappings (raw JSON) can't be saved in sync storage. Due to security reasons, linked accounts have been kept out of sync storage (and also some accounts rely on session-based auth, which'd mean it'd be a partial-sync anyway even if it was moved to sync).
+    - Added a popout icon to the Hayami popup so it opens the Hayami settings in a larger display.
+    - Changed how Hayami logging is output in browser console to be more clean, less messy format, inspired by MAL-Sync's badge console logging. Added option in Hayami settings to enable/disable logging for a less cluttered console.
+    - Fixed MyAnimeList/AL 'Wrong anime?' not acknowledging anime overrides in some cases. Switched to use Jikan for MAL completely for anime searching.
+    - Removed Reddit toast notification if upvoted/downvoted successfully (purposed for debugging initially). Only shows toast if fails.
+    - Moved comment layout on Reddit up in Discussion platform settings, and changing the theme changes the values for out-the-box configuration.
+    - Fix image preview album skeleton loading mechanism loading images slowly despite mouse movement away from an album (indicating they no longer want to view it). Loading indicator only shows if the image your viewing (up to 3) is loading, so on slow internet you can progress through the album, while it's loading progressively.
+    - Fixed pwa-shell on Hayami PWA on-site not taking up full-width.
+  - **Custom websites**:
+    - Added an export all button to custom websites that supports the sync mapping import format. Docs updated to reflect this.
+    - Re-designed "Map site with Hayami" overlay to be more simplistic, fitting only information that's needed, rather than being unnecessarily overbearing than it actually is. Docs have been updated to reflect this.
+    - Re-designed the 'Wrong anime?' modal so the wrong anime hyperlink in the popup is it's own popup, making things look a lot more cleaner. The search has been changed to auto-search, showing the year, cover photo, amount of discussions available, and the MAL/AL links. After selection, the episode selector is now a square-per-episode rather than row-by-row per-episode.
+    - Added regex support in the Map site with Hayami feature so you can select elements of elements, automatically calculating regex from the text selected. For instance, if the following text is chosen from the element picker- "Steins;Gate - episode 4", but let's say this is the _only element_ on the page (no seperate episode and anime name elements), you can click on the precise selector feature, highlighting specifically the episode number/anime name i.e. "4"/"episode 4"/"Steins;Gate", detecting this precisely.
+      - If the calculated regex is incorrect (for instance "subbed/dubbed" text on very niche websites can make the regex too precise), you can edit the raw regex values both through the mapper and in Hayami's popup.
+  - **Rendering**:
+    - Added customisation feature of the background colour of the Hayami comments section per-site via the site settings in the Hayami popup. Support for this has also been added to KomentoScript.
+    - Added automatic text colour & element colour changing with said-colour (e.g. white text on dark, and vice-verca applies). TipTap editor adjusted to also have a white theme.
+  - **Mapping**:
+    - Added [MAL-Sync support](/mal-sync) that aids with Hayami mapping. Enabling MAL-Sync support requires enabling "Discord Rich Presence" to be able to communicate with MAL-Sync.
+  - Added provider availability badges feature that showcases amount of comments from Disqus, MAL, AniList, and Reddit. This simultaneously acts as a background pre-fetcher for these platforms, facilitating shorter loading times between these platforms.
+  - **UI/UX**:
+    - Re-designed settings popup in it's entirety to be less blocky (felt like a box in a box in a box before), and be more simplistic with line-seperators between fields.
+    - Re-designed the Hayami popout (Hayami PWA/enlarged popup.html) settings to show two columns: categories to choose from, and the relevant settings. It's designed this way to take advantage of the bigger display compared to the display of restricted popup space. Some specific settings have been re-formatted to support larger displays also.
+    - **Reddit**:
+      - Added two new themes:
+        - compact theme that provides a denser layout option reducing padding, hides avatars, also shrinking flairs, inspired by a mix of old \+ new Reddit, with some tweaks to make it compact
+        - classic old Reddit layout, similarly acts like the one above, but uses old reddit's theme
+      - Added support for the Reddit emotes system (old Reddit themes only) for both these new themes (e.g. #hikariactually on r/anime).
+      - Added new feature: Profile hover card, which shows a user profile hover card on-hover of usernames, showing user bios, background, and other information. Can be disabled through Hayami's settings.
+      - Added support for [RES (Reddit Enhancement Suite)](https://redditenhancementsuite.com/) keyboard shortcuts on these two themes (used by 1.5\+ million).
 </Update>
 
 <Update label="Version 0.0.8.5" description="Published [4 April 2026]">

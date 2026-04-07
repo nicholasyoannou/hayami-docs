@@ -12,11 +12,13 @@ If you have a Reddit software-app, you can [customise Hayami to work with it](/r
 
 All of Reddit's settings can be configured through Hayami \> Settings \> Discussion platforms \> Reddit.
 
-Reddit has a few themes on Hayami out-the-box:
+Reddit has a few comment layouts on Hayami out-the-box:
 
-- **traditional (nested)**: default theme for Reddit, tree view, inspired by both Reddit and the new YouTube commenting tree-view. You can also customise the layout traversal spacing.
-- **threaded**: built similarly to traditional but with a few tweaks
-- **link-only mode**: a button that hyperlinks to Reddit, which may be best for mobile-factor devices
+- **traditional (nested)**: Default theme for Reddit; tree view, inspired by both Reddit and YouTube's commenting tree-view. You can also customise the layout traversal spacing.
+- **threaded**: Built similarly to traditional but with a few tweaks.
+- **classic (old reddit)**: Built similarly to old Reddit (https://old.reddit.com), with emoticon support out-the-box.
+- **compact**: A clash between new reddit and old reddit, but everything got compacted. Literally.
+- **link-only mode**: A button that hyperlinks to Reddit, which may be best for mobile-factor devices.
 
 Examples of the same comments section is shown below on each theme to suit different preferences.
 
@@ -36,11 +38,23 @@ Examples of the same comments section is shown below on each theme to suit diffe
       ![Screencapture Crunchyroll Watch G8WU7NX0K Shall We Go Then 2026 04 01 20 21 55](/images/screencapture-crunchyroll-watch-G8WU7NX0K-shall-we-go-then-2026-04-01-20_21_55.png)
     </Frame>
   </Tab>
+  <Tab title="classic" icon="comment-lines">
+    <Frame>
+      ![Screencapture Crunchyroll Watch G8WU7NX0K Shall We Go Then 2026 04 07 19 36 24](/images/screencapture-crunchyroll-watch-G8WU7NX0K-shall-we-go-then-2026-04-07-19_36_24.png)
+    </Frame>
+  </Tab>
+  <Tab title="compact" icon="comment-lines">
+    <Frame>
+      ![Screencapture Crunchyroll Watch G8WU7NX0K Shall We Go Then 2026 04 07 19 48 33](/images/screencapture-crunchyroll-watch-G8WU7NX0K-shall-we-go-then-2026-04-07-19_48_33.png)
+    </Frame>
+  </Tab>
 </Tabs>
 
 Reddit has many settings on-top of custom themes:
 
-- Reddit editor: **Rich editor or Plain markdown box**. "Rich editor" is a TipTap editor skinned like the Reddit on-site editor, supporting most features out-the-box. "Plain markdown box" is just an input field where your [raw markdown](https://support.reddithelp.com/hc/en-us/articles/360043033952-Formatting-Guide) input will get submitted to Reddit directly.
+- Reddit editor: **Rich editor or Plain markdown box**.
+  - "Rich editor" is a TipTap editor skinned like the Reddit on-site editor, supporting most features out-the-box.
+  - "Plain markdown box" is just an input field where your [raw markdown](https://support.reddithelp.com/hc/en-us/articles/360043033952-Formatting-Guide) input will get submitted to Reddit directly.
 - Link-only mode: As explained above, effectively renders a hyperlink instead of the discussion, found at Hayami \> Settings \> General \> Link-only mode.
 - Default Reddit sort: Change the default sort from Reddit sorting types (Best, Top, New, Old, etc).
 - Show user flairs:
@@ -74,9 +88,29 @@ Reddit has many settings on-top of custom themes:
       </Frame>
     </Column>
   </Columns>
-- Deep replies open in (Open in Hayami popup/open in Reddit): You can choose _how_ replies get shown when the depth becomes too deep (too shoved to the right), triggering this action.
-- Comment layout (Threaded/Traditional): As explained & shown above.
+- Deep replies open in (Open in Hayami popup/open in Reddit): You can choose _how_ replies get shown when the depth becomes too deep (too shoved to the right), triggering this action. You can configure this depth number via the Advanced menu.
+- Profile hover card (hover over usernames shows a profile preview):
+  <Columns cols={3}>
+    <Column>
+      <Frame>
+        ![Image](/images/image-79.png)
+      </Frame>
+    </Column>
+    <Column>
+      <Frame>
+        ![Image](/images/image-81.png)
+      </Frame>
+    </Column>
+    <Column>
+      <Frame>
+        ![Image](/images/image-80.png)
+      </Frame>
+    </Column>
+  </Columns>
+- Open links on: Choose to open links in old reddit (old.reddit.com) or normal reddit (reddit.com).
+- Emoticon support: Enable/disable emoticons (emotes) on Reddit. Emotes were available on old reddit. Classic and compact have it enabled by default, if you want examples.
 - Traditional layout spacing: If using traditional, you can customise the spacing (in other words, breathing room) between each layer for accessibility purposes.
+- Keyboard shortcuts (RES-style): Uses default keyboard shortcuts from [Reddit Enhancement Suite](https://redditenhancementsuite.com/) to navigate, collapse, save, vote, and reply.
 - Truncate thread lines at last reply toggle: This is having a line that goes down, no matter if that's the last comment on the layer, or stops if it's the last comment on the layer. Recommended settings: if using threaded, turn 'truncate thread lines....' off, and if using traditional, turn it on.
   <Columns cols={2}>
     <Column>
