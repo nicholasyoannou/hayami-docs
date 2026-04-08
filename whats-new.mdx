@@ -9,6 +9,23 @@ mode: "default"
   Hayami is currently in open-beta so may contain bugs. [Feedback](/feedback) is appreciated :)
 </Tip>
 
+<Update label="Version 0.0.8.7" description="Published [8 April 2026]">
+  ## v0.0.8.7 - QOL, Backend, MAL-Sync update
+
+  **QOL**:
+
+  - Updated backend to respect anime IDs, adding failovers over database offline mappings (e.g. "My Ribdiculous Reincarnation" failing to map due to the storing of _only_ the Romaji version).
+  - Updated MAL-Sync to also use links on-page on-top-of Discord RP integration. MAL-Sync often mounts on-page instead with MAL/AL ID information.
+  - Added quick fix for Reddit when no discussion found, you can switch to other discussions (isn't stuck to just Reddit).
+
+  **Backend**:
+
+  - Fixed fetching of discussions sometimes not with an AL/MAL ID due to anime-offline-database being out-of-date (intervally updated), added failovers.
+  - Changed priority handling when parameters include MAL/AL IDs compared to text. MAL/IDs take priority.
+  - Optimised cache handling for incoming requests.
+  - Optimised background fetching for various discussion platforms.
+</Update>
+
 <Update label="Version 0.0.8.6" description="Published [8 April 2026]">
   ## v0.0.8.6 - QOL, UI, Map site with Hayami improvements
 
