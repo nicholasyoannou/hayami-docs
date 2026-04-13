@@ -9,6 +9,40 @@ mode: "default"
   Hayami is currently in open-beta so may contain bugs. [Feedback](/feedback) is appreciated :)
 </Tip>
 
+<Update label="Version 0.0.8.7.1" description="Published [13 April 2026]">
+  ## v0.0.8.8 - QOL, Multi-subreddit support, & cleanup
+
+  **QOL**:
+
+  - Remove wait for MAL-Sync unless on-fail mapping state, decreasing loading times. Used as a failover in the case usual mapping fails.
+  - Ensures MAL-Sync features aren't used if disabled entirely.
+  - Added new endpoint to Hayami's API that collates YouTube channels instead of focusing on just one. Hayami uses this one out the box for YouTube instead of Muse Asia.
+  - Rehauled Disqus embedder, which fixes Disqus images or embedded comments section sometimes not embedding properly.
+  - Fix Reddit background requests getting a 403 for session signin handling showing comments but unable to show profile details, rendering all avatars the same one.
+  - Fix Reddit background fetching running into network security blockages on initial post fetch.
+  - Fix Aniwave user images bypassing the comments container.
+  - Fix Reddit no episode found unable to switch to other providers.
+  - Prevent unauthenticated toast from appearing on-click 'Add Comment' while comments is loading. Changed 'Open on Reddit' to be greyed out while mapping to Reddit discussion in-progress.
+  - Added support for [https://redd.it/postID](https://redd.it/postID) links ontop of [https://www.reddit.com/r/anime/comments/postID/](https://www.reddit.com/r/anime/comments/postID/).
+  - Fixed 'Wrong anime' on Aniwave showing 'Unknown title' for all anime due to the redesigned mapping system.
+  - Fix cour folding logic on CR if episode count below certain range, and other CR mapping fixes.
+  - Created 100\+ unit tests to ensure mapping functions correctly before builds push out. This assesses mapping across continuous, cour/part-splitting, by-date filtering, episode-zero scenarios, seasonal extractions, blank/null scenarios, and other such situations. This effects _all_ discussion platforms, testing effecting primarily Reddit, Disqus, and MAL, on Crunchyroll (most sites map perfectly, it's primarily _just_ <Tooltip tip="Not following MAL/AL, the date on-platform being when they (sometimes) re-acquire licensing/migrations to-fro Funimation/Wakanim/VRV merger & not the episode date itself, amongst other cour-splitting issues (e.g. how they handle cours as part of one season)">Crunchyroll</Tooltip>).
+    These unit tests have been designed to test against more complex-mapped anime: Mushoku Tensei, Tensura, Vinland Saga, Attack on Titan, and 86.
+
+  **Reddit**:
+
+  - **Multi-subreddit support**: Hayami now supports multiple subreddits other than r/anime. This is not available on _all_ anime, and is mainly for anime that have populated discussions elsewhere. Examples range from r/Frieren, r/JuJutsuKaisen and others. The backend and models to detect episode discussions are still being actively developed so there may be inconsistencies. Feature is disabled by default due to inconsistencies.
+  - Added new auto-expand all comments feature under Advanced tab. This feature is disabled by default due to the further influx of API requests to Reddit on-load of comments section. Purposed for readers that want to see _everything_ when they open up their comments section, without the extra clicks. This does _not_ load all comments; it prevents clicks for 'load x more comments'.
+  - Redesigned how tabs are displayed, removing the background the tabs initially sat on, and subreddit information is now mounted to the left instead.
+
+  **Backend**:
+
+  - Undergone data cleaning to remove "Irregular threads" from anime names to prevent perculiar search results.
+  - Undergone mass data cleaning to remove stars from anime names, and other perculiar addins that likely occurred on initial DB setup.
+  - New system that fetches, and checks from a trained embedding model (primarily from positive/negative attributes) discussions on other subreddits utilising trusted subreddits from holo, and near-episode-date fetching.
+  - Added new endpoint for YouTube that collates YouTube channels together.
+</Update>
+
 <Update label="Version 0.0.8.7" description="Published [8 April 2026]">
   ## v0.0.8.7 - QOL, Backend, MAL-Sync update
 
