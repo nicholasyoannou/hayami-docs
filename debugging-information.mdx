@@ -7,12 +7,28 @@ hidden: true
   This page is intended for developers. This isn't intended as part of the normal documentation and more of a rough to-do & mind-boggle of ways to approach problems in Hayami.
 </Info>
 
-**Version 0.0.9 - QOL TBD**
+**Version 0.1.0 - QOL TBD**
 
 - [~~Request to e.g. Vinland Saga via Hayami API Aniwave archive returns partial 'matched\_title' information~~](https://api.hayami.moe/anime/search?series_name=Vinland+Saga&season_title=Vinland+Saga&platform=aniwave) Done, now data cleaning required.
   - Data cleaning backend required to populate these fields, as well as MAL/AL if blank.
     - Could be done by stripping the main anime title without extra information, getting the first comment's created\_at\_str year, and use that to help map to the correct AL/MAL ID.
   - There's also additional versions, e.g. Sentai dubs that isn't taken into account on most websites. ~~May need to add a question mark like the other discussion platforms that allows swapping interchangeably between episodes on the same series.~~ (new 'wrong anime' & sub/dub switcher) Different versions don't have a unique MAL/AL different ID, so may need to indicate the slug in such case (unless the slug is normalised a tad).
-- Fixup Hayami backend (remove spreadsheet-grabbing) & data cleaning for Disqus required for backend clash with spreadsheet & Disqus API titles creating multiple entries (for the same anime).
+- ~~Fixup Hayami backend (remove spreadsheet-grabbing) & data cleaning for Disqus required for backend clash with spreadsheet & Disqus API titles creating multiple entries (for the same anime).~~
 - Testing various anime between 2016-2024 period required to test most coverage of mapping compatibility. Series from Dragon Ball Z, Vinland Saga, Re:Zero, My Hero Academia, Mushoku Tensei, Demon Slayer, Chainsaw Man, and Frieren should be a good bunch to test.
+  - <Icon icon="check" />  Complete for Crunchyroll. Testing needs to be done outside of CR now.
 - Make it so it can auto-extract the episode number and anime name out of the document title if present in a certain regex, autofilling custom website mappings for the user.
+  - Note: Manual extraction already via KomentoScript.
+
+Main priority:
+
+- ~~Hayami automatic-host syncing feature where it uses GitHub Gist/GitLab Snippets to automatically host and manage your mappings for others to use.~~
+- ~~Solidifying mapping _outside_ of Crunchyroll. Mapping currently uses date-based priority to not screw up currently airing anime. Since the Hayami mapper doesn't support date selections (yet), this causes problems. Use the AniList ID/MAL ID to grab the year to tell Hayami the date period of possible vals.~~
+
+Other priority:
+
+- ~~Design for the subreddit _might_ need reverting back to what it looked like before. Changing it too much makes it look over-engineered in UI/UX; sometimes old feels right, rather than modernised.~~
+
+Lower than other priority but will happen:
+
+- Bilibili.tv (SEA) support.
+- Bilibili.com (CN) support (with _considerable_ more research).

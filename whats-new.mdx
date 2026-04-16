@@ -9,6 +9,29 @@ mode: "default"
   Hayami is currently in open-beta so may contain bugs. [Feedback](/feedback) is appreciated :)
 </Tip>
 
+<Update label="Version 0.0.9.0" description="Published [16 April 2026]">
+  ## v0.0.9.0 - QOL
+
+  **QOL**:
+
+  - Fixed Aniwave 'wrong anime' not registering anime changes properly.
+  - Changed design of subreddit for Reddit (again) to be more visible, but more engrained with the Reddit logo itself.
+
+  **Custom websites**:
+
+  - You can now link your GitHub or GitLab account to automatically host:
+    - current \+ future mappings
+    - current mappings (snapshot)
+    - specific sites to GitHub Gist/GitLab Snippets.
+  - By linking your GitHub/GitLab, it'll give you a shareable link, and any mappings you make after you give that link out will automatically be synced across after a period of time. You can also manually re-publish your mappings, if you can't wait for that sync to occur.
+  - "Show advanced site mapper details" has been revamped to instead of showing raw details, shows an advanced menu allowing you to select more options to enhance mapping accuracy further, such as the release date on-page (if available), similar to how KomentoScript also allows this.
+
+  **Backend**:
+
+  - Fixed caching system not taking into account dates, causing new episodes of anime to not show up at all on the backend.
+  - Added meta on anime endpoint of Hayami API response that shows raw data from anime-offline-database.
+</Update>
+
 <Update label="Version 0.0.8.9" description="Published [14 April 2026]">
   ## v0.0.8.9 - QOL
 
