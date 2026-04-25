@@ -9,6 +9,24 @@ mode: "default"
   Hayami is currently in open-beta so may contain bugs. [Feedback](/feedback) is appreciated :)
 </Tip>
 
+<Update label="Version 0.0.9.1" description="Published [25 April 2026]">
+  ## v0.0.9.1 - QOL
+
+  **QOL**:
+
+  - Fixed 'wrong anime' globally not registering manual anime changes properly - loadEpisodeOptions would sometimes overwrite manualEpisodeResolvedName (best ranked). This fixes all discussion platforms with wrong anime mappings.
+  - Fixed aniwave 'wrong anime' support not working due to non-use of slug.
+  - Extended episode date support to include seasonal \+ year mappings, amongst a range of other formats.
+  - Adds clear button within general that allows you to cleanup custom sites, mappings, and other details.
+  - Added multi-domain support per-mapping into custom websites, allowing users to add up to 10 domains for one mapping. This may be due to familiar site layouts, or sites having multiple domains seperated for different regions, or other occurences.
+  - Re-wrote MAL-Sync handler to cache IDs locally instead of saving them per-provider.
+  - Adds 'wrong anime' support to YouTube.
+
+  **Changes to Disqus:**
+
+  - Due to Disqus Channels shutting down effective 30th April 2026, the Disqus discussion platform on Hayami has switched to [https://discussanime.moe](https://discussanime.moe), the continuation of the discussanime channel that follows the same format.
+</Update>
+
 <Update label="Version 0.0.9.0" description="Published [16 April 2026]">
   ## v0.0.9.0 - QOL
 
