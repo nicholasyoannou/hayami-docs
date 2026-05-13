@@ -9,6 +9,14 @@ mode: "default"
   Hayami is currently in open-beta so may contain bugs. [Feedback](/feedback) is appreciated :)
 </Tip>
 
+<Update label="Version 0.0.9.7" description="Published [13 May 2026]">
+  ## v0.0.9.7 - QOL
+
+  **QOL:**
+
+  - Infer previous-season episode counts from AniList. Add support for adjusting cumulative episode numbers that include previous-season totals from AniList. This fixes Disqus on some external websites for anime like "Re:ZERO -Starting Life in Another World- Season 4" starting from 67\+ onwards.
+</Update>
+
 <Update label="Version 0.0.9.6" description="Published [13 May 2026]">
   ## v0.0.9.6 - QOL
 
@@ -19,7 +27,7 @@ mode: "default"
   - Fix AniList QraphQL query that resulted in seasonal/continuous conversions for custom websites not occuring.
   - Overhauled custom websites mapping not properly accounting for continuous to seasonal conversions outside of finding an AniList variant (tested via Dr. STONE SCIENCE FUTURE Cour 3) by:
     - _not_ properly analyzing on-site episodes container like Crunchyroll. New selector has been added under advanced that allows choosing of the episodes container. This selector supports "You're watching 1 of 12", dropdown formats, tabular formats (where each row has episode-by-episode elems), and varying episode combinations EP/Episode (regex) combinations.
-    - De-priority AniList episode-count offset (more so a guess rather than accurate). Episode count alone does not indicate cumulative offset. 
+    - De-priority AniList episode-count offset (more so a guess rather than accurate). Episode count alone does not indicate cumulative offset.
   - Fix MAL-Sync not being setup for a given anime returns null, overwriting Hayami's lookups.
 </Update>
 
