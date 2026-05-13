@@ -1,0 +1,31 @@
+---
+title: "Q&A"
+description: "Questions and answers on the project itself."
+icon: "circle-question"
+---
+
+## Q: Why isn't the project open-source?
+
+Add **yet** to the end of that: the extension itself will be open-sourced down the line after refactoring and ensuring early development API tokens amongst other aspects aren't exposed in the codebase. No promised timeframes on this.
+
+Many changes were made early-on since initially the project was going to rely on user-provided API keys from the [Self-Service API](https://www.reddit.com/prefs/apps), which [Reddit scrapped](https://www.reddit.com/r/redditdev/comments/1oug31u/introducing_the_responsible_builder_policy_new/) through the Responsible Builder Policy due to alleged abuse, requiring new created Reddit apps needing to be approved. There was some reports of some existing apps that were created before the change being swept through and revoked, and when requesting access to the API for Hayami, I kept getting a generic response back from Reddit about being non-compliant with the new Builder Policy without saying _what_ didn't comply with the new builder policy. The project then migrated to using the Reddit API endpoints directly, with a provided key by you (software-app) if you've got one (which tends to be more reliable), or it just works out the box if logged in. So keys relating to these migrations in testing etc _could_ be present, and other bits also.
+
+## Q: Why are there only _two_ sites supported by Hayami?
+
+Too much logistical palaver and headache. Many sites, forums, and communities sometimes, rarely, or often switch domains, or their site layouts, making them a pain in the backside to hardcode into the extension itself. You could say the backend could house these domains but there's people that needs to _maintain_ those listings. You could argue this is the benefit of making the extension itself open source straight off the bat, _but_ Hayami chose a different approach: building the custom site mapper.
+
+The [custom site mapper](/custom-websites) allows _anyone_, without requiring coding knowledge, to click and select elements on-page, practically enabling any site to support Hayami out-the-box. You can then sync a site, many sites, or all your sites across to anyone via export, or URL, with built-in sync features (upload to GitHub/GitLab, and syncing) to other user-created lists, if you want updates from their lists.
+
+I'd rather focus on optimising the custom site mapper to further enable comments on your favourite sites, bringing comments to you. Given the site doesn't breach the above criteria, the site probably will be added. HIDIVE, Bilibili.tv, and Disney Plus are due in for proper support.
+
+## Q: I've got a suggestion/bug. Where do I tell you about it?
+
+You can leave [feedback](/feedback) via the extension popup, email (hi\[at\]hayami.moe), or through the Discord (hyperlinked on the extension popup). Feedback is very much appreciated, and is read. No piece of feedback is guaranteed to be added, but it'll be read and considered.
+
+## Q: Will the project ever be paid or have paid features?
+
+Nope, never. However, you might see this may have been originally different. If you read the [changelog](/whats-new), this was _considered_ in its early stages, primarily due to the changes made to the Self-Service API (explained in first question), where the project got shot repeatedly in the foot with the same response from Reddit. Eventually, I considered the commercial endpoint, doing something similar to an app called Infinity, billed based on API usage to Reddit. This was scrapped after receiving yet again the same response as well for that ticket type. After figuring out workarounds, the extension didn't need a paid tier, nor did I want to include it. Everyone has the right to read and write comments, wherever you are. Of course, the project costs money, time and backend resources, so a donate button was added in instead.
+
+## Q: How do I donate?
+
+Don't feel pressured to donate, and do not donate what you cannot afford to. If you'd like to though, you can [donate](/support#donating-through-liberapay) as little as £0.01/week (£0.04 pm/£0.52 pa) via [Liberapay](https://liberapay.com/nicholasdev/donate), which uses Stripe (Credit/Debit Card). You can alternatively donate one-time through [Ko-Fi](https://ko-fi.com/nicholasdev) which uses Stripe and PayPal.
