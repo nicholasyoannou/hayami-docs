@@ -17,6 +17,13 @@ mode: "default"
   - Added two new upvote animations (burst/mobile (default)) and number transition.
   - Added option in settings to disable animation/transition.
   - Fixed rare occurence where load more replies would be loaded twice consecutively.
+
+  **Disqus** and **TAC**: 
+
+  - Fixed The Anime Community iframe getting cut off at the bottom.
+  - Removed The Anime Community injected CSS since it's no longer sandboxed (iframe change); injected CSS is no longer needed.
+  - Fixed TAC going outside of AniList intended episode range when episode doesn't exist e.g. JUJUTSU KAISEN - Episode 56 on TAC when the actual episode uses AniList's format, and goes 1-12.
+  - Fixed Disqus getting cut off near-bottom due to reactions widget directly on Chuunime.
 </Update>
 
 <Update label="Version 0.0.9.8" description="Published [14 May 2026]">
