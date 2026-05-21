@@ -24,6 +24,15 @@ mode: "default"
   - Removed The Anime Community injected CSS since it's no longer sandboxed (iframe change); injected CSS is no longer needed.
   - Fixed TAC going outside of AniList intended episode range when episode doesn't exist e.g. JUJUTSU KAISEN - Episode 56 on TAC when the actual episode uses AniList's format, and goes 1-12.
   - Fixed Disqus getting cut off near-bottom due to reactions widget directly on Chuunime.
+
+  **QOL**:
+
+  - Removing unnecessary details e.g. 'at crunchyroll.com/watch' on built-in sites settings.
+  - Fixed CORS fetching problem for KomentoScript sources. Added helper to request permissions to domain for custom sites and KomentoScript sync sources if not GitHub/GitLab Gist.
+  - Fixed up design for KomentoScript sites under mapped sites being duplicated.
+  - Changed top alert when change made on settings to toast instead.
+  - Removed reset menu; replaced with clear cache. Resetting can be done simply by reinstalling the extension.
+  - Fix import issue for accepting KomentoScript permission dialog not coming up.
 </Update>
 
 <Update label="Version 0.0.9.8" description="Published [14 May 2026]">
