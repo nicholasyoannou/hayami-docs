@@ -54,6 +54,18 @@
                 ]
               },
               {
+                "group": "Configuring Hayami",
+                "pages": [
+                  {
+                    "group": "Custom websites",
+                    "pages": [
+                      "custom-websites-advanced",
+                      "schema"
+                    ]
+                  }
+                ]
+              },
+              {
                 "group": "KomentoScript",
                 "pages": [
                   "komento-script-dev",

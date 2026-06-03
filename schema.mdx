@@ -1,0 +1,406 @@
+---
+title: "Custom Site Mapping Schema"
+icon: "memo-circle-info"
+sidebarTitle: "Schema"
+---
+
+<Info>
+  This information is intended for those who want to make their own custom site mappings, containing the entire schema.
+</Info>
+
+A **custom site mapping** is a JSON object that tells Hayami how to detect anime metadata on a streaming site that isn't supported out of the box, and where to render Hayami itself. This schema is a reference to enable you to get the most out of Hayami's custom site mappings.
+
+## Quick reference
+
+A full mapping is a single JSON object:
+
+```json
+{
+  "origin": "https://example.com",
+  "display": "popup",
+  "extraDomains": [],
+  "includePathGlobs": [],
+  "excludePathGlobs": [],
+  "anchorSelector": "body",
+  "mountSelector": "body",
+  "titleSelector": "h1",
+  "episodeSelector": ".episode",
+  "sidePadding": 0
+}
+```
+
+Only `origin` is strictly required. Every other field has a default or is optional.
+
+## Identity
+
+### `origin` — required
+
+The site's origin.
+
+| Property | Value |
+| --- | --- |
+| Type | string |
+| Required | yes |
+| Example | `"https://example.com"` |
+
+### `extraDomains` — optional
+
+Additional origins capped at 9 entries that resolve to the same mapping. Useful when a site uses a separate domain for its player (an aggregator at `aggregator.example` whose player lives at `cdn-player.example`), or uses multiple domains for i.e. seperating regions.
+
+| Property | Value |
+| --- | --- |
+| Type | array of string |
+| Required | no |
+| Default | `[]` |
+
+```json
+{
+  "extraDomains": [
+    "https://cdn-player.example.com",
+    "https://mirror.example.com"
+  ]
+}
+```
+
+## Path matching
+
+### `includePathGlobs` — optional
+
+The mapping is only active when the URL path matches at least one glob. Omit the field (or use an empty array) to match every path.
+
+| Property | Value |
+| --- | --- |
+| Type | array of string |
+| Required | no |
+| Default | `[]` (matches everything) |
+
+```json
+{
+  "includePathGlobs": ["/watch/*", "/series/*/episode/*"]
+}
+```
+
+Rules:
+
+- `*` is the only wildcard.
+- Matches are case-insensitive.
+
+### `excludePathGlobs` — optional
+
+Same shape as `includePathGlobs`, but the opposite effect: if any pattern matches, the mapping is skipped even when an `includePathGlobs` entry also matched.
+
+```json
+{
+  "excludePathGlobs": ["/account/*", "/settings"]
+}
+```
+
+## Display
+
+### `display` — required
+
+How the comments section renders on the page. One of these strings:
+
+| Value | Behavior |
+| --- | --- |
+| `"popup"` | Floating overlay. Fallback when an unknown value is provided. |
+| `"below"` | Inserted directly below the `anchorSelector` element. |
+| `"insert"` | Inserted into the `mountSelector` element. |
+| `"replace"` | Replaces the `anchorSelector` element entirely. |
+| `"icon"` | Renders as a floating launcher button. Pairs with the `iconDisplay*` fields. |
+
+```json
+{
+  "display": "below"
+}
+```
+
+### Icon-button fields
+
+Only consulted when `"display": "icon"`. All three are optional.
+
+| Field | Type | Default | Allowed values |
+| --- | --- | --- | --- |
+| `iconDisplayKind` | string | `"text"` | `"text"`, `"icon"` |
+| `iconDisplayAction` | string | `"popup"` | `"popup"`, `"replace"` |
+| `iconDisplayText` | string | `"Hayami"` | any |
+
+```json
+{
+  "display": "icon",
+  "iconDisplayKind": "text",
+  "iconDisplayAction": "popup",
+  "iconDisplayText": "Comments"
+}
+```
+
+### `sidePadding` — optional
+
+Horizontal padding (in pixels) applied to the mount target. Useful when the mount point would otherwise sit flush against the page edge.
+
+| Property | Value |
+| --- | --- |
+| Type | number |
+| Required | no |
+| Default | `0` |
+| Range | `0` or greater |
+
+```json
+{
+  "sidePadding": 16
+}
+```
+
+Negative numbers and non-numeric input fall back to `0`.
+
+### `commentsBackgroundColor` — optional
+
+Base CSS color for the comments surface. Hayami derives a full palette (surface, borders, text contrast, icon filter, ...) from this single value.
+
+| Property | Value |
+| --- | --- |
+| Type | string |
+| Required | no |
+| Format | any CSS color string |
+
+```json
+{
+  "commentsBackgroundColor": "#1f2329"
+}
+```
+
+Accepts hex, `rgb(...)`, `rgba(...)`, `hsl(...)`, `hsla(...)`, and named colors. Empty strings are dropped from the saved mapping.
+
+## Anchor and mount points
+
+The two selectors below tell Hayami **where** on the page the comments belong. Their roles depend on the `display` value:
+
+| `display` | Uses `anchorSelector` | Uses `mountSelector` |
+| --- | --- | --- |
+| `"below"` | positioning reference | — |
+| `"insert"` | — | insertion target |
+| `"replace"` | element to replace | — |
+| `"popup"` | — | — (overlay) |
+| `"icon"` | reference when `iconDisplayAction` is `"replace"` | — |
+
+### `anchorSelector` — required
+
+| Property | Value |
+| --- | --- |
+| Type | string (CSS selector) |
+| Required | yes |
+| Example | `".player-container"` |
+
+### `mountSelector` — required
+
+| Property | Value |
+| --- | --- |
+| Type | string (CSS selector) |
+| Required | yes |
+| Example | `"#comments"` |
+
+### `anchorXPath` / `mountXPath` — optional
+
+XPath fallbacks for the two selectors above. When set alongside the CSS version, the CSS selector is tried first; XPath is consulted only when the CSS selector returns no element.
+
+```json
+{
+  "anchorSelector": ".comments-host",
+  "anchorXPath": "//*[@id='comments-host']"
+}
+```
+
+## Single-page detection
+
+These fields describe how to extract the anime name and episode label from a page that contains both pieces of information.
+
+### Title
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `titleSelector` | string (CSS) | yes | Element whose text contains the anime name. |
+| `titleRegex` | string | no | Regex applied to the extracted text. Capture group 1 (or the full match if none) becomes the cleaned name. |
+| `titleXPath` | string (XPath) | no | Fallback for `titleSelector`. |
+
+```json
+{
+  "titleSelector": "h2",
+  "titleRegex": "\\s*/\\s*(.+)$"
+}
+```
+
+The regex above extracts `English Title` from a heading shaped `Japanese Title / English Title`.
+
+### Episode
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `episodeSelector` | string (CSS) | yes | Element with the episode label. |
+| `episodeRegex` | string | no | Cleanup regex with the same shape as `titleRegex`. |
+| `episodeXPath` | string (XPath) | no | Fallback for `episodeSelector`. |
+
+```json
+{
+  "episodeSelector": ".episode-label",
+  "episodeRegex": "Episode\\s*(\\d+)"
+}
+```
+
+### Release date
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `releaseDateSelector` | string (CSS) | no | Element containing the episode's air date. |
+| `releaseDateRegex` | string | no | Cleanup regex. |
+| `releaseDateXPath` | string (XPath) | no | Fallback. |
+
+### Episode list (offset detection)
+
+Some sites label episodes cumulatively across cours (showing episodes 25–30 for "Cour 3") while discussion sources key threads to per-cour numbering (1–6 for the same cour). When that mismatch exists, Hayami uses these fields to enumerate the page's visible range and apply an offset.
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `episodeListSelector` | string (CSS) | no | Container holding the page's episode list. |
+| `episodeListItemRegex` | string | no | Regex applied to each list item to extract its episode number. |
+| `episodeListXPath` | string (XPath) | no | Fallback. |
+
+If `episodeListItemRegex` is omitted, Hayami tries these patterns in order, taking the first hit:
+
+1. `\b(?:Episode|Ep\.?|EP)\s*[:#-]?\s*(\d{1,4})\b` — explicit "Episode N", "Ep N", "EP-N"
+2. `^\s*(\d{1,4})\.\s+` — "1. Episode title"
+3. `^\s*(\d{1,4})\s*$` — bare number
+4. `^\s*(\d{1,4})(?=\s|-|:|\.|\||$)` — leading number with separator
+
+## Cross-page mappings
+
+For sites that split anime metadata and the actual player across **two URLs** — often two different domains — use the optional `episodeIndex` and `episodeKey` blocks.
+
+An index/detail page lists every episode with a unique key embedded in each entry (a URL hash, an ID, a slug). Clicking an episode opens a player page whose URL carries that same key. Hayami snapshots `{ key: episodeNumber }` from the index, then resolves the player page by reading its own key out of the URL.
+
+### `episodeIndex` — optional
+
+Configured on the **index page** half of the mapping. Walks the playlist and persists a per-episode snapshot keyed by mapping `origin`.
+
+```json
+{
+  "episodeIndex": {
+    "pathGlobs": ["/vod/detail/*"],
+    "itemSelector": "ul.playlist > li",
+    "keySelector": "a[href*='/share/']",
+    "keyAttribute": "href",
+    "keyRegex": "/share/([a-f0-9]+)",
+    "numberSelector": "a[title]",
+    "numberRegex": "Episode\\s*(\\d+)"
+  }
+}
+```
+
+Fields (all optional unless noted):
+
+| Field | Type | Default | Description |
+| --- | --- | --- | --- |
+| `pathGlobs` | array of string | matches every page the mapping matches | Restricts snapshot to these paths. |
+| `itemSelector` | string (CSS) | — | Each playlist row. **One of `itemSelector` or `itemXPath` is required.** |
+| `itemXPath` | string (XPath) | — | XPath alternative for `itemSelector`. |
+| `keySelector` | string (CSS) | the item itself | Descendant whose attribute carries the cross-page key. |
+| `keyAttribute` | string | `"text"` | Attribute to read from the key element. Common values: `"href"`, `"data-id"`. `"text"` reads the element's text content. |
+| `keyRegex` | string | — | Regex narrowing the raw attribute to the canonical key. Capture group 1 wins (full match if none). |
+| `numberSelector` | string (CSS) | the item itself | Descendant containing the episode number. |
+| `numberRegex` | string | the same defaults as `episodeListItemRegex`, plus `第\s*0*(\d+)\s*[集話话]` for Chinese sites | Regex extracting the number. |
+
+If `itemSelector` and `itemXPath` are both empty, the whole block is dropped during validation.
+
+Snapshots are deduped by signature, so SPA observer ticks that re-extract the same playlist write to storage exactly once.
+
+### `episodeKey` — optional
+
+Configured on the **player page** half. Reads a key from the current URL (or DOM) and looks it up in the snapshot.
+
+```json
+{
+  "episodeKey": {
+    "pathGlobs": ["/share/*"],
+    "fromLocation": "pathname",
+    "regex": "/share/([a-f0-9]+)"
+  }
+}
+```
+
+Fields:
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `pathGlobs` | array of string | no | Restricts lookup to these paths. |
+| `fromLocation` | string | one-of required | Where to read the raw key. Must be one of `"pathname"`, `"href"`, `"search"`, `"hash"`. |
+| `selector` | string (CSS) | one-of required | DOM fallback when the key isn't in the URL. |
+| `xPath` | string (XPath) | one-of required | XPath alternative for `selector`. |
+| `attribute` | string | no | Attribute to read from the DOM element. Defaults to `"text"`. |
+| `regex` | string | no | Regex extracting the canonical key from the raw value. Should match the `episodeIndex.keyRegex` so both halves produce the same string. |
+
+At least one of `fromLocation`, `selector`, or `xPath` must be set. If all three are empty, the block is dropped.
+
+## Examples
+
+### Minimal mapping
+
+The smallest mapping that passes validation:
+
+```json
+{
+  "origin": "https://example.com",
+  "display": "popup",
+  "anchorSelector": "body",
+  "mountSelector": "body",
+  "titleSelector": "h1",
+  "episodeSelector": ".episode"
+}
+```
+
+### Standard single-page mapping
+
+```json
+{
+  "origin": "https://example-stream.com",
+  "display": "below",
+  "includePathGlobs": ["/watch/*"],
+  "anchorSelector": ".player-container",
+  "mountSelector": ".player-container",
+  "titleSelector": ".anime-title",
+  "titleRegex": "(.+?)\\s*-\\s*Episode",
+  "episodeSelector": ".episode-label",
+  "episodeRegex": "Episode\\s*(\\d+)",
+  "releaseDateSelector": ".air-date",
+  "sidePadding": 16,
+  "commentsBackgroundColor": "#1a1a1a"
+}
+```
+
+### Cross-page mapping (index and player on different domains)
+
+```json
+{
+  "origin": "https://detail-site.example",
+  "extraDomains": ["https://player.example-cdn.com"],
+  "display": "popup",
+  "includePathGlobs": ["/vod/detail/*", "/share/*"],
+  "anchorSelector": "body",
+  "mountSelector": "body",
+  "titleSelector": "h2",
+  "titleRegex": "\\s*/\\s*(.+)$",
+  "episodeSelector": "",
+  "episodeIndex": {
+    "pathGlobs": ["/vod/detail/*"],
+    "itemSelector": "ul.playlist > li",
+    "keySelector": "a[href*='/share/']",
+    "keyAttribute": "href",
+    "keyRegex": "/share/([a-f0-9]+)",
+    "numberSelector": "a[title]",
+    "numberRegex": "Episode\\s*(\\d+)"
+  },
+  "episodeKey": {
+    "pathGlobs": ["/share/*"],
+    "fromLocation": "pathname",
+    "regex": "/share/([a-f0-9]+)"
+  }
+}
+```

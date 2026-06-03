@@ -1,0 +1,75 @@
+---
+title: "Custom websites (Advanced)"
+icon: "globe-pointer"
+description: "Some additional guides on setting up Hayami on more sophisticated websites."
+sidebarTitle: "Advanced"
+---
+
+## Configuring for metadata-less player site layouts
+
+Some particular websites may not have metadata (i.e. anime name, or episode number) on your episode-related page which can be common within Asia/regional-specific sites or when sites use particular CMS (Content Management Systems). Hayami has _outside_ episode page support (called episode index), but this only works by _manually_ setting it up through the extension's popup, which may require some fiddling through Developer Tools (otherwise known as "Inspect Element") through your browser. The [tips on how to obtain variables for KomentoScript JSON](/contributing-komentoscript-sites) may help you complete this for your given site.
+
+### Adding a new site to Hayami and using the Advanced Editor
+
+<Steps>
+  <Step title="On your episode listing page, right click > Map site with Hayami.">
+    Select the anime name, then hit Save.
+  </Step>
+  <Step title="Open the Hayami popup > Settings > Custom websites > Choose your domain > Advanced">
+  </Step>
+</Steps>
+
+### Using the Advanced Editor
+
+In the Advanced view, fill out the rest of the elements you usually do. So where is the episode page located (e.g. /episode/\*), then adding that in "Patch matching" \> "Include path globs". In the following instance:
+
+- /index.php/vod/detail/\* - where the episode listing page is
+- /share/\* - where the video player is for each anime
+
+<Frame>
+  <img
+    src="/images/Screenshot-2026-06-02-131953.png"
+    alt="Screenshot 2026 06 02 131953"
+    title="Screenshot 2026 06 02 131953"
+    className="mx-auto"
+    style={{ width:"68%" }}
+  />
+</Frame>
+
+We'll be using the following simulated example. This is a listing of Wistoria Season 2 on a CMS.
+
+<Frame>
+  <img
+    src="/images/wistoria_ep_linking_example.png"
+    alt="Wistoria Ep Linking Example"
+    title="Wistoria Ep Linking Example"
+    className="mx-auto"
+    style={{ width:"34%" }}
+  />
+</Frame>
+
+This is rendered as a \<ul\> element in the DOM, with each item contained in a child \<li\>. Each \<li\> represents an episode number. So Episode 01, 02, 03, etc. If the episode pages are extra domains, add them in the extra domains field.
+
+<Frame>
+  <img
+    src="/images/Screenshot-2026-06-02-125709.png"
+    alt="Screenshot 2026 06 02 125709"
+    title="Screenshot 2026 06 02 125709"
+    className="mx-auto"
+    style={{ width:"53%" }}
+  />
+</Frame>
+
+Scroll and find "Cross-page episode index" and "Cross-page player lookup" and enable them. "Cross-page episode index" is where your episode listing is located. "Cross-page player lookup" is where the per-episode anime page is. Below is the configuration used for the above as an example.
+
+<Frame>
+  <img
+    src="/images/Screenshot-2026-06-02-132525.png"
+    alt="Screenshot 2026 06 02 132525"
+    title="Screenshot 2026 06 02 132525"
+    className="mx-auto"
+    style={{ width:"34%" }}
+  />
+</Frame>
+
+\[information about schema for this implementatiopn\]

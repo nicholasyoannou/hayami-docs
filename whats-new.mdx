@@ -14,13 +14,37 @@ mode: "default"
 
   **QOL**:
 
-  - Fixed Disqus on Crunchyroll continuous mapping cour folding.
-  - Added new Chuunime embed support for direct pre-June (formerly discussanime channel) threads.
-  - Added two new image CDNs for image previews.
+  - **Disqus**:
+    - Fixed Disqus on Crunchyroll continuous mapping cour folding.
+    - Added new Chuunime embed support for direct pre-June (formerly discussanime channel) threads.
+    - Fixed Disqus not rendering in some environments.
+    - Fixed Disqus mapping unintentionally using Hayami API endpoints intended for Reddit; added new failover endpoints for searching directly alternatively to AL/MAL anime mapping.
+    - Fixed Disqus font and text colour blending incorrectly on some sites.
+    - Fixed custom embed not blending in to the background (dark/light) of the extension.
+
+  - Redesigned AniList to better reflect the design of AniList Forums site. Added replying, liking, and commenting functionality.
+  - Tweaked MAL design to account for misaligning dates and MAL accounts with missing profile pictures that caused misalignments in UI design.
+  - Added YouTube wrong anime support when no anime is found instead of returning blank. Rehauled wrong anime popup to properly get data as returned from Hayami's API \+ YouTube instead of AniList.
+  - Fixed YouTube comment count returning the maximum cap of the response rather than the actual comment count.
+  - Added new image CDN for image previews.
+  - Added support for extra origins (domains) in the permissions popup.
+  - Added icons for publish/sync under custom sites.
+  - Fixed manual override to _not_ use offset from episode list selectors.
+  - Site: Added Firefox addons URL to 'Add extension' button.
+  - Fixed Reddit Movie support for Hayami API.
+
+  **Custom websites**:
+
+  - New support for metadata-less player site layouts, bringing a "linkage" feature that caches episode data on a listing page which is utlized on the anime page. This is usually for full-screen player environments (with no particular detail on the anime itself) or when using particular CMSs always navigated from an episode listing page.
+  - Full schema of custom websites has been added to the docs.
 
   **Backend**:
 
   - Fixed image delivery issue with Aniwave archive where internal cache kept timestamps to over-expiry.
+  - Removed redundant Disqus endpoints now replaced with Chuunime.
+  - Added alternate name searching for YouTube endpoints.
+  - Fixed background playlist updating for YouTube not updating older playlists ([thanks to Ignat](https://stackoverflow.com/a/40370822/16230379)).
+  - Fixed anime returning too many alternate names and similar anime for a given series.
 </Update>
 
 <Update label="Version 0.0.9.9" description="Published [21 May 2026]">
