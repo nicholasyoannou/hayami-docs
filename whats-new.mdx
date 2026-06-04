@@ -16,7 +16,10 @@ mode: "default"
 
   - Fixed MyAnimeList login via Hayami embed showing to signin after signing in through button _requiring_ page refresh to load MAL.
   - Added support for YouTube Ani-One Asia support for "#46, #47" episode number support.
-  - Fix Disqus showing no comments on later seasons of a series overriden elsewhere.
+  - Fix Disqus mapping on ≥ season 2 of a series overriden elsewhere.
+  - Fixed bug where switching between YouTube channels would only change the episode selected rather than channel.
+  - Rehauled Disqus override mapping system: if an override is done on a provider, it'll be used as a 'hint' to Disqus providers only if Disqus doesn't find a match.
+  - Fixed Disqus iframe resizer due to reactions widget cutting off comments. 
 </Update>
 
 <Update label="Version 0.1.0.2" description="Published [4 June 2026]">
