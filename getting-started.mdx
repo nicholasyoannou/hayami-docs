@@ -12,15 +12,45 @@ Hayami can be downloaded and installed straight from the [Chrome Web Store](http
 
 Through the setup, you may be asked to connect some accounts. Hayami interfaces with these platforms from your browser directly to show you episode discussions. All discussion platforms have their own terms and privacy policies respectfully, which should be regarded before use.
 
-<Accordion title="For Safari users: Before you can connect your accounts, you need to setup permissions.">
-  If you're a Safari user, Safari by-default asks permissions per-site, but also simultaneously causes bundled sites with the extension itself not to function properly unless given permission by you. Because of that, you may see warnings that you need to accept permissions to more sites when onboarding. Ensure you click 'Allow Always' when Safari asks you to allow access to requested sites. **Made a mistake?** Click on Hayami, and Hayami will have a popup asking for permissions.
+Before you can do this, you need to allow Hayami permission to access discussion platforms and sites it relies on to provide comments to you. This varies based on your browser.
 
-  ![Safari Setup Allow Always](/images/safariSetup_allowAlways.png)
+<Tabs>
+  <Tab title="Chrome" icon="chrome">
+    For Chrome users, just hit 'Allow' on the 'Allow access to discussion platforms' step on the prompt to allow Hayami access to provide comments to you.
 
-  Alternatively, you can go into Hayami's permission settings on Safari and allow Hayami access to all websites. This is shown below. You can change this at any time, and you can also configure the sites Hayami runs on through Hayami's settings.
+    <Frame>
+      <img
+        src="/images/chromeSetup_allowAccessSites-1.png"
+        alt="Chrome Setup Allow Access Sites 1"
+        title="Chrome Setup Allow Access Sites 1"
+        className="mx-auto"
+        style={{ width:"62%" }}
+      />
+    </Frame>
+  </Tab>
+  <Tab title="Firefox" icon="firefox-browser">
+    For Firefox users, just hit 'Allow' on the 'Allow access to discussion platforms' step on the prompt to allow Hayami access to provide comments to you.
 
-  ![Safari Setup Allow All Sites](/images/safariSetup_allowAllSites.gif)
-</Accordion>
+    <Frame>
+      <img
+        src="/images/firefoxSetup_allowAccessSites.png"
+        alt="Firefox Setup Allow Access Sites"
+        title="Firefox Setup Allow Access Sites"
+        className="mx-auto"
+        style={{ width:"43%" }}
+      />
+    </Frame>
+  </Tab>
+  <Tab title="Safari" icon="safari">
+    You may see warnings that you need to accept permissions to sites when onboarding. Ensure you click 'Allow Always' when Safari asks you to allow access to requested sites. **Made a mistake?** Click on Hayami, and Hayami will have a popup asking for permissions. <Tooltip tip="Safari by-default asks permissions per-site, but also simultaneously causes bundled sites with the extension itself not to function properly unless given permission by you.">(Why?)</Tooltip>
+
+    ![Safari Setup Allow Always](/images/safariSetup_allowAlways.png)
+
+    Alternatively, you can go into Hayami's permission settings on Safari and allow Hayami access to all websites. This is shown below. You can change this at any time, and you can also configure the sites Hayami runs on through Hayami's settings.
+
+    ![Safari Setup Allow All Sites](/images/safariSetup_allowAllSites.gif)
+  </Tab>
+</Tabs>
 
 Reddit (r/anime discussion threads) is set to as-default which covers a wide range of discussions since 2011, but you can freely change your default discussion platform at any time through Hayami's settings, or even switch discussion platforms while on-page when Hayami loads up if you choose to. Connect the accounts you plan to use, and set the one you'd plan to use most as your default.
 
