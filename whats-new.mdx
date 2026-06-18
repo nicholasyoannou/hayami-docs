@@ -14,7 +14,10 @@ mode: "default"
 
   #### **QOL**:
 
-  - Completely rehaul the permission system to ask for permissions during onboarding due to Safari permission handling differing completely to Chrome (packages sites don't fully have permissions unless manually approved by the user). Users that don't fully complete onboarding can use the Hayami popup to approve perms instead. Because of this, declarativeNetRequest has been removed along with the extensions original permissions in favour of declarativeNetRequestWithHostAccess instead.
+  - Completely rehaul the permission system to ask for permissions during onboarding due to Safari permission handling differing completely to Chrome (packaged sites don't fully have permissions unless manually approved by the user). Users that don't fully complete onboarding can use the Hayami popup to approve perms instead. Because of this, declarativeNetRequest has been removed along with the extensions original site permissions (no sites ship with the extension; only allowed through onboarding) in favour of declarativeNetRequestWithHostAccess instead.
+  - Changed onboarding to support new permission system (accept perms) and popup (alert to allow missing sites) to support this.
+  - Rehaul guided login handling for logging in to some discussion platforms.
+  - Added popup.html shortcut through native browser menu (optionsUI).
 </Update>
 
 <Update label="Version 0.1.0.8" description="Published [8 June 2026]">
